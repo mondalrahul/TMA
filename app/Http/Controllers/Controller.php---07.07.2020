@@ -1,0 +1,650 @@
+<?php
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Search\SearchController;
+use App\Http\Models\Logics\BoatCategoryTmaLogic;
+use App\Http\Models\Logics\BoatCharterLogic;
+use App\Http\Models\Logics\BoatLogic;
+use App\Http\Models\Logics\BoatSeaSportsLogic;
+use App\Http\Models\Logics\BoatTimePriceLogic;
+use App\Http\Models\Logics\BoatUserLogic;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Mail;
+use Validator;
+
+class Controller extends BaseController
+{
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    const PATTERN_USER_NAME = '/[a-zA-Z\s]$/';
+    const PATTERN_USER_PASS = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/';
+    const SITE_URL = 'https://tridentmarineasia.com.com/';
+    const MAIL_SALE_TRIDENT = 'sales@tridentmarineasia.com';
+    const MAIL_POSTMASTER_TRIDENT = 'postmaster@mail.theboatshopasia.com';
+
+    /**
+     * Register new user
+     *
+     * @param Request $request
+     * @return json
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function registerUser(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name'          => 'required|regex:' . self::PATTERN_USER_NAME,
+            'user_email'    => 'required|email|unique:App\Http\Models\Entities\BoatUser,userEmail',
+            'user_password' => 'required',
+            'user_city'     => 'nullable',
+            'user_address'  => 'required|string',
+            'user_country'  => 'required|string',
+            'user_state'    => 'required|string',
+            'user_zip'      => 'nullable|numeric',
+            'user_phone'    => 'nullable|numeric'
+        ]);
+        if ($validator->fails()) {
+            return json_encode(['result' => false, 'errors' => $validator->errors()]);
+        }
+
+        // get params request
+        $dataAdds = $request->all();
+        $dataAdds['user_password'] = base64_encode($dataAdds['user_password']);
+        if (!$dataAdds['user_zip']) {
+            $dataAdds['user_zip'] = '';
+        }
+
+        // Insert to table
+        $boatUserLogic = new BoatUserLogic();
+        $lastInsertId = $boatUserLogic->insertData($dataAdds);
+
+        return json_encode(['result' => true]);
+        // send Email
+//        if ($lastInsertId) {
+//            $dataAdds['subject'] = 'Welcome to laravel';
+//            $dataAdds['email_template'] = 'registerEmail';
+//            $dataAdds['link_active'] = self::SITE_URL . 'login.php/?ses='.session_id().'&u=123';
+//            Mail::to('daiduongpt090@gmail.com')->send(new TbsaSendMail($dataAdds));
+//
+//        }
+
+    }
+
+    /**
+     * Login
+     *
+     * @param Request $request
+     * @return json
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function login(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'login_email'    => 'required|email|exists:App\Http\Models\Entities\BoatUser,userEmail',
+            'login_password' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return json_encode(['result' => false, 'errors' => $validator->errors()]);
+        }
+
+        $dataPosts = $request->all();
+        $credentials = [
+            'user_email' => $dataPosts['login_email'],
+            'password' => $dataPosts['login_password'],
+        ];
+        if (Auth::attempt($credentials, true)) {
+            $boatCommentLogic = new \App\Http\Models\Logics\BoatCommentLogic();
+            $notComment = $boatCommentLogic->getNotComment();
+            if($notComment > 0) {
+                $request->session()->put('forgetRating', true);
+            }
+            return json_encode(['result' => true]);
+        }
+        return json_encode(['result' => false]);
+    }
+
+    /**
+     * Logout
+     *
+     * @return json
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function logout()
+    {
+        Auth::logout();
+        return json_encode(['result' => true]);
+    }
+
+    /**
+     * Register new user
+     *
+     * @param Request $request
+     * @return json
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function sendMailContact(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'first_name'   => 'required|string',
+            'last_name'    => 'required|string',
+            'email'        => 'required|email',
+            'phone'        => 'nullable',
+            'subject'      => 'required|string',
+            'message'      => 'required|string',
+        ]);
+        if ($validator->fails()) {
+            return json_encode(['result' => false, 'errors' => $validator->errors()]);
+        }
+
+        // get params request
+        $dataAdds = $request->all();
+
+        // send Email
+        $dataAdds['subject'] = 'Test email contact';
+        try {
+            Mail::send('emails.contactEmail', ['contentEmails' => $dataAdds], function ($message) use ($dataAdds) {
+                $message->setContentType('text/html');
+                $message->from($dataAdds['email'], $dataAdds['first_name']);
+                $message->to(self::MAIL_SALE_TRIDENT);
+                $message->subject($dataAdds['subject']);
+            });
+            Session::flash('message_send', 'Your enquiry has been sent successfully. Please allow 24 hours for the team to get back to you.  <br/> For urgent matters, please contact + 65 6904 8327.');
+            return redirect('/contact-us');
+        } catch (\Exception $e) {
+            Session::flash('message_send', 'Failed to send email. Please try again.');
+            return redirect('/contact-us');
+        }
+    }
+
+    /**
+     * Send enquiry email
+     *
+     * @param Request $request
+     * @return json
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function sendMailEnquiry(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'enquiry_user_name'          => 'required|string',
+            'enquiry_user_email'         => 'required|email',
+            'enquiry_user_phone'         => 'nullable|numeric',
+            'enquiry_user_alter_phone'   => 'nullable|numeric',
+            'enquiry_user_selected_date' => 'required|date',
+            'enquiry_user_other_info'    => 'nullable|string',
+            'enquiry_book_boat_name'     => 'nullable|string'
+        ]);
+
+        if ($validator->fails()) {
+            return json_encode(['result' => false, 'errors' => $validator->errors()]);
+        }
+
+        // get params request
+        $dataAdds = $request->all();
+
+        // sea sports
+        if (isset($dataAdds['charter_agreement']) && $dataAdds['charter_agreement'] === 'true') {
+            // Get lists sea sports
+            $boatSeaSportsLogic = new BoatSeaSportsLogic();
+            $seaSportsIds = explode(',', trim($dataAdds['charter_seas_sports_lists_ids']));
+            $boatSeaSportsCheckedLists = $boatSeaSportsLogic->getSeaSportsListBaseOnIds($seaSportsIds);
+
+            // Wrong data
+            if (count($boatSeaSportsCheckedLists) !== count($seaSportsIds)) {
+                return json_encode(['result' => false, 'message' => 'Wrong data. Please try again!']);
+            }
+
+            // Then
+            $dataAdds['sea_sports_list'] = array_column($boatSeaSportsCheckedLists, 'name');
+        }
+
+        // send Email
+        $dataAdds['subject'] = sprintf('Enquiry for %s on %s', $dataAdds['enquiry_book_boat_name'],$dataAdds['enquiry_user_selected_date']);
+        try {
+            Mail::send('emails.enquiryEmail', ['contentEmails' => $dataAdds], function ($message) use ($dataAdds) {
+                $message->setContentType('text/html');
+                $message->from($dataAdds['enquiry_user_email']);
+                $message->to(self::MAIL_SALE_TRIDENT);
+                $message->subject($dataAdds['subject']);
+            });
+            return json_encode(['result' => true, 'message' => 'Email successfully sent!']);
+        } catch (\Exception $e) {
+            return json_encode(['result' => false, 'message' => 'Send mail failed. Please try again.' . $e]);
+        }
+    }
+
+    /**
+     * Send wia transfer email
+     *
+     * @param Request $request
+     * @return json
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function sendMailWireTransfer(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'wire_transfer_email' => 'required|email'
+        ]);
+        if ($validator->fails()) {
+            return json_encode(['result' => false, 'errors' => $validator->errors()]);
+        }
+
+        // get params request
+        $dataAdds = $request->all();
+
+        // Process add charter boat
+        $userData = '';
+        if (Auth::check()) {
+            $userData = Auth::user();
+        }
+        $dataAdds = $this->prepareDataAddCharterBoat($dataAdds, $userData);
+        if (Auth::check()) {
+            $dataAdds = $this->addCharterBoatBankTransfer($dataAdds);
+        }
+
+        // Config content
+        $oderId = (isset($dataAdds['book_charter']['id'])) ? $dataAdds['book_charter']['id'] : 'Not Registered';
+        $dataAdds['subject'] = 'Order ID: ' . $oderId;
+
+        try {
+            // send Email
+            Mail::send('emails.wireTransferEmail', ['contentEmails' => $dataAdds], function ($message) use ($dataAdds) {
+                $message->setContentType('text/html');
+                $message->from(self::MAIL_POSTMASTER_TRIDENT);
+                $message->to($dataAdds['wire_transfer_email']);
+                $message->cc([self::MAIL_SALE_TRIDENT, $dataAdds['boat_owner']['user_email']]);
+                $message->subject($dataAdds['subject']);
+                $message->attach(public_path('images/product/' . $dataAdds['boat_detail']['contractpaper']));
+            });
+            return json_encode(['result' => true, 'message' => 'Email successfully sent!']);
+        } catch (\Exception $e) {
+            return json_encode(['result' => true, 'message' => 'Send mail failed. Please try again!']);
+        }
+    }
+
+    /**
+     * Go to myAccount
+     *
+     * @return view
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function myAccount(Request $request)
+    {
+        if (!Auth::check()) {
+            return redirect('/');
+        }
+        $userData = Auth::user();
+        $userName = $this->filterUserName($userData);
+        $avatarPath = 'images/avatar/';
+        $lastLoginDateTime = $userData->getAttributes()->last_login;
+        $rangeLogin = date_diff(date_create($lastLoginDateTime), date_create(date('Y-m-d H:i:s')));
+        return view('account.myaccount', ['last_login' => $rangeLogin, 'avatar_path' => ['path' => $avatarPath]]);
+    }
+
+    /**
+     * Update myAccount
+     *
+     * @return view
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function updateMyAccount(Request $request)
+    {
+        if (!Auth::check()) {
+            return redirect('/');
+        }
+
+        $userData = Auth::user();
+        $dataAdds = $request->all();
+
+        $validateEmail = '';
+        if ($request->all()['user_email'] !== $userData->getAttributes()->user_email) {
+            $validateEmail = '||unique:App\Http\Models\Entities\BoatUser,userEmail';
+        }
+        $dataAdds['user_address'] = $dataAdds['user_address'];
+
+        $validator = Validator::make($dataAdds, [
+            'user_name'     => 'required|regex:' . self::PATTERN_USER_NAME,
+            'user_email'    => 'required|email' . $validateEmail,
+            'user_password' => 'required',
+            'user_city'     => 'required',
+            'user_address'  => 'required|string',
+            'user_country'  => 'required|string',
+            'user_state'    => 'nullable|string',
+            'user_zip'      => 'nullable|numeric',
+            'user_phone'    => 'nullable|numeric'
+        ]);
+        if ($validator->fails()) {
+            return json_encode(['result' => false, 'errors' => $validator->errors()]);
+        }
+
+        // if exist upload avatar
+        if(isset($dataAdds['avatar']) && !empty($dataAdds['avatar'])) {
+            $avatarObj = $request->file('avatar');
+
+            // Check file is image
+            if (!$imageSize = getimagesize($avatarObj->getPathname())) {
+                Session::flash('message_send', 'Image file is wrong format. Please check again.');
+                return redirect('/my-account');
+            }
+
+            // Image size info
+            if (filesize($avatarObj->getPathname()) > 4 * 1024 * 1024) {
+                Session::flash('message_send', 'Image file size is too big. Please choose another image.');
+                return redirect('/my-account');
+            }
+
+            // Create dir if need then move to that folder
+            $userName = $this->filterUserName($userData);
+            $avatarPath = public_path("images/avatar/");
+
+            if(!file_exists($avatarPath)) {
+                mkdir($avatarPath, 0777, true);
+            }
+            // Create with new name
+            $fileName = 'avatar_' . $userData->getAttributes()->user_id . '_' . time() . '.' . $avatarObj->getClientOriginalExtension();
+            $avatarObj->move($avatarPath, $fileName);
+            $dataAdds['profile_pic'] = $fileName;
+        }
+
+        // get params request
+        $dataAdds['user_password'] = base64_encode($dataAdds['user_password']);
+        if (!$dataAdds['user_zip']) {
+            $dataAdds['user_zip'] = '';
+        }
+        // get user id
+        $dataAdds['user_id'] = $userData->getAttributes()->user_id;
+
+        // Update to table
+        $boatUserLogic = new BoatUserLogic();
+        $boatUserLogic->updateData($dataAdds);
+        Session::flash('message_send', 'Upload success.');
+        return redirect()->back();
+    }
+
+    private function filterUserName($userData)
+    {
+        $userName = $userData->getAttributes()->user_name;
+        $userName = explode(' ', $userName);
+        foreach ($userName as $key => $value) {
+            if (empty($value)) {
+                unset($userName[$key]);
+            }
+        }
+        return implode('_', $userName);
+    }
+
+    private function addCharterBoatBankTransfer($dataAdds)
+    {
+        // Insert data to book timing
+        $lastInsertBookTimingList = [];
+        $charterLogic = new BoatCharterLogic();
+        foreach ($dataAdds['book_timing'] as $key => $item) {
+            $lastInsertBookTimingList[$item['time_id']] = $charterLogic->insertBookTiming($item);
+            $dataAdds['book_timing'][$key]['id'] = $lastInsertBookTimingList[$item['time_id']];
+        }
+
+        // Insert data to charter boat
+        $lastInsertBoatCharter = null;
+        if (!empty($lastInsertBookTimingList)) {
+            $dataAdds['book_charter']['last_booked'] = max($lastInsertBookTimingList);
+            $lastInsertBoatCharter = $charterLogic->insertBoatCharter($dataAdds['book_charter']);
+        }
+
+        if ($lastInsertBoatCharter) {
+            foreach ($dataAdds['book_timing'] as $item) {
+                $item['booked_id'] = $lastInsertBoatCharter;
+                // $charterLogic->updateBookTiming($item);
+            }
+        }
+        $dataAdds['book_charter']['id'] = $lastInsertBoatCharter;
+        return $dataAdds;
+    }
+
+    public function getConfirmBox(Request $request)
+    {
+        // get params request
+        $dataAdds = $request->all();
+
+        // Process add charter boat
+        if (Auth::check()) {
+            $userData = Auth::user();
+            $dataAdds['user_detail'] = [
+                'user_name' => $userData->getAttributes()->user_name,
+                'user_email' => ($dataAdds['payment_method'] === 'Paypal') ? $userData->getAttributes()->user_email : trim($dataAdds['wire_transfer_email']),
+                'user_address' => $userData->getAttributes()->user_address,
+            ];
+        } else {
+            $dataAdds['user_detail'] = [
+                'user_name' => '',
+                'user_email' => ($dataAdds['payment_method'] === 'Paypal') ? '' : trim($dataAdds['wire_transfer_email']),
+                'user_address' => '',
+            ];
+        }
+
+        // Prepare params and insert to database
+        $boatTimePriceLogic = new BoatTimePriceLogic();
+        $boatTimePriceList = $boatTimePriceLogic->getDataBaseOnDateAndBoat($dataAdds['booked_time_date'], $dataAdds['boat_id']);
+        if (empty($boatTimePriceList)) {
+            return json_encode(['result' => false, 'message' => 'No time slots found!']);
+        }
+
+        // Get boat detail
+        $boatLogic = new BoatLogic();
+        $boatDetail = $boatLogic->getBoatDetail($dataAdds['boat_id']);
+        $dataAdds['boat_detail'] = $boatDetail[0];
+
+        $bookTimeList = explode(',', $dataAdds['booked_time_list']);
+        $dataBookTimeList = [];
+        foreach ($boatTimePriceList as $item) {
+            if (in_array($item['id'], $bookTimeList)) {
+                $dataBookTimeList[$item['id']] = $item;
+            }
+        }
+        // Check valid book time list data
+        if (count($bookTimeList) != count($dataBookTimeList)) {
+            return json_encode(['result' => false, 'message' => 'No time slots found!']);
+        }
+
+        $boatSeaSportsCheckedLists = [];
+        if (isset($dataAdds['charter_agreement']) && $dataAdds['charter_agreement'] === 'true') {
+            // Get lists sea sports
+            $boatSeaSportsLogic = new BoatSeaSportsLogic();
+            $seaSportsIds = explode(',', trim($dataAdds['charter_seas_sports_lists_ids']));
+            $boatSeaSportsCheckedLists = $boatSeaSportsLogic->getSeaSportsListBaseOnIds($seaSportsIds);
+
+            // Wrong data
+            if (count($boatSeaSportsCheckedLists) !== count($seaSportsIds)) {
+                return json_encode(['result' => false, 'message' => 'Wrong data. Please try again!']);
+            }
+        }
+
+        // Process total price
+        $totalPrice = 0;
+        $skipperPrice = 0;
+        $excessDeposit = 0;
+        $timingPrice = 0;
+        $seaSportPrice = 0;
+        $seaSportBrochure = [];
+
+        $countTimeSlots = 0;
+        foreach ($dataBookTimeList as $item) {
+            $countTimeSlots++;
+            // Sea sport
+            if (isset($dataAdds['charter_agreement']) && $dataAdds['charter_agreement'] === 'true' && count($boatSeaSportsCheckedLists) > 0) {
+                foreach($boatSeaSportsCheckedLists as $key => $value) {
+                    $seaSportPrice += $value['price'];
+                }
+            }
+
+            $skipperPrice += $item['skipperPrice'];
+            $excessDeposit += $item['excessDeposit'];
+            $timingPrice += $item['price'];
+            if ($dataAdds['booked_skipper'] === '1') {
+                $totalPrice += ($item['price'] + $item['skipperPrice']);
+            } else {
+                $totalPrice += ($item['price'] + $item['excessDeposit']);
+            }
+
+            $dataAdds['book_timing'][] = [
+                'time_from' => $item['timeFrom'],
+                'time_from_type' => ($item['timeFrom'] > 12) ? 'pm' : 'am',
+                'time_to'   => $item['timeTo'],
+                'time_to_type' => ($item['timeTo'] > 12) ? 'pm' : 'am',
+                'date_book' => new \DateTime($dataAdds['booked_time_date']),
+                'add_date'  => new \DateTime($dataAdds['booked_time_date']),
+            ];
+        }
+        if ($dataAdds['payment_method'] === 'Paypal') {
+            $totalPrice = ($totalPrice + $seaSportPrice) + (($totalPrice + $seaSportPrice)*5)/100;
+        } else {
+            $totalPrice = ($totalPrice + $seaSportPrice);
+        }
+        foreach ($boatSeaSportsCheckedLists as $key => $item) {
+            $seaSportBrochure[$item['name']] = $item['price'] * $countTimeSlots;
+        }
+        $dataAdds['book_charter'] = [
+            'total_price'       => $totalPrice,
+            'is_skiper'         => (isset($dataAdds['booked_skipper']) && $dataAdds['booked_skipper'] === '1') ? $skipperPrice : 0.00,
+            'timing_price'      => $timingPrice,
+            'excess_deposit'    => (isset($dataAdds['booked_skipper']) && $dataAdds['booked_skipper'] !== '1') ? $excessDeposit : 0.00,
+            'referrer_discount' => 0,
+            'ifskipper'         => (isset($dataAdds['booked_skipper']) && $dataAdds['booked_skipper'] === '1') ? 1 : 0,
+            'seasport_price'    => $seaSportPrice
+        ];
+        $dataAdds['addition_request'] = trim($dataAdds['addition_request']);
+        return view('elements.booking-confirm', compact('dataAdds'));
+    }
+
+    private function prepareDataAddCharterBoat($dataAdds, $userData = '')
+    {
+        $userId = '';
+        if(!empty($userData)) {
+            $userId = $userData->getAttributes()->user_id;
+            $dataAdds['user_detail'] = [
+                'user_name' => $userData->getAttributes()->user_name,
+                'user_type' => 'Charterer'
+            ];
+        }
+        // Prepare params and insert to database
+        $boatTimePriceLogic = new BoatTimePriceLogic();
+        $boatTimePriceList = $boatTimePriceLogic->getDataBaseOnDateAndBoat($dataAdds['booked_time_date'], $dataAdds['boat_id']);
+        if (empty($boatTimePriceList)) {
+            return json_encode(['result' => true, 'message' => 'No time slots found!']);
+        }
+
+        $bookTimeList = explode(',', $dataAdds['booked_time_list']);
+        $dataBookTimeList = [];
+        foreach ($boatTimePriceList as $item) {
+            if (in_array($item['id'], $bookTimeList)) {
+                $dataBookTimeList[$item['id']] = $item;
+            }
+        }
+        // Check valid book time list data
+        if (count($bookTimeList) != count($dataBookTimeList)) {
+            return json_encode(['result' => true, 'message' => 'No time slots found!']);
+        }
+
+        $boatSeaSportsCheckedLists = [];
+        if (isset($dataAdds['charter_agreement']) && $dataAdds['charter_agreement'] === 'true') {
+            // Get lists sea sports
+            $boatSeaSportsLogic = new BoatSeaSportsLogic();
+            $seaSportsIds = explode(',', trim($dataAdds['charter_seas_sports_lists_ids']));
+            $boatSeaSportsCheckedLists = $boatSeaSportsLogic->getSeaSportsListBaseOnIds($seaSportsIds);
+
+            // Wrong data
+            if (count($boatSeaSportsCheckedLists) !== count($seaSportsIds)) {
+                return json_encode(['result' => false, 'message' => 'Wrong data. Please try again!']);
+            }
+        }
+
+        // Process total price
+        $totalPrice = 0;
+        $skipperPrice = 0;
+        $excessDeposit = 0;
+        $timingPrice = 0;
+        $seaSportPrice = 0;
+        $seaSportBrochure = [];
+        $countTimeSlots = 0;
+        foreach ($dataBookTimeList as $item) {
+            $countTimeSlots++;
+            // Sea sport
+            if (isset($dataAdds['charter_agreement']) && $dataAdds['charter_agreement'] === 'true' && count($boatSeaSportsCheckedLists) > 0) {
+                foreach($boatSeaSportsCheckedLists as $key => $value) {
+                    $seaSportPrice += $value['price'];
+                }
+            }
+
+            $skipperPrice += $item['skipperPrice'];
+            $excessDeposit += $item['excessDeposit'];
+            $timingPrice += $item['price'];
+            if ($dataAdds['booked_skipper'] === '1') {
+                $totalPrice += ($item['price'] + $item['skipperPrice']);
+            } else {
+                $totalPrice += ($item['price'] + $item['excessDeposit']);
+            }
+
+            $dataAdds['book_timing'][] = [
+                'time_id'        => $item['id'],
+                'boat_id'        => $item['boatId'],
+                'time_from'      => $item['timeFrom'],
+                'time_to'        => $item['timeTo'],
+                'date_book'      => new \DateTime($dataAdds['booked_time_date']),
+                'add_date'       => new \DateTime(date('Y-m-d')),
+                'user_id'        => $userId,
+                'price'          => $item['price'],
+                'booktime'       => time(),
+                'booked_id'      => 0
+            ];
+        }
+        $totalPrice = ($totalPrice + $seaSportPrice);
+        foreach ($boatSeaSportsCheckedLists as $key => $item) {
+            $seaSportBrochure[$item['name']] = $item['price'] * $countTimeSlots;
+        }
+        $dataAdds['seasport_brochure'] = $seaSportPrice;
+        $dataAdds['book_charter'] = [
+            'total_price'       => $totalPrice,
+            'boat_id'           => $dataAdds['boat_id'],
+            'user_id'           => $userId,
+            'add_date'          => new \DateTime(date('Y-m-d')),
+            'status'            => 0,
+            'is_skiper'         => (isset($dataAdds['booked_skipper']) && $dataAdds['booked_skipper'] === '1') ? $skipperPrice : 0.00,
+            'is_coupon'         => 0,
+            'timing_price'      => $timingPrice,
+            'comment'           => '',
+            'excess_deposit'    => (isset($dataAdds['booked_skipper']) && $dataAdds['booked_skipper'] !== '1') ? $excessDeposit : 0.00,
+            'referrer_discount' => 0,
+            'user_manager'      => '',
+            'ifskipper'         => (isset($dataAdds['booked_skipper']) && $dataAdds['booked_skipper'] === '1') ? 1 : 0,
+            'ratingyes'         => 0,
+            'payment_type'      => BoatCharterLogic::PAYMENT_TYPE_BANK_TRANSFER,
+        ];
+
+        $seaSportBrochure = array_filter($seaSportBrochure);
+        $dataTemp = '';
+        if (!empty($seaSportBrochure)) {
+            foreach($seaSportBrochure as $key => $price) {
+                $dataTemp[] = $key . ':' . $price;
+            }
+        }
+        $dataAdds['book_charter']['seasport_brochure'] = (!empty($dataTemp)) ? implode(',', $dataTemp) : '';
+
+        // Get boat detail
+        $boatLogic = new BoatLogic();
+        $boatCategoryTmaLogic = new BoatCategoryTmaLogic();
+        $boatUserLogic = new BoatUserLogic();
+        $boatDetail = $boatLogic->getBoatDetail($dataAdds['boat_id']);
+        $boatTypeData = $boatCategoryTmaLogic->getBoatCategoryTma($boatDetail[0]['boat_type_tma']);
+        $boatUserOwner = $boatUserLogic->getUserData($boatDetail[0]['user_id']);
+        $dataAdds['boat_detail'] = $boatDetail[0];
+        $dataAdds['boat_owner'] = $boatUserOwner[0];
+        $dataAdds['boat_category'] = $boatTypeData[0];
+        $dataAdds['book_charter']['contract'] = $boatDetail[0]['contractpdf'];
+        return $dataAdds;
+    }
+}

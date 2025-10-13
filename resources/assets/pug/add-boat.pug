@@ -1,0 +1,259 @@
+extends partials/_layout
+
+block append content
+    .add-boat-page.bottom-background
+        .page-nav.account-page-nav
+            .container
+                .wrapper
+                    .breadcrumb-wrapper
+                        .page-breadcrumb
+                            ol.breadcrumb
+                                li.breadcrumb-item
+                                    a(href='#') Home
+                                li.breadcrumb-item
+                                    a(href='#') Upgrade Account
+                                li.breadcrumb-item.active Add Boat
+        .page-content.account-page-content
+            .container
+                .page-wrapper
+                    h1.account-page-title Add New Boat
+                    .row
+                        .col-lg-9.col-md-12
+                            form(action="")
+                                .row
+                                    .form-group.col-lg-12
+                                        label.form-label Boat Name
+                                            span.required *
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Boat Reg
+                                            span.required *
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label MMSI
+                                            span.required *
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Insurance
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Insurar
+                                        input.form-input.form-item
+                                    .form-group.date-item.col-lg-12.has-datepicker
+                                        label.form-label Insurance Expiry
+                                        input.form-input.form-item
+                                    .form-group.date-item.col-lg-12.has-datepicker
+                                        label.form-label Last Inspection
+                                        input.form-input.form-item
+                                    .form-group.date-item.col-lg-12.has-datepicker
+                                        label.form-label Last Inspection
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Country
+                                            span.required *
+                                        select.form-select.form-item
+                                            option(value="") Singapore
+                                    .form-group.col-lg-12
+                                        label.form-label Boat Type
+                                            span.required *
+                                        select.form-select.form-item
+                                            option(value="") Select
+                                    .form-group.col-lg-12
+                                        label.form-label Boat Type
+                                            span.required *
+                                        select.form-select.form-item
+                                            option(value="") Select
+                                    .form-group.col-lg-12
+                                        label.form-label Marina
+                                            span.required *
+                                        select.form-select.form-item
+                                            option(value="") Select
+                                    .form-group.col-lg-12
+                                        label.form-label Fuel Type
+                                        select.form-select.form-item
+                                            option(value="") Select
+                                    .form-group.col-lg-12
+                                        label.form-label Fuel Consumption (KM/Lire)
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Pax
+                                            span.required *
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12.has-checkbox
+                                        label.form-label Booking Date Manageable?
+                                        label
+                                            input(type="radio")
+                                            | Yes
+                                        label
+                                            input(type="radio")
+                                            | No
+                                    .form-group.col-lg-12.has-checkbox
+                                        label.form-label Party
+                                        label
+                                            input(type="radio")
+                                            | Yes
+                                        label
+                                            input(type="radio")
+                                            | No
+                                    .form-group.col-lg-12.has-checkbox
+                                        label.form-label Fishing
+                                        label
+                                            input(type="radio")
+                                            | Yes
+                                        label
+                                            input(type="radio")
+                                            | No
+                                    .form-group.col-lg-12.has-checkbox
+                                        label.form-label Wakeboarding
+                                        label
+                                            input(type="radio")
+                                            | Yes
+                                        label
+                                            input(type="radio")
+                                            | No
+                                    .form-group.col-lg-12.has-checkbox
+                                        label.form-label Cruising
+                                        label
+                                            input(type="radio")
+                                            | Yes
+                                        label
+                                            input(type="radio")
+                                            | No
+                                    .form-group.col-lg-12.has-checkbox
+                                        label.form-label VHF
+                                        label
+                                            input(type="radio")
+                                            | Yes
+                                        label
+                                            input(type="radio")
+                                            | No
+                                    .form-group.col-lg-12.has-checkbox
+                                        label.form-label Fishfinder
+                                        label
+                                            input(type="radio")
+                                            | Yes
+                                        label
+                                            input(type="radio")
+                                            | No
+                                    .form-group.col-lg-12.has-checkbox
+                                        label.form-label GPS
+                                        label
+                                            input(type="radio")
+                                            | Yes
+                                        label
+                                            input(type="radio")
+                                            | No
+                                    .form-group.col-lg-12.has-checkbox
+                                        label.form-label Aircon
+                                        label
+                                            input(type="radio")
+                                            | Yes
+                                        label
+                                            input(type="radio")
+                                            | No
+                                    .form-group.col-lg-12.has-checkbox
+                                        label.form-label Head
+                                        label
+                                            input(type="radio")
+                                            | Yes
+                                        label
+                                            input(type="radio")
+                                            | No
+                                    .form-group.col-lg-12.has-checkbox
+                                        label.form-label Engine Type
+                                        label
+                                            input(type="radio")
+                                            | Inboard
+                                        label
+                                            input(type="radio")
+                                            | Outboard
+                                        label
+                                            input(type="radio")
+                                            | Shaft
+                                    .form-group.col-lg-12.has-checkbox
+                                        label.form-label Self-drive
+                                        label
+                                            input(type="radio")
+                                            | Yes
+                                        label
+                                            input(type="radio")
+                                            | No
+                                    .form-group.col-lg-12.no-input
+                                        label.form-label Status
+                                        p.new-icon-indicator New Boat
+                                    .form-group.col-lg-12
+                                        label.form-label No. of Engine
+                                            span.required *
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label No. of Engine
+                                            span.required *
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Beam (M)
+                                            span.required *
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Length (M)
+                                            span.required *
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Built Year (YYYY)
+                                            span.required *
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Others
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12.has-datepicker
+                                        label.form-label Last Maintenance Date
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Last Engine Hour
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Description
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Note About Boat
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12.has-file
+                                        label.form-label Chartere Contract
+                                        .file-wrapper
+                                            input.form-input.form-item(type="file")
+                                    .form-group.col-lg-12.has-file
+                                        label.form-label Brokerage Contract
+                                        .file-wrapper
+                                            input.form-input.form-item(type="file")
+                                    .form-group
+                                        p.explain
+                                            span Please fill up the PDF form, sign it and upload it for validation before your boat is approved for charter. Allow us up to 48 hours for approval.
+                                            a(href="#") Download sample Contract
+                                    .form-group.col-lg-12.has-file
+                                        label.form-label Itneary PDF 1
+                                        .file-wrapper
+                                            input.form-input.form-item(type="file")
+                                    .form-group.col-lg-12.has-file
+                                        label.form-label Itneary PDF 2
+                                        .file-wrapper
+                                            input.form-input.form-item(type="file")
+                                    .form-group.col-lg-12.has-file
+                                        label.form-label Itneary PDF 2
+                                        .file-wrapper
+                                            input.form-input.form-item(type="file")
+                                    .form-group.col-lg-12.has-file
+                                        label.form-label Main Boat Image
+                                        .file-wrapper
+                                            input.form-input.form-item(type="file")
+                                    .form-group
+                                        p.explain Click on the (+) sign to add more or delete already uploaded photo
+                                    .form-group.submit-form
+                                        button.button.button-highlight SUBMIT
+                                    .form-group
+                                        p.explain.bold-explain Note: After activation of your boat, you cannot edit your boat details.
+                        .col-lg-3.col-md-12
+                            .contact-box
+                                p.contact-box-title Contact Details
+                                p.call For more information, call:
+                                    a.phone-number(href="tel:+65 3163 1367") +65 3163 1367
+                                p.email or you can email us anytime
+                                    a.email-address(href="mailto:sales@tridentmarineasia.com") sales@tridentmarineasia.com

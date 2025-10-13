@@ -1,0 +1,171 @@
+extends partials/_layout
+
+block append content
+    .trident-fleet-wrapper
+        .trident-fleet-header
+            .background
+                img(src="../images/trident-fleet/monohull.png")
+            .container
+                .wrapper
+                    .breadcrumb-wrapper
+                        ol.breadcrumb
+                            li.breadcrumb-item
+                                a(href='#') Home
+                            li.breadcrumb-item.active Monohulls
+                    .fleet-type
+                        .title
+                            | TRIDENT&nbsp;
+                            strong MONOHULLS
+                        .description
+                            p #[strong Luxury – Sporty – Simplified]
+                            p We have a yacht for #[strong all occasions]!
+        .trident-fleet-nav.top
+            .container
+                .wrapper
+                    .trident-fleet-filters
+                        .trident-fleet-no-of-people
+                            .filter-wrapper
+                                label No. Of People
+                                div.select-wrapper
+                                    select.selectpicker(name="sort", data-width="100%")
+                                        option(value="0") Show All 
+                                        option(value="12") < 12
+                                        option(value="13") >= 13
+                        .trident-fleet-boat-type
+                            .filter-wrapper
+                                label Boat Type
+                                div.select-wrapper
+                                    select.selectpicker(name="sort", data-width="100%")
+                                        option(value='Bowrider', data-subtext='- Bowrider') Bowrider
+                                        option(value='Small cruiser', data-subtext='- Small Cruiser') Small cruiser
+                                        option(value='Large cruiser', data-subtext='- Large cruiser') Large cruiser
+                                        option(value='Walkabout', data-subtext='- Walkabout') Walkabout
+                                        option(value='Cuddy Cabin', data-subtext='- Cuddy Cabin') Cuddy Cabin
+                                        option(value='Convertible & Yacht', data-subtext='- Convertible & Yacht') Convertible &amp; Yacht
+                                        option(value='Chinese Junk', data-subtext='- Chinese Junk') Chinese Junk
+                                        option(value='Trimaran', data-subtext='- Trimaran') Trimaran
+                                        option(value='Catamaran', data-subtext='- Catamaran') Catamaran
+                                        option(value='Sailing Boat', data-subtext='- Sailing Boat') Sailing Boat
+                                        option(value='Super Yacht', data-subtext='- Super Yacht') Super Yacht
+                                        option(value='Centre Console', data-subtext='- Centre Console boats for sale') Centre Console
+                                        option(value='Tender', data-subtext='- yacht tender for sale') Tender
+                        .trident-fleet-occassion
+                            .filter-wrapper
+                                label Occassion
+                                div.select-wrapper
+                                    select.selectpicker(name="sort", data-width="100%")
+                                        option(value="1") Occassion 1
+                                        option(value="2") Occassion 2
+                                        option(value="3") Occassion 3
+                        .trident-fleet-country
+                            .filter-wrapper
+                                label Country
+                                div.select-wrapper
+                                    select.selectpicker(name="sort", data-width="100%")
+                                        option(value="") Singapore
+                                        option(value="") Thailand
+                                        option(value="") Hong Kong
+                        .trident-fleet-show
+                            .filter-wrapper
+                                label Show
+                                div.select-wrapper
+                                    select.selectpicker(name="sort", data-width="100%")
+                                        option(value="9") 9
+                                        option(value="12") 12
+                                        option(value="15") 15
+        .trident-fleet-list
+            .wrapper
+                .container
+                    .row
+                        .col-lg-4.col-md-6.col-sm-12
+                            .trident-fleet-item
+                                .promoted
+                                    img(src="../images/product-list/promoted.png", alt="")
+                                .wrapper
+                                  .image(style="background-image: url(../images/trident-fleet/boat-sample.png)")
+                                .boat-detail
+                                    .boat-title-wrapper
+                                        .boat-title GOLDEN OCEAN BOT  TNAME
+                                        .boat-price
+                                            .from From
+                                            .price $1,600
+                                    .boat-description The Jeanneau Prestige 46 Flybridge  combines a comfortable flybridge with a spa. This is another text make it longgerrrrr than other boats
+                                    .boat-features
+                                        .feature
+                                            span Guest:
+                                            span 16
+                                        .feature.facilities
+                                            span Facilities:
+                                            img(src="../images/product-detail/facilities/air-condition.png", alt="")
+                                            img(src="../images/product-detail/facilities/shower.png", alt="")
+                                            img(src="../images/product-detail/facilities/toilet.png", alt="")
+                                .more-info
+                                    a(href="#") MORE INFO
+                        .col-lg-4.col-md-6.col-sm-12
+                            .trident-fleet-item
+                                .promoted
+                                    img(src="../images/product-list/promoted.png", alt="")
+                                .wrapper
+                                  .image(style="background-image: url(../images/trident-fleet/boat-sample.png)")
+                                .boat-detail
+                                    .boat-title-wrapper
+                                        .boat-title GOLDEN OCEAN BOT  TNAME
+                                        .boat-price
+                                            .from From
+                                            .price $1,600
+                                    .boat-description The Jeanneau Prestige 46 Flybridge  combines a comfortable flybridge with a spa. This is another text make it longgerrrrr than other boats
+                                    .boat-features
+                                        .feature
+                                            span Guest:
+                                            span 16
+                                        .feature.facilities
+                                            span Facilities:
+                                            img(src="../images/product-detail/facilities/air-condition.png", alt="")
+                                            img(src="../images/product-detail/facilities/shower.png", alt="")
+                                            img(src="../images/product-detail/facilities/toilet.png", alt="")
+                                .more-info
+                                    a(href="#") MORE INFO
+                        each val in [1, 2, 3, 4, 5, 6, 7]
+                            .col-lg-4.col-md-6.col-sm-12
+                                .trident-fleet-item
+                                    .promoted
+                                        img(src="../images/product-list/promoted.png", alt="")
+                                    .wrapper
+                                      .image(style="background-image: url(../images/trident-fleet/boat-sample.png)")
+                                    .boat-detail
+                                        .boat-title-wrapper
+                                            .boat-title GOLDEN OCEAN BOT  TNAME
+                                            .boat-price
+                                                .from From
+                                                .price $1,600
+                                        .boat-description The Jeanneau Prestige 46 Flybridge  combines a comfortable flybridge with a spa.
+                                        .boat-features
+                                            .feature
+                                                span Guest:
+                                                span 16
+                                            .feature.facilities
+                                                span Facilities:
+                                                img(src="../images/product-detail/facilities/air-condition.png", alt="")
+                                                img(src="../images/product-detail/facilities/shower.png", alt="")
+                                                img(src="../images/product-detail/facilities/toilet.png", alt="")
+                                    .more-info
+                                        a(href="#") MORE INFO
+        .trident-fleet-nav.bottom
+            .container
+                .wrapper
+                    .trident-fleet-pagination
+                        ul.pagination
+                            li.page-item
+                                a.page-link(href='#') First
+                            li.page-item
+                                a.page-link(href='#') Previous
+                            li.page-item.active
+                                a.page-link(href='#') 1
+                            li.page-item
+                                a.page-link(href='#') 2
+                            li.page-item
+                                a.page-link(href='#') 3
+                            li.page-item
+                                a.page-link(href='#') Next
+                            li.page-item
+                                a.page-link(href='#') Last

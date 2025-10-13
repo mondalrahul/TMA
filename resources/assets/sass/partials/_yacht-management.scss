@@ -1,0 +1,62 @@
+.yacht-management-header {
+    @extend .yacht-brokerage-header;
+}
+
+.yacht-management-page {
+    
+    .half-split {
+        @include half-split;
+    }
+
+    .section-content {
+        .title {
+            font-size: 2.375rem;
+            font-family: $font-700;
+            margin: 0;
+            line-height: 80%;
+        }
+
+        .sub-title {
+            font-size: 1.5rem;
+            font-family: $font-100;
+            margin: 0;
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+
+            &:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 3rem;
+                height: 0.125rem;
+                background-color: #005b77;
+            }
+        }
+    }
+
+    .list-item {
+        margin-left: 0;
+        margin-right: 0;
+
+        .item {
+            padding-left: 30px;
+            position: relative;
+            margin-bottom: 0.25rem;
+
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                background: url(../images/yacht-management/list.png);
+                background-size: 100%;
+                background-repeat: no-repeat;
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}

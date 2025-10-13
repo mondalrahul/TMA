@@ -1,0 +1,51 @@
+.add-boat-page {
+    form {
+        background: $block-background;
+        padding: 2rem;
+        .submit-form {
+            width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+
+            button {
+                min-width: 250px;
+            }
+        }
+    }
+
+    .contact-box {
+        word-wrap: break-word;
+        background: url(../images/contact-box.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        padding: 1.5rem 2rem;
+        color: $base-color2;
+        font-family: $font-500;
+        min-height: 500px;
+
+        a {
+            color: $base-color2;
+        }
+
+        .contact-box-title {
+            font-size: 1.25rem;
+            font-family: $font-700;
+        }
+
+        .call .phone-number {
+            display: block;
+            font-size: 1.5rem;
+            font-family: $font-700;
+        }
+
+        .email {
+            .email-address {
+                font-family: $font-700;
+                display: block;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        }
+    }
+}

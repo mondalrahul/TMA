@@ -1,0 +1,159 @@
+.promotion-slider-wrapper {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+
+    .slick-dots {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        top: 50%;
+        right: 10px;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%)
+    }
+    .slick-dots li {
+        list-style: none;
+        margin: 15px 0;
+        background-color: transparent;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        position: relative
+    }
+
+    .slick-dots li button {
+        border: none;
+        color: transparent;
+        width: 18px;
+        height: 18px;
+        border-radius: 10px;
+        outline: none;
+        cursor: pointer;
+        border: 2px solid #fff;
+        background: transparent;
+    }
+    .slick-dots li.slick-active button {
+        background: #fff;
+        position: relative
+    }
+    .slick-dots li.slick-active button:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 10px
+    }
+
+
+}
+.promotion-slider-item {
+    overflow: hidden;
+
+    .promotion-wrapper {
+        position: relative;
+
+        .promotion-img {
+
+            display: block;
+            width: 100%;
+            height: auto;
+
+            @include breakpoint(1200px) {
+                width: auto;
+                min-height: 600px;
+            }
+        }
+    }
+    
+
+    .promotion-detail-wrapper {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        .container, .container .row {
+            height: 100%;
+        }
+
+        .promotion-detail {
+            background-color: $base-color2;
+            height: 100%;
+
+            .month {
+                font-family: $font-100;
+                font-size: 7.5rem;
+                color: rgba(36,194,220, 0.2);
+                text-align: right;
+                padding-bottom: 3rem;
+                line-height: 80%;
+            }
+
+            .promotion-title {
+                padding: 0 2rem;
+                padding-bottom: 1.5rem;
+                margin-bottom: 2rem;
+                position: relative;
+
+                &:after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    bottom: 0;
+                    left: 2rem;
+                    width: 3rem;
+                    height: 0.125rem;
+                    background: #005b77;
+                }
+
+
+                p {
+                    margin: 0;
+                    font-family: $font-100;
+                    font-size: 1.5rem;
+                    line-height: 100%;
+                }
+
+                .big {
+                    font-size: 2.5rem;
+                    font-family: $font-500;
+                }
+
+            }
+
+            .promotion-boat {
+                padding: 0 2rem;
+
+                .promotion-boat-title {
+                    color: #00cccd;
+                    font-size: 1.5rem;
+                    font-family: $font-700;
+                }
+
+                .promotion-boat-description {
+                    color: #898989;
+                    padding: 1.5rem 0;
+
+                }
+            }
+
+            .discover-btn {
+                padding: 0 2rem;
+
+                a {
+                    font-family: $font-700;
+                    color: #898989;
+                    border: 1px solid #898989;
+                    display: inline-block;
+                    height: 2.5rem;
+                    line-height: 2.5rem;
+                    padding: 0 3rem;
+                }
+            }
+        }
+    }
+}

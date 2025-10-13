@@ -1,0 +1,121 @@
+footer {
+    background-color: #005b77;
+    color: $base-color2;
+}
+
+.footer-columns {
+    padding-bottom: 2rem;
+
+    .footer-column {
+        margin-top: 30px;
+
+        p {
+            margin-bottom: .25rem;
+            padding-left: 1.5rem;
+            
+            a {
+                color: $base-color2;
+            }
+        }
+
+        .title {
+            font-family: $font-700;
+            text-transform: uppercase;
+            position: relative;
+            margin-bottom: 1.25rem;
+
+            @include breakpoint(1210px) {
+                font-size: 0.75rem;
+            }
+
+            @include breakpoint(992px) {
+                font-size: 1rem;
+                margin-bottom: 0.75rem;
+            }
+
+            
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 1.5rem;
+                background: url(../images/footer-arrow.png) no-repeat center;
+            }
+        }
+
+        .social-links {
+            a {
+                margin-right: .75rem;
+                font-size: 1.25rem;
+            }
+        }
+
+        .subscribe-form {
+
+            input {
+                display: block;
+                color: #ebebeb;
+                border: 1px solid $base-color2;
+                background-color: transparent;
+                padding: 0 1rem;
+                width: 100%;
+                height: 2.375rem;
+                line-height: 2.375rem;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+
+            input::placeholder {
+                color: #ebebeb;
+            }
+
+            button {
+                width: 100%;
+                margin-top: .5rem;
+            }
+        }
+    }
+}
+
+.footer-introduce {
+
+    .introduce {
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #337c92;
+        font-family: $font-300;
+        font-style: italic;
+    }
+}
+
+.footer-copyright {
+    padding: 1.5rem 0;
+
+    .payment-methods {
+        font-size: .75rem;
+        text-align: left;
+
+        li {
+            display: inline;
+            margin-right: 1rem;
+        }
+    }
+
+    .copyright {
+        text-align: right;
+        font-size: .875em;
+    }
+
+    @include breakpoint(992px) {
+        .payment-methods {
+            padding-bottom: .5rem;
+        }
+        .payment-methods, .copyright {
+            text-align: center;
+        }
+    }
+}

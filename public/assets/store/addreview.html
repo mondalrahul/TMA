@@ -1,0 +1,39 @@
+<div class="container">
+<form class="WriteReviewForm isActive" onsubmit="event.preventDefault();">
+<div class="WriteReviewForm__inner">
+<div class="WriteReviewForm__list">
+<div class="WriteReviewForm__item">
+<h2 class="mb-4 hb-font-heading-3 has-text-centered">Write Your review</h2>
+<div class="WriteReviewForm__heading">Rate Your recent experience
+<span class="star-rating">
+<input type="radio" name="rating1" value="1"><i></i>
+<input type="radio" name="rating1" value="2"><i></i>
+<input type="radio" name="rating1" value="3"><i></i>
+<input type="radio" name="rating1" value="4"><i></i>
+<input type="radio" name="rating1" value="5"><i></i>
+</span>
+</div>
+<textarea id="comments" class="WriteReviewForm__textarea" required="" minlength="10" style="height: 112px;"></textarea>
+<div id="commentscount" class="WriteReviewForm__smalltext">Minimum 10 characters</div>
+<div id="review_error_comment_output" class="pull-left" style="color: #c70606; font-size: 11px;"></div>
+</div>
+<div id="reviewQuestions"></div>
+<div class="WriteReviewForm__item">
+<div class="WriteReviewForm__heading">Your Name</div>
+<input required="" id="name" type="text" class="WriteReviewForm__input">
+<div id="review_error_name_output" class="pull-left" style="color: #c70606; font-size: 11px;"></div>
+</div>
+<div class="WriteReviewForm__item">
+<div class="WriteReviewForm__heading">Your Email</div>
+<input id="email" type="email" class="WriteReviewForm__input" required="">
+<div id="review_error_email_output" class="pull-left" style="color: #c70606; font-size: 11px;"></div>
+</div>
+</div>
+<div class="WriteReviewForm__footer">
+<button id="submitReview" class="Button Button--md Button--primary Button--fw-phone-md" onclick="createReview(false)">Send Review</button>
+<div id="review_error_main_output" class="pull-left" style="color: #c70606; font-size: 13px;"></div>
+<div style="font-size: 11px; padding: 10px; color: #757575; text-align: center;padding-bottom:20px;">You will be contacted by email to verify your review<br></div>
+</div>
+</div>
+</form>
+</div>

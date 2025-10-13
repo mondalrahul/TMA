@@ -1,0 +1,21 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/html-dist/account.html": "/html-dist/account.html",
+    "/html-dist/add-boat.html": "/html-dist/add-boat.html",
+    "/html-dist/boat-calendar.html": "/html-dist/boat-calendar.html",
+    "/html-dist/contact.html": "/html-dist/contact.html",
+    "/html-dist/f-b.html": "/html-dist/f-b.html",
+    "/html-dist/faq.html": "/html-dist/faq.html",
+    "/html-dist/index.html": "/html-dist/index.html",
+    "/html-dist/my-boats.html": "/html-dist/my-boats.html",
+    "/html-dist/my-booking.html": "/html-dist/my-booking.html",
+    "/html-dist/product-detail.html": "/html-dist/product-detail.html",
+    "/html-dist/self-drive.html": "/html-dist/self-drive.html",
+    "/html-dist/special-packages.html": "/html-dist/special-packages.html",
+    "/html-dist/trident-fleet.html": "/html-dist/trident-fleet.html",
+    "/html-dist/trident-life-style.html": "/html-dist/trident-life-style.html",
+    "/html-dist/upgrade-account.html": "/html-dist/upgrade-account.html",
+    "/html-dist/yacht-brokerage.html": "/html-dist/yacht-brokerage.html",
+    "/html-dist/yacht-management.html": "/html-dist/yacht-management.html"
+}

@@ -1,0 +1,61 @@
+#registerModal.account-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='loginModal', aria-hidden='true')
+    .modal-dialog.modal-lg(role='document')
+        .modal-content
+            .modal-body
+                button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                    span(aria-hidden="true") &times;
+                form
+                    .container-fluid
+                        .row
+                            .col-lg-6.left
+                                .register-title
+                                    p.strong REGISTER
+                                    p A NEW TRIDENT ACCOUNT
+                                .register-form
+                                        label Full Name&nbsp;
+                                            span *
+                                        .fullname-input
+                                            input(name="name")
+                                        label Email Address&nbsp;
+                                            span *
+                                        .email-input.has-icon
+                                            input(name="email")
+                                        label Password&nbsp;
+                                            span *
+                                        .password-input.has-icon
+                                            input(name="password", type="password")
+                                        p Password must contain at least 1 number, at least 1 lower case letter, and at least 1 upper case letter
+                                .register-login-wrapper
+                                    .register-login
+                                        .row
+                                            .col-sm-6
+                                                | Already have an account?
+                                            .col-sm-6
+                                                a.login-btn(href="#") Login
+                            .col-lg-6.register-bg.right
+                                .register-form
+                                    .row
+                                        .col-md-12.register-form-row.title
+                                            | Enter Personal Details Below
+                                        .col-md-12.register-form-row
+                                            label Address
+                                            input(name="address")
+                                        .col-md-6.register-form-row
+                                            label City
+                                            input(name="city")
+                                        .col-md-6.register-form-row
+                                            label Country (Residence)
+                                            select(name="country")
+                                                option(value="Singapore") Singapore
+                                        .col-md-6.register-form-row
+                                            label State
+                                            select(name="state")
+                                                option(value="Singapore") Singapore
+                                        .col-md-6.register-form-row
+                                            label Zip
+                                            input(name="zip")
+                                        .col-md-12.register-form-row
+                                            label Phone Number&nbsp;
+                                                span *
+                                            input(name="address")
+                                            button CREATE ACCOUNT

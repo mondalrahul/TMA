@@ -1,0 +1,201 @@
+<?php
+namespace App\Http\Models\Logics;
+
+use App\Http\Models\Entities\BoatUser;
+use App\Http\Traits\LogicDbTrait;
+
+class BoatUserLogic
+{
+    use LogicDbTrait;
+
+    const DEFAULT_USER_SUBSCRIPTION = 0;
+    const DEFAULT_USER_TYPE = 0;
+    const DEFAULT_USER_DISCOUNT = 0;
+    const DEFAULT_USER_REFERRER_ID = 0;
+    const DEFAULT_USER_NEWSCHECK = 0;
+
+    /**
+     * Insert new data to table user
+     *
+     * @param array $data
+     * @return int
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function insertData($data)
+    {
+        // default params
+        $defaultParams = [
+            'name'              => '',
+            'user_email'        => '',
+            'user_name'         => '',
+            'user_password'     => '',
+            'user_subscription' => self::DEFAULT_USER_SUBSCRIPTION,
+            'user_address'      => '',
+            'user_country'      => '',
+            'user_city'         => '',
+            'user_state'        => '',
+            'user_zip'          => '',
+            'user_status'       => '',
+            'user_phone'        => '',
+            'user_type'         => self::DEFAULT_USER_TYPE,
+            'discount'          => self::DEFAULT_USER_DISCOUNT,
+            'referrer_id'       => self::DEFAULT_USER_REFERRER_ID,
+            'newscheck'         => self::DEFAULT_USER_NEWSCHECK,
+            'profile_pic'       => '',
+            'timezone'          => null,
+            'referrer'          => null
+        ];
+
+        $data = array_merge($defaultParams, $data);
+
+        return $this->writeDb(function ($manager, $conn) use ($data) {
+            $boatUer = new BoatUser();
+
+            $boatUer->setName($data['name']);
+            $boatUer->setUserEmail($data['user_email']);
+            $boatUer->setUserName($data['name']);
+            $boatUer->setPassword($data['user_password']);
+            $boatUer->setUserSubscription($data['user_subscription']);
+            $boatUer->setUserAddress($data['user_address']);
+            $boatUer->setUserCountry($data['user_country']);
+            $boatUer->setUserCity($data['user_city']);
+            $boatUer->setUserState($data['user_state']);
+            $boatUer->setUserZip($data['user_zip']);
+            $boatUer->setUserStatus($data['user_status']);
+            $boatUer->setUserPhone($data['user_phone']);
+            $boatUer->setUserType($data['user_type']);
+            $boatUer->setDiscount($data['discount']);
+            $boatUer->setReferrerId($data['referrer_id']);
+            $boatUer->setReferrer($data['referrer']);
+            $boatUer->setNewscheck($data['newscheck']);
+            $boatUer->setProfilePic($data['profile_pic']);
+            $boatUer->setTimezone($data['timezone']);
+
+            $manager->persist($boatUer);
+            $manager->flush();
+
+            return $boatUer->getUserId();
+        });
+    }
+    /**
+     * Insert new data to table user_extend
+     *
+     * @param array $data
+     * @return int
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function insertDataUserExtend($data,$lastInsertId)
+    {
+           $defaultParams = [
+            'user_id' => $lastInsertId,
+            'charter_contract' => '',
+            'ppcdl'        => '',
+            'next_kin'         => '',
+            'next_kin_contact'     => '',
+            'self_drive' => '0',
+            'activity_preference'      => '',
+            'referrer_id'      => '0',
+            'referrer_discount'         => '0.00',
+            'loyalty_discount'        => '0.00',
+            'last_update'          => date("Y-m-d"),
+            'status'       => 'n' 
+        ];
+       $userextend= DB::table('user_extend')->insert($defaultParams);
+       dd($userextend);
+    }
+
+    /**
+     * Update new data to table user
+     *
+     * @param array $data
+     * @return int
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function updateData($data)
+    {
+        // default params
+        $defaultParams = [
+            'user_email'        => '',
+            'user_name'         => '',
+            'user_password'     => '',
+            'user_subscription' => self::DEFAULT_USER_SUBSCRIPTION,
+            'user_address'      => '',
+            'user_country'      => '',
+            'user_city'         => '',
+            'user_state'        => '',
+            'user_zip'          => '',
+            'user_status'       => '',
+            'user_phone'        => '',
+            'user_type'         => self::DEFAULT_USER_TYPE,
+            'discount'          => self::DEFAULT_USER_DISCOUNT,
+            'referrer_id'       => self::DEFAULT_USER_REFERRER_ID,
+            'newscheck'         => self::DEFAULT_USER_NEWSCHECK,
+            'timezone'          => null,
+            'referrer'          => null
+        ];
+
+        $data = array_merge($defaultParams, $data);
+
+        return $this->writeDb(function ($manager, $conn) use ($data) {
+            $boatUer = $manager->getRepository(BoatUser::class)->find($data['user_id']);
+
+            $boatUer->setName($data['user_name']);
+            $boatUer->setUserEmail($data['user_email']);
+            $boatUer->setUserName($data['user_name']);
+            $boatUer->setPassword($data['user_password']);
+            $boatUer->setUserSubscription($data['user_subscription']);
+            $boatUer->setUserAddress($data['user_address']);
+            $boatUer->setUserCountry($data['user_country']);
+            $boatUer->setUserCity($data['user_city']);
+            $boatUer->setUserState($data['user_state']);
+            $boatUer->setUserZip($data['user_zip']);
+            $boatUer->setUserStatus($data['user_status']);
+            $boatUer->setUserPhone($data['user_phone']);
+            $boatUer->setUserType($data['user_type']);
+            $boatUer->setDiscount($data['discount']);
+            $boatUer->setReferrerId($data['referrer_id']);
+            $boatUer->setReferrer($data['referrer']);
+            $boatUer->setNewscheck($data['newscheck']);
+            $boatUer->setTimezone($data['timezone']);
+            if (isset($data['profile_pic'])) {
+                $boatUer->setProfilePic($data['profile_pic']);
+            }
+
+            $manager->persist($boatUer);
+            $manager->flush();
+
+            return $boatUer->getUserId();
+        });
+    }
+
+    public function getUserExtend($userId)
+    {
+        return $this->readDb(function($manager, $conn) use ($userId) {
+            $query = <<<EOF
+SELECT bu.*
+FROM boat_user_extend bu
+WHERE bu.user_id = :userId
+ORDER BY bu.last_update LIMIT 0,1
+EOF;
+            $stm = $conn->prepare($query);
+            $stm->bindValue("userId", $userId);
+            $stm->execute();
+            return $stm->fetchAll();
+        });
+    }
+
+    public function getUserData($userId)
+    {
+        return $this->readDb(function($manager, $conn) use ($userId) {
+            $query = <<<EOF
+SELECT bu.*
+FROM boat_user bu
+WHERE bu.user_id = :userId
+EOF;
+            $stm = $conn->prepare($query);
+            $stm->bindValue("userId", $userId);
+            $stm->execute();
+            return $stm->fetchAll();
+        });
+    }
+}

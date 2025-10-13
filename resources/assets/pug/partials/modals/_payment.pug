@@ -1,0 +1,32 @@
+#paymentModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+    .modal-dialog(role='document')
+        .modal-content
+            .modal-body
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                .payment-popup
+                    h3 Payment
+                        i(class="fa fa-lock" aria-hidden="true")
+                    .visa-card
+                        .row
+                            .col-6
+                                label Card number
+                                input(type="text" name="card_number")
+                            .col-3
+                                label Expiry
+                                input(type="text" name="expiry" placeholder="MM/YYYY")
+                            .col-3
+                                label CVV
+                                input(type="text" name="cvv" placeholder="***")
+                    .price
+                        p
+                            span Subtotal
+                            span 600$
+                        p.tax
+                            span Tax
+                            span 0$
+                        hr
+                        p.total
+                            span Total
+                            span 600$
+                    button.order PLACE ORDER

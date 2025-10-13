@@ -1,0 +1,75 @@
+extends partials/_layout
+
+block append content
+    .faq-page
+        .faq-nav
+            .container
+                .wrapper
+                    .faq-breadcrumb
+                        ol.breadcrumb
+                            li.breadcrumb-item
+                                a(href='#') Home
+                            li.breadcrumb-item.active FAQ
+                    .faq-share
+                        a.share(href="#") Share on Facebook
+                        a.print(href="#") Print Page
+        .content-wrapper
+            .container
+                .content
+                    .faq-title
+                        p.title Got a question? We've got answers.
+                        p.sub-title
+                            | To save you time, we've put answers to the most common inquiries here.
+                            | Just click on the category and look for your question.
+                    .faqs
+                        #faq_list(role='tablist')
+                            .faq
+                                .faq-header(data-toggle='collapse', href='#faq1', aria-expanded='true')
+                                    | How do I get started on my yacht charter process?
+                                #faq1.collapse(role='tabpanel', data-parent='#faq_list')
+                                    .faq-body
+                                        | You may choose to drop us an email at sales@tridentmarineasia.com or drop us a line at +65 3163 2051 for any booking enquiries. If you already know what you want, simply head over to our ‘Booking Calendar’ page and fill in your details! Wait for one of our charter professionals to come back to you with the confirmation letter and your charter pass. 
+                            .faq
+                                .faq-header(data-toggle='collapse', href='#faq2', aria-expanded='false')
+                                    | How do I make payment? 
+                                #faq2.collapse(role='tabpanel', data-parent='#faq_list')
+                                    .faq-body
+                                        | Content herrrreeee
+                            .faq
+                                .faq-header(data-toggle='collapse', href='#faq3', aria-expanded='false')
+                                    | What about F&B? 
+                                #faq3.collapse(role='tabpanel', data-parent='#faq_list')
+                                    .faq-body
+                                        | Content herrrreeee
+                            .faq
+                                .faq-header(data-toggle='collapse', href='#faq4', aria-expanded='false')
+                                    | What should I bring for the yacht charter? 
+                                #faq4.collapse(role='tabpanel', data-parent='#faq_list')
+                                    .faq-body
+                                        | Content herrrreeee
+                            .faq
+                                .faq-header(data-toggle='collapse', href='#faq5', aria-expanded='false')
+                                    | What route will the yacht take during the charter, and what will be the itinerary?
+                                #faq5.collapse(role='tabpanel', data-parent='#faq_list')
+                                    .faq-body
+                                        | Content herrrreeee
+                            .faq
+                                .faq-header(data-toggle='collapse', href='#faq6', aria-expanded='false')
+                                    | What activities and equipment are available on-board? 
+                                #faq6.collapse(role='tabpanel', data-parent='#faq_list')
+                                    .faq-body
+                                        | Content herrrreeee
+                            .faq
+                                .faq-header(data-toggle='collapse', href='#faq7', aria-expanded='false')
+                                    | What happens if it rains on the day of the charter? 
+                                #faq7.collapse(role='tabpanel', data-parent='#faq_list')
+                                    .faq-body
+                                        | Content herrrreeee
+                    .contact
+                        p If you can't find what you're looking for in our FAQ, feel free to contact us.
+                        .buttons
+                            a.email(href="#") EMAIL US NOW
+                            span or
+                            a.enquiry(href="#") ENQUIRY FORM
+                            span or
+                            a.call(href="tel:Call +65 3163 2051") Call +65 3163 2051

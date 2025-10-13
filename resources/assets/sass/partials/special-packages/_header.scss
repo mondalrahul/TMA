@@ -1,0 +1,107 @@
+.special-packages-page {
+
+    .breadcrumb-wrapper {
+
+        .breadcrumb {
+            background-color: transparent;
+            padding: 0;
+            margin-bottom: 0;
+    
+            a {
+                color: $base-color2;
+            }
+    
+            .breadcrumb-item:before {
+                color: $base-color2;
+            }
+    
+            .active {
+                color: $base-color2;
+                font-family: $font-900;
+            }
+    
+            @include breakpoint(768px) {
+                font-size: 0.75rem;
+            }
+        }
+    }
+
+    .package-header-wrapper {
+        position: relative;
+        background: url(../images/special-packages/1.jpg) no-repeat center;
+        background-size: auto 100%;
+
+        .background {
+
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+
+        .wrapper {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            right: 0;
+
+            .page {
+                color: $base-color2;
+
+                .title {
+                    font-size: 3rem;
+                    font-family: $font-100;
+                    position: relative;
+        
+                    strong {
+                        font-weight: normal;
+                        font-family: $font-700;
+                    }
+        
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        width: 5rem;
+                        height: 0.125rem;
+                        background-color: $base-color2;
+                    }
+
+                    @include breakpoint(576px) {
+                        font-size: 2.5rem;
+                        strong {
+                            display: block;
+                        }
+                    }
+                }
+        
+                .description {
+                    padding-top: 2rem;
+                    padding-bottom: 3.5rem;
+                    p {
+                        margin: 0;
+                    }
+                    
+                    strong {
+                        font-family: $font-900;
+                    }
+                }
+            }
+        }
+
+        @include breakpoint(768px) {
+            .background {
+                display: none;
+            }
+
+            .wrapper {
+                position: static;
+                transform: none;
+                padding: 3rem 0;
+            }
+        }
+    }
+}

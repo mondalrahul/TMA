@@ -1,0 +1,88 @@
+.trident-fleet-nav {
+
+    .pagination {
+        margin-bottom: 0;
+
+        .page-item {
+            border-color: #d4d3d3;
+
+            &.active .page-link {
+                background: $highlight-color;
+                color: $base-color2;
+                border-color: #d4d3d3;
+            }
+        }
+
+        .page-link {
+            color: #898989;
+            font-family: $font-500;
+            font-size: 0.75rem;
+
+            &:focus, &:hover {
+                color: $highlight-color;
+                background: $base-color2;
+            }
+
+        }
+    }
+
+    .wrapper {
+        background: #f7f7f7;
+        margin: 2rem -15px;
+        padding: 1rem 1.5rem;
+
+        label {
+            font-family: $font-700;
+            margin-right: 0.25rem;
+        }
+
+
+        .bootstrap-select {
+
+            .btn {
+                border: 1px solid #d4d3d3;
+                font-family: $font-500;
+                font-size: 0.75rem;
+                background: #fff;
+            }
+        }
+
+        .trident-fleet-filters {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            @include breakpoint(1200px) {
+                margin-top: 1.5rem;
+            }
+
+            .select-wrapper {
+                flex: 1;
+                padding-left: 0.5rem;
+            }
+
+            &>div {
+                flex: 1;
+
+                &:not(:last-child) {
+                    margin-right: 2rem;
+                }
+            }
+
+            .filter-wrapper {
+                display: flex;
+                flex-direction: row;
+                align-items: stretch;
+            }
+        }
+    }
+
+    &.bottom {
+        .wrapper {
+            background: transparent;
+        }
+    }
+
+    .trident-fleet-pagination {
+        margin-bottom: 1rem;
+    }
+}

@@ -1,0 +1,27 @@
+.instagram-photos {
+    
+    .instagram-photos-block {
+        border: 1rem solid #ebebeb;
+
+        .row {
+            margin: 0;
+
+            &>div {
+                padding: 0;
+            }
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+.instagram-follow a {
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 3rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}

@@ -1,0 +1,140 @@
+extends partials/_layout
+
+block append content
+    .home-wrapper
+        .slider-filter-wrapper
+            .home-image-slider
+                .image-slider-wrapper
+                    .image-slider
+                        .image-slider-item
+                            img(src="../images/home-slider/1.png")
+                        .image-slider-item
+                            img(src="../images/home-slider/2.png")
+                        .image-slider-item
+                            img(src="../images/home-slider/3.png")
+            .filter-form
+                .container
+                    .row.justify-content-center
+                        .col-md-12.col-lg-10.content
+                            h1.site-title WELCOME TO 
+                                strong TRIDENT MARINE ASIA
+                            .filter-title.text-center Your charter starts here
+                            .filter-inputs
+                                form
+                                    .row
+                                        .col-sm-12.col-md-6.col-lg-3
+                                            select.selectpicker.filter-input(name="people_number", title="NO. OF PEOPLE")
+                                                option(value="1") 1 person
+                                                option(value="2") 2 persons
+                                                option(value="3") 3 persons
+                                        .col-sm-12.col-md-6.col-lg-3
+                                            select.selectpicker.filter-input(name="occasion", title="OCCASION")
+                                                option(value="1") Occasion 1
+                                                option(value="2") Occasion 2
+                                                option(value="3") Occasion 3
+                                        .col-sm-12.col-md-6.col-lg-3
+                                            select.selectpicker.filter-input.boat-type(name="boat_type", title="BOAT TYPE")
+                                                option(value="CARRIBEAN", data-subtext="- Cuba, Puerto Rico, British Virgin Islands, St. Martin, Antigua, Guadeloupe, Martinique, St. Vincent & The Grenadines, Grenada.") CARRIBEAN
+                                                option(value="BAHAMAS", data-subtext="- Abaco") BAHAMAS
+                                                option(value="Atlantic", data-subtext="- Hamble, Brittany") Atlantic
+                                                option(value="Scandanavia ", data-subtext="- Stockholm") Scandanavia 
+                                                option(value="Meditteranean", data-subtext="- Costa Brava (Spain), Balearic Islands (Spain), Cote d’Azur (France), Corsica (France), Sardinia (Italy), Sicily (Italy), Croatia, Greece, Turkey.") Meditteranean
+                                                option(value="Indian Ocean", data-subtext="- Seychelles, Mauritius, Maldives.") Indian Ocean
+                                        .col-sm-12.col-md-6.col-lg-3
+                                            select.selectpicker.filter-input(name="country")
+                                                option(value="Singapore") Singapore
+                                                option(value="Antigua and Barbuda") Antigua and Barbuda
+                                                option(value="Indonesia") Indonesia
+                                                option(value="Thailand") Thailand
+                                        .col-sm-12
+                                            button.search-btn.button.button-highlight SEARCH
+        .home-introduce.text-center
+            .logo
+                img(src="../images/logo.png")
+            .content
+                p.home-block-title.big
+                    | Discover
+                    strong &nbsp;a whole new world&nbsp;
+                    | on the high seas
+                .container-fluid
+                    .row.justify-content-center
+                        .col-lg-8
+                            p.home-block-title With over 100 yachts to choose from around the Asian region, be spoilt for choice with Trident Marine Asia. Whether it’s just a leisure gathering with friends, a corporate function for clients, a solemnization party, or even a weekend getaway to nearby Islands, there is a suitable yacht for every group and every occasion. 
+                            p.home-block-title.sub Enquire with us and embark on your sea voyage today!
+        .promotion
+            .promotion-slider-wrapper
+                .promotion-slider
+                    .promotion-slider-item
+                        .promotion-wrapper
+                            img.promotion-img(src="../images/promotion-slider/1.png")
+                            .promotion-detail-wrapper
+                                .container
+                                    .row.justify-content-end
+                                        .col-lg-4
+                                            .promotion-detail
+                                                .month AUG
+                                                .promotion-title
+                                                    p.big QUARTERLY
+                                                    p CHARTER PROMOTION
+                                                .promotion-boat
+                                                    .promotion-boat-title Yacht Name
+                                                    .promotion-boat-description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi!
+                                                .discover-btn
+                                                    a(href="#") DISCOVER NOW
+                    .promotion-slider-item
+                        .promotion-wrapper
+                            img.promotion-img(src="../images/promotion-slider/1.png")
+                            .promotion-detail-wrapper
+                                .container
+                                    .row.justify-content-end
+                                        .col-lg-4
+                                            .promotion-detail
+                                                .month AUG
+                                                .promotion-title
+                                                    p.big QUARTERLY
+                                                    p CHARTER PROMOTION
+                                                .promotion-boat
+                                                    .promotion-boat-title Yacht Name
+                                                    .promotion-boat-description Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi!
+                                                .discover-btn
+                                                    a(href="#") DISCOVER NOW
+        .instagram.text-center
+            .logo
+                img(src="../images/home-instagram-icon.png")
+            .content
+                p.home-block-title.big
+                    | FOLLOW US 
+                    strong ON INSTAGRAM
+                p.home-block-title Celebrate your charter memories with us!
+            .instagram-photos
+                .container
+                    .row.justify-content-center
+                            .col-lg-10
+                                .instagram-photos-block
+                                    .row
+                                        .col-md-4.col-sm-6.col-12
+                                            .instagram-photo
+                                                a(href="https://www.instagram.com/p/BaOPKohn69_/" target="_blank")
+                                                    img(src="https://scontent-ort2-1.cdninstagram.com/t51.2885-15/s320x320/e15/22500439_374445449653488_660701824235339776_n.jpg" alt="ONE°15 Marina Club")
+                                        .col-md-4.col-sm-6.col-12
+                                            .instagram-photo
+                                                a(href="https://www.instagram.com/p/BaOOe8zH3LI/", target="_blank")
+                                                    img(src="https://scontent-ort2-1.cdninstagram.com/t51.2885-15/s320x320/e35/22427044_1966937756877105_7089783595899813888_n.jpg", alt="ONE°15 Marina Club")
+                                        .col-md-4.col-sm-6.col-12
+                                            .instagram-photo
+                                                a(href="https://www.instagram.com/p/BZ7WmN2ntBw/", target="_blank")
+                                                    img(src="https://scontent-ort2-1.cdninstagram.com/t51.2885-15/s320x320/e15/22220547_275257569660751_9101267186076352512_n.jpg", alt="Republic of Singapore Yacht Club")
+                                        .col-md-4.col-sm-6.col-12
+                                            .instagram-photo
+                                                a(href="https://www.instagram.com/p/BZ6k9eoHlqr/", target="_blank")
+                                                    img(src="https://scontent-ort2-1.cdninstagram.com/t51.2885-15/s320x320/e15/22221181_1655487877815434_2031258654694440960_n.jpg", alt="Republic of Singapore Yacht Club")
+                                        .col-md-4.col-sm-6.col-12
+                                            .instagram-photo
+                                                a(href="https://www.instagram.com/p/BZ6ka-9n9bI/", target="_blank")
+                                                    img(src="https://scontent-ort2-1.cdninstagram.com/t51.2885-15/s320x320/e15/22220932_323954531404323_1379109188382228480_n.jpg", alt="Republic of Singapore Yacht Club")
+                                        .col-md-4.col-sm-6.col-12
+                                            .instagram-photo
+                                                a(href="https://www.instagram.com/p/BZ6E2Ptnt5l/", target="_blank")
+                                                    img(src="https://scontent-ort2-1.cdninstagram.com/t51.2885-15/s320x320/e35/22159148_1523161387763416_4285760621284163584_n.jpg", alt="Republic of Singapore Yacht Club")
+            .instagram-follow
+                a.button.button-highlight(href="#") FOLLOW @TRIDENTMARINEASIA

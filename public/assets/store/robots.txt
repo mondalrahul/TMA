@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://www.tridentmarineasia.com/assets/store/sitemap-index.xml

@@ -1,0 +1,206 @@
+.product-right {
+    background: #f9f9f9;
+    border: 1px solid #eaeaea;
+    padding: 2rem;
+    margin-bottom: 2rem;
+
+    h3 {
+        font-size: 1.5rem;
+        font-family: $font-700;
+    }
+
+    hr {
+        margin-left: -1rem;
+        margin-right: -1rem;
+        border-color: #e3e3e3;
+    }
+
+    form {
+
+        &>p {
+            font-family: $font-700;
+        }
+
+        .highlight {
+            color: $highlight-color;
+        }
+
+        .product-detail-calendar {
+            padding-bottom: 2rem;
+
+            .datepicker-inline {
+                width: 100%;
+                background: #ffffff;
+                padding: 0;
+
+                table {
+                    width: 100%;
+
+                    td, th, tr td span {
+                        border-radius: 0;
+                    }
+
+                    thead {
+
+                        tr:nth-child(2) {
+                            background: $highlight-color;
+                            color: #fff;
+
+                            th:hover {
+                                background: $highlight-color!important;
+                            }
+
+                            th:nth-child(2) {
+                                font-size: 1.5rem;
+                                padding: 0.5rem;
+                                font-family: $font-900;
+                            }
+                        }
+                    }
+
+                    .day.active, .month.active, .year.active, .decade.active, .century.active {
+                        background: $highlight-color;
+                        color: $base-color2;
+                    }
+                }
+            }
+        }
+
+        .time-filter {
+            label {
+                display: block;
+
+                input {
+                    margin-right: 0.25rem;
+                }
+            }
+
+            padding-bottom: 1rem;
+        }
+
+        input[type=radio] {
+            margin-left: 0.5rem;
+            margin-left: 0.25rem;
+        }
+
+        .payment-detail {
+            position: relative;
+            background: #ffffff;
+            border: 1px solid #e1e1e1;
+            padding: 0 1rem;
+            padding-top: 60px;
+            margin-bottom: 2rem;
+            
+            .title {
+                position: absolute;
+                top: 20px;
+                left: -10px;
+                background: $highlight-color;
+                padding: 0 10px;
+                color: $base-color2;
+                font-family: $font-700;
+            }
+
+            div {
+                margin-bottom: 0.25rem;
+
+                > span {
+                    display: inline-block;
+                    font-family: $font-500;
+                }
+
+                > span:nth-child(2) {
+                    float: right;
+                    color: #898989;
+                    font-family: $font-900;
+                }
+
+                &.promotion {
+                    p {
+                        padding: 0;
+                        margin: 0;
+                    }
+
+                    input {
+                        width: 100px;
+                        height: 2.375rem;
+                        border: 1px solid #cccccc;
+                    }
+
+                    a + span {
+                        font-size: 0.875rem;
+                        margin: 0 0.5rem;
+                    }
+
+                    a {
+                        font-size: 0.875rem;
+                        color: $highlight-color;
+                    }
+                }
+
+                &.total {
+                    background: #005b77;
+                    padding: 1rem;
+                    margin: 1rem -1rem 0 -1rem;
+
+                    span {
+                        text-transform: uppercase;
+                        color: $base-color2;
+                    }
+                }
+            }
+        }
+
+        .payment-methods {
+            width: 100%;
+            height: 2.375rem;
+            color: #898989;
+            border: 1px solid #b9b9b9;
+            background: #fff;
+            text-transform: uppercase;
+            padding: 0 1rem;
+        }
+
+        .payment-methods + label {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            input {
+                margin-right: .5rem;
+            }
+        }
+
+        p.small {
+            margin: 0;
+        }
+
+        .additional {
+            margin-top: 2rem;
+        }
+
+        .additional + textarea {
+            border: 1px solid #b9b9b9;
+            width: 100%;
+            height: 150px;
+        }
+
+        button {
+            text-align: center;
+            margin-right: 2rem;
+            display: block;
+            color: $base-color2;
+            height: 2.375rem;
+            width: 100%;
+            line-height: 2.375rem;
+            border: none;
+            margin-top: .5rem;
+            background-color: #00cccd;
+            font-family: $font-700;
+        }
+    }
+
+    .product-detail-calendar {
+      .day.old, .day.new {
+        pointer-events: none;
+      }
+    }
+}

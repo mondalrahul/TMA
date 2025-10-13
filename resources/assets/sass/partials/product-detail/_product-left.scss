@@ -1,0 +1,443 @@
+/*
+Slider
+*/
+
+.product-detail-wrapper {
+        .slick-list {
+            background: #212529;
+        }
+
+        .product-gallery-wrapper-outner {
+            position: relative;
+
+            .product-title {
+                position: absolute;
+                bottom: 2rem;
+                left: 2rem;
+                font-size: 2.5rem;
+                color: $base-color2;
+
+                @include breakpoint(768px) {
+                    position: static;
+                    color: $base-color;
+                }
+
+                @include breakpoint(576px) {
+                    font-size: 1.5rem;
+                } 
+    
+                .font-100 {
+                    font-family: $font-100;
+                }
+    
+                .font-700 {
+                    font-family: $font-700;
+                }
+            }
+        }
+    
+        .product-gallery-wrapper {
+            position: relative;
+
+            &:after {
+              content: " ";
+              background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+              display: block;
+              width: 100%;
+              height: 70px;
+              position: absolute;
+              left: 0;
+              bottom: 0;
+            }
+
+            .play-demo {
+                position: absolute;
+                bottom: 2rem;
+                right: 2rem;
+                display: inline-block;
+                color: $base-color2;
+                font-size: 1.5rem;
+                font-style: italic;
+
+                &:hover {
+                    text-decoration: none;
+                }
+    
+                i {
+                    font-size: 2.5rem;
+                    margin-right: 0.5rem;
+                    margin-bottom: -1rem;
+                }
+            }
+        }
+    
+        .product-gallery-slider {
+            position: relative;
+
+            .slick-arrow {
+                position: absolute;
+                display: inline-block;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 10;
+                background-color: transparent;
+                border: none;
+                overflow: hidden;
+                text-indent: -10000000px;
+                width: 37px;
+                height: 36px;
+                cursor: pointer;
+
+                &:focus, &:active {
+                    outline: none;
+                }
+
+                &.slick-next {
+                    right: 1rem;
+                    background: url(../images/home-slider/arrow-next.png) no-repeat;
+                }
+
+                &.slick-prev {
+                    left: 1rem;
+                    background: url(../images/home-slider/arrow-previous.png) no-repeat;
+                }
+
+                &:hover {
+                    background-position-y: bottom;
+                }
+            }
+
+            .product-gallery-item {
+                @include aspect-ratio(751, 460);
+                display: block!important;
+
+                .content {
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                img {
+                  display: block;
+                  max-width: 100%;
+                  height: auto;
+                }
+            }
+        }
+    
+        .slick-dots {
+            padding-left: 0;
+            text-align: right;
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+    
+            li {
+                list-style: none;
+                margin-bottom: 0.5rem;
+                float: right;
+                clear: right;
+                cursor: pointer;
+    
+                div {
+                  width: 40px;
+                  height: 28px;
+                  opacity: 0.6;
+                  background-repeat: no-repeat;
+                  background-position: center center;
+                  background-size: cover;
+                }
+            }
+    
+            .slick-active {
+                div {
+                    width: 55px;
+                    height: 32px;
+                    opacity: 1;
+                    border: 1px solid $highlight-color;
+                }
+            }
+        }
+
+        .rating-section {
+            padding-top: 0.5rem;
+
+            span {
+                vertical-align: middle;
+                font-family: $font-700;
+                padding-right: 0.5rem;
+
+                &.number-of-ratings {
+                    font-family: $font-500;
+                    font-style: italic;
+                }
+            }
+
+            .rating {
+                display: inline-block;
+
+                img {
+                    display: inline-block;
+                    margin-right: 0.5rem;
+                }
+            }
+        }
+    
+        .description-section {
+            color: #898989;
+            padding: 2rem 0;
+        }
+    
+        .detail-section {
+    
+    
+    
+            .more {
+                font-size: 1.5rem;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid #d7d7d7;
+            }
+    
+            .detail-wrapper {
+                border-bottom: 1px solid #d7d7d7;
+            }
+    
+            p.title {
+                color: #898989;
+                font-family: $font-700;
+                font-size: 1.5rem;
+                padding-top: 1rem;
+            }
+    
+            .rate {
+                border-right: 1px solid #d7d7d7;
+                @include breakpoint(768px) {
+                    border-right: none;
+                }
+    
+                .price {
+                    font-size: 2rem;
+                    font-family: $font-700;
+                }
+            }
+    
+            .detail {
+                color: #898989;
+                padding-bottom: 1rem;
+                
+                .spec {
+                    span {
+                        font-family: $font-700;
+    
+                        &.highlight {
+                            color: $highlight-color;
+                        }
+                    }
+                }
+            }
+        }
+    
+        .facilities-wrapper {
+    
+            .facilities {
+    
+                padding-bottom: 2rem;
+            }
+    
+            .facility-title {
+                font-family: $font-700;
+                padding-top: 2rem;
+                padding-bottom: 0.5rem;
+            }
+    
+            .facility {
+                font-family: $font-700;
+
+                &> div {
+                    position: relative;
+                    padding-left: 30px;
+    
+                    &:before {
+                        position: absolute;
+                        content: '';
+                        display: block;
+                        width: 25px;
+                        height: 25px;
+                        background-size: 100%;
+                        background-repeat: no-repeat;
+                        left: 0;
+                    }
+                }
+    
+                .air-condition:before {
+                    background-image: url(../images/product-detail/facilities/air-condition.png);
+                }
+    
+                .bathtub:before {
+                    background-image: url(../images/product-detail/facilities/bathtub.png);
+                }
+    
+                .blackout-curtain:before {
+                    background-image: url(../images/product-detail/facilities/blackout-curtain.png);
+                }
+    
+                .coffee-maker:before {
+                    background-image: url(../images/product-detail/facilities/coffee-maker.png);
+                }
+    
+                .free-water:before {
+                    background-image: url(../images/product-detail/facilities/free-water.png);
+                }
+    
+    
+                .desk:before {
+                    background-image: url(../images/product-detail/facilities/desk.png);
+                }
+    
+                .hair-dryer:before {
+                    background-image: url(../images/product-detail/facilities/hair-dryer.png);
+                }
+    
+                .safebox:before {
+                    background-image: url(../images/product-detail/facilities/safebox.png);
+                }
+    
+                .mini-bar:before {
+                    background-image: url(../images/product-detail/facilities/mini-bar.png);
+                }
+    
+                .non-smoking:before {
+                    background-image: url(../images/product-detail/facilities/non-smoking.png);
+                }
+    
+                .refrigerator:before {
+                    background-image: url(../images/product-detail/facilities/refrigerator.png);
+                }
+    
+                .satellite:before {
+                    background-image: url(../images/product-detail/facilities/satellite.png);
+                }
+    
+                .seating-area:before {
+                    background-image: url(../images/product-detail/facilities/seating-area.png);
+                }
+    
+                .shower:before {
+                    background-image: url(../images/product-detail/facilities/shower.png);
+                }
+    
+                .toilet:before {
+                    background-image: url(../images/product-detail/facilities/toilet.png);
+                }
+    
+                .tv:before {
+                    background-image: url(../images/product-detail/facilities/tv.png);
+                }
+    
+                .wifi:before {
+                    background-image: url(../images/product-detail/facilities/wifi.png);
+                }
+    
+                .telephone:before {
+                    background-image: url(../images/product-detail/facilities/telephone.png);
+                }
+    
+                .wakeup-service:before {
+                    background-image: url(../images/product-detail/facilities/wakeup-service.png);
+                }
+
+                .kayak:before {
+                    background-image: url(../images/product-detail/facilities/kayak.png);
+                }
+
+                .standup-paddle:before {
+                    background-image: url(../images/product-detail/facilities/standup-paddle.png);
+                }
+
+                .microwave:before {
+                    background-image: url(../images/product-detail/facilities/microwave.png);
+                }
+
+                .bbq:before {
+                    background-image: url(../images/product-detail/facilities/bbq.png);
+                }
+
+                .jacuzzi:before {
+                    background-image: url(../images/product-detail/facilities/jacuzzi.png);
+                }
+
+                .jet-skis:before {
+                    background-image: url(../images/product-detail/facilities/jet-skis.png);
+                }
+
+                .tender:before {
+                    background-image: url(../images/product-detail/facilities/tender.png);
+                }
+
+                .water-donut:before {
+                    background-image: url(../images/product-detail/facilities/water-donut.png);
+                }
+
+                .karaoke:before {
+                    background-image: url(../images/product-detail/facilities/karaoke.png);
+                }
+
+                .sound-system:before {
+                    background-image: url(../images/product-detail/facilities/sound-system.png);
+                }
+
+                .cooler-boxes:before {
+                    background-image: url(../images/product-detail/facilities/cooler-boxes.png);
+                }
+            }
+        }
+    
+        .action-links {
+            padding: 1rem 0;
+            border-top: 1px solid #d7d7d7;
+            border-bottom: 1px solid #d7d7d7;
+    
+            a {
+                display: inline-block;
+                font-family: $font-700;
+                font-size: 1.25rem;
+                text-transform: uppercase;
+                margin-right: 2rem;
+                color: $base-color;
+    
+                &:hover {
+                    text-decoration: none;
+                }
+    
+                i {
+                    padding-right: 0.5rem;
+                    color: $highlight-color;
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    
+        .action-btns {
+            padding: 1.5rem 0;
+    
+            a {
+                text-align: center;
+                margin-right: 2rem;
+                display: inline-block;
+                color: $base-color2;
+                height: 2.375rem;
+                width: 250px;
+                line-height: 2.375rem;
+                border: none;
+                margin-top: .5rem;
+                border: 1px solid transparent;
+                font-family: $font-700;
+    
+                &.back-btn {
+                    background-color: #00cccd;
+                    border-color: #00cccd;
+                }
+            }
+        }
+    }

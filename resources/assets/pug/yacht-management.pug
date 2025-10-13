@@ -1,0 +1,83 @@
+extends partials/_layout
+
+block append content
+    .yacht-management-page
+        .yacht-management-header
+            .background
+                img(src="../images/yacht-management/header.jpg")
+            .container
+                .wrapper
+                    .breadcrumb-wrapper
+                        ol.breadcrumb
+                            li.breadcrumb-item
+                                a(href='#') Home
+                            li.breadcrumb-item.active Yacht Management
+                    .page-title
+                        .title
+                            | YACHT&nbsp;
+                            strong MANAGEMENT
+                        .description
+                            p #[strong Own the yacht], let us worry about maintaining it for you. 
+        .yacht-management
+            .trident-1.half-split
+                .container-fluid
+                    .row
+                        .col-md-6
+                            .container.left-section
+                                .row
+                                    .col-md-6.offset-md-6
+                                        .section-content
+                                            p.title Cleaning
+                                            p.sub-title Services
+                                            p.content
+                                                .list-item
+                                                    .item Deep Cleaning
+                                                    .item Cleaning
+                                                    .item Diving
+                                                    .item Polishing
+                        .col-md-6.background
+                            img(src="../images/yacht-management/1.jpg", alt="")
+            .trident-2.half-split.wow.slideInUp(data-wow-delay="100ms")
+                .container-fluid
+                    .row
+                        .col-md-6.background
+                            img(src="../images/yacht-management/2.jpg", alt="")
+                        .col-md-6
+                            .container.right-section
+                                .row
+                                    .col-md-6
+                                        .section-content
+                                            p.title Maintenance & Repair
+                                            p.sub-title Services
+                                            p.content
+                                                .list-item.row
+                                                    .item.col-md-6 Fiberglass repairs
+                                                    .item.col-md-6 Engine servicing
+                                                    .item.col-md-6 Engine troubleshooting & repair
+                                                    .item.col-md-6 Engine replacement or overhaul
+                                                    .item.col-md-6 Parts supply
+                                                    .item.col-md-6 Hauling
+                                                    .item.col-md-6 Towing
+            .trident-3.half-split.wow.slideInUp(data-wow-delay="100ms")
+                .container-fluid
+                    .row
+                        .col-md-6
+                            .container.left-section
+                                .row
+                                    .col-md-6.offset-md-6
+                                        .section-content
+                                            p.title Concierge
+                                            p.sub-title Services
+                                            p.content
+                                                .list-item.row
+                                                    .item.col-md-6 Renewal of licenses
+                                                    .item.col-md-6 Sourcing of skippers
+                                                    .item.col-md-6 Sourcing of crew
+                                                    .item.col-md-6 Pre-purchase surveys
+                                                    .item.col-md-6 Pre-inspection checks/preparations
+                                                    .item.col-md-6 Insurance renewals
+                                                    .item.col-md-6 Stability tests
+                                                    .item.col-md-6 Rina Inspection
+                                                    .item.col-md-6 MPA inspection chaperones
+                        .col-md-6.background
+                            img(src="../images/yacht-management/3.jpg", alt="")

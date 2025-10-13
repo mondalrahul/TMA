@@ -1,0 +1,60 @@
+.booking-calendar {
+    // clear calendar style
+    .fc-button {
+        border-radius: 0!important;
+        border: none!important;
+        box-shadow: none!important;
+        text-shadow: none!important;
+        background-image: none!important;
+    }
+    .fc-button {
+        @extend .button;
+    }
+    .fc-header-toolbar {
+        h2 {
+            font-family: $font-700;
+            font-size: 1.75rem;
+        }
+    }
+
+    .fc-day-header {
+        background: $table-thead-background;
+        font-family: $font-900;
+        text-transform: uppercase;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        color: $base-color2;
+    }
+
+    .fc td, .fc th {
+        border-color: $base-color2;
+    }
+
+    .fc-day {
+        background-color: $block-background;
+        color: $dark-button-background;
+    }
+
+    .fc .fc-day.fc-today {
+        background-color: #bdeef5;
+    }
+
+    .fc-day-number {
+        padding-right: 7px!important;
+    }
+
+    .fc-event {
+        border-radius: 0;
+        background-color: #9ae4ef;
+        border: none;
+        color: $base-color2;
+    }
+
+    .fc-prev-button, .fc-next-button, .fc-month-button {
+        @extend .button-highlight;
+    }
+    
+    .fc-prev-button {
+        margin-right: 5px!important;
+    }
+}

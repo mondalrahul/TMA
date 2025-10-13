@@ -1,0 +1,95 @@
+extends partials/_layout
+
+block append content
+    .yacht-brokerage-page
+        .yacht-brokerage-header
+            .background
+                img(src="../images/yacht-brokerage/header.jpg")
+            .container
+                .wrapper
+                    .breadcrumb-wrapper
+                        ol.breadcrumb
+                            li.breadcrumb-item
+                                a(href='#') Home
+                            li.breadcrumb-item.active Yacht Brokerage
+                    .page-title
+                        .title
+                            | YACHT&nbsp;
+                            strong BROKERAGE
+                        .description
+                            p #[strong Want to own a yacht?]
+                            p We have the best deal here on Trident Marine Asia!
+        .yacht-brokerage-content
+            .container
+                .row
+                    .col-md-3
+                        .filter
+                            form
+                                p.title Filter Yacht For Sale
+                                .form-group
+                                    label Boat Make
+                                    select(name="boat_make")
+                                        option(value="") SELECT
+                                .form-group
+                                    label Boat Model
+                                    select(name="boat_make")
+                                        option(value="") SELECT
+                                .form-group
+                                    label Category
+                                    select(name="boat_make")
+                                        option(value="") SELECT
+                                .form-group
+                                    label Length Range
+                                    select(name="boat_make")
+                                        option(value="") SELECT
+                                .form-group
+                                    label Passenger
+                                    select(name="boat_make")
+                                        option(value="") SELECT
+                                .form-group
+                                    label Price Range
+                                    select(name="boat_make")
+                                        option(value="") SELECT
+                                .form-group
+                                    label No. Of Engine
+                                    select(name="boat_make")
+                                        option(value="") SELECT
+                                .form-group
+                                    label Fuel
+                                    select(name="boat_make")
+                                        option(value="") SELECT
+                                .form-group
+                                    label Keyword
+                                    input(type="text")
+                                .form-group
+                                    button.button.button-highlight.button-block(type="submit") FILTERED SEARCH
+                                    button.button(type="reset") CLEAR FILTER
+                    .col-md-9
+                        .yacht-list
+                            p.note Note that the prices of boats shown here are the indicative prices in Singapore dollars. Please contact us for any more information or to view any of these boats.
+                            .yachts
+                                .row
+                                    each val in [1, 2, 3, 4, 5, 6, 7, 8, 9]
+                                        .col-lg-4
+                                            .yacht
+                                                .image
+                                                    img(src="../images/yacht-brokerage/1.jpg", alt="")
+                                                p.title CENTRE CONSOLE
+                                                p.description Centre Console boats are usually from 13'45'. They are so-named because their..
+                                                a.button.button-highlight.button-block.more(href="#") MORE INFO
+                        .yacht-pagination
+                            ul.pagination
+                                li.page-item
+                                    a.page-link(href='#') First
+                                li.page-item
+                                    a.page-link(href='#') Previous
+                                li.page-item.active
+                                    a.page-link(href='#') 1
+                                li.page-item
+                                    a.page-link(href='#') 2
+                                li.page-item
+                                    a.page-link(href='#') 3
+                                li.page-item
+                                    a.page-link(href='#') Next
+                                li.page-item
+                                    a.page-link(href='#') Last

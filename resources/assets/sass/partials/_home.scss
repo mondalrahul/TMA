@@ -1,0 +1,11 @@
+@import "home/slider";
+@import "home/search";
+@import "home/promotion";
+@import "home/instagram";
+@import "home/modal";
+
+.home-wrapper {
+    background: url('../images/home-background.jpg') no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+}

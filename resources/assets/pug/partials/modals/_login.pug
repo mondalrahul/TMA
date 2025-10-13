@@ -1,0 +1,45 @@
+#loginModal.account-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='loginModal', aria-hidden='true')
+    .modal-dialog.modal-lg(role='document')
+        .modal-content
+            .modal-body
+                button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                    span(aria-hidden="true") &times;
+                .container-fluid
+                    .row
+                        .col-lg-6
+                            .login-title
+                                p.strong LOGIN TO
+                                p YOUR EXISTING ACCOUNT
+                            .login-form
+                                form
+                                    label Email Address&nbsp;
+                                        span *
+                                    .email-input.has-icon
+                                        input(name="email")
+                                    label Password&nbsp;
+                                        span *
+                                    .password-input.has-icon
+                                        input(name="password", type="password")
+                                    a(data-toggle="collapse" href="#forgotPasswordSection" aria-expanded="false" aria-controls="forgotPasswordSection") Forgot Password?
+                                    button LOGIN
+                            #forgotPasswordSection.login-reset-wrapper.collapse
+                                .login-reset
+                                    p Enter your email address and we'll send you a link to reset your password
+                                    form(action="")
+                                        .login-form
+                                                label Email Address&nbsp;
+                                                    span *
+                                                .email-reset-input
+                                                    div.input-group
+                                                        input(type="text")
+                                                        span.input-group-btn
+                                                            button SEND
+                            .login-create-account-wrapper
+                                .login-create-account
+                                    .row
+                                        .col-sm-6
+                                            | No Account Yet?
+                                        .col-sm-6
+                                            a.create-account-btn(href="#") Create Account
+                        .col-lg-6.login-bg
+                            //- img(src="../images/login-popup/login-right.png")

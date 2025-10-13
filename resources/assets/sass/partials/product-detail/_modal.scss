@@ -1,0 +1,78 @@
+#paymentModal {
+
+    .payment-popup {
+        padding: 1rem;
+    }
+
+    h3 {
+        font-family: $font-700;
+        font-size: 1.25rem;
+
+        i {
+            margin-left: 0.5rem;
+        }
+    }
+
+    .visa-card {
+        background: #f7f7f7;
+        padding: 0.75rem;
+
+        label {
+            font-family: $font-700;
+            font-size: 0.875rem;
+            margin-bottom: 0;
+        }
+
+        input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #898989;
+            background: transparent;
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    .price {
+        padding: 0.75rem;
+
+        p {
+            margin: 0;
+            padding: 0;
+            font-family: $font-700;
+            
+            &.tax {
+                color: #898989;
+            }
+
+            &.total {
+                font-size: 1.25rem;
+            }
+
+            span:last-child {
+                float: right;
+            }
+        }
+
+        hr {
+            border-color: #e1e1e1;
+            margin-left: -0.75rem;
+            margin-right: -0.75rem;
+        }
+    }
+
+    button.order {
+        text-align: center;
+        display: block;
+        color: $base-color2;
+        height: 2.375rem;
+        width: 100%;
+        border: none;
+        line-height: 2.375rem;
+        margin-top: .5rem;
+        background-color: #00cccd;
+        font-family: $font-700;
+    }
+}

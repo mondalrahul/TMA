@@ -1,0 +1,65 @@
+extends partials/_layout
+
+block append content
+    .fb-page
+        .fb-header-wrapper
+            .background
+                img(src="../images/f-b/header.jpg")
+            .wrapper
+                .container
+                    .breadcrumb-wrapper
+                        ol.breadcrumb
+                            li.breadcrumb-item
+                                a(href='#') Home
+                            li.breadcrumb-item.active F&B 
+                    .page
+                        .title
+                            | TRIDENT&nbsp;
+                            strong F&B
+                        .description
+                            p Majestic, modern, designed for #[strong experience]. Embark on #[strong unforgettable] journeys!
+        //- .fb-guide
+        //-     .container
+        //-         p.title F&B GUIDE
+        //-         p.sub-title Select from our delectable range of menus from our F&B partners. 
+        //-         .blocks
+        //-             .row
+        //-                 .col-lg-4
+        //-                     .block
+        //-                         img(src="../images/f-b/breakfast.jpg", alt="")
+        //-                         p.block-title BREAKFAST
+        //-                         p.block-description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tristique efficitur sem, aliquam gravida nibh vulputate sed. Etiam aliquet odio eu semper tincid. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tristique efficitur sem, aliquam gravida ni
+        //-                 .col-lg-4
+        //-                     .block
+        //-                         img(src="../images/f-b/lunch.jpg", alt="")
+        //-                         p.block-title BRUNCH / LUNCH
+        //-                         p.block-description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tristique efficitur sem, aliquam gravida nibh vulputate sed. Etiam aliquet odio eu semper tincid. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tristique efficitur sem, aliquam gravida ni
+        //-                 .col-lg-4
+        //-                     .block
+        //-                         img(src="../images/f-b/dinner.jpg", alt="")
+        //-                         p.block-title DINNER / SUPPER
+        //-                         p.block-description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tristique efficitur sem, aliquam gravida nibh vulputate sed. Etiam aliquet odio eu semper tincid. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tristique efficitur sem, aliquam gravida ni
+        .fb-branch
+            .container
+                p.title OUR BRANDS
+                p.sub-title Select from our delectable range of menus from our F&B partners. 
+                .branchs
+                    .row
+                        .col-lg-6.col-md-6
+                            .branch
+                                .row
+                                    .col-auto
+                                        img(src="../images/f-b/branch.png", alt="")
+                                    .col-auto
+                                        p.title ONE15
+                                        a(href="http://www.one15marina.com/" target="_blank") View Menu
+                        .col-lg-6.col-md-6
+                            .branch
+                                .row
+                                    .col-auto
+                                        img(src="../images/f-b/branch.png", alt="")
+                                    .col-auto
+                                        p.title CATERSPOT
+                                        a(href="https://www.caterspot.sg/l/trident-marine-asia" target="_blank") View Menu
+                        .col-lg-12.text-center
+                            a.button.button-highlight.enquire-btn(href="#") Enquire Now

@@ -1,0 +1,214 @@
+
+@extends('index')
+@section('content')
+    <?php
+    $userData = \Illuminate\Support\Facades\Auth::user();
+    
+    $Courseuser = DB::table('boat_user_course')
+        ->select('course', 'course_date')
+        ->where('user_id', '=', $userData->user_id)
+        ->orderBy('course_date', 'desc')
+        ->get();
+    $incidentuser = DB::table('boat_incident')
+        ->select('boat_name', 'incident_time', 'incident_date', 'incident_location', 'reference')
+        ->where('user_id', '=', $userData->user_id)
+        ->orderBy('incident_date', 'desc')
+        ->get();
+    ?>
+    <div class="account-page">
+        <div class="page-nav account-page-nav">
+            <div class="container">
+                <div class="wrapper">
+                    <div class="breadcrumb-wrapper">
+                        <div class="page-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item active">My Account ({{ $userData->name }})</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-content account-page-content">
+            {{-- <pre>
+            @php
+             print_r($userData);
+            @endphp
+            </pre> --}}
+            <form name="form_update_account" action="/update-account" method="post" id="form_update_account"
+                enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <div class="container">
+                    <div class="page-wrapper">
+                        @if (\Illuminate\Support\Facades\Session::has('message_send'))
+                            <div class="alert alert-success text-center">
+                                <strong>{{ \Illuminate\Support\Facades\Session::get('message_send') }}</strong>
+                            </div>
+                        @endif
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12">
+                                <div class="wrapper relative upload-photos-wrapper">
+                                    <div class="upload-photos" onclick="$('#avatar-file').trigger('click');"><img
+                                            id="avatar-preview"
+                                            src="@if (!empty($userData->profile_pic)) {{ asset($avatar_path['path'] . $userData->profile_pic) }} @else {{ asset('images/photo-upload.png') }} @endif"
+                                            alt="">
+                                        <p class="title cursor-pointer"> UPLOAD PHOTO</p>
+                                        <p>(Maximum file size is 4MB)</p>
+                                    </div>
+                                </div>
+                                <div class="wrapper">
+                                    <div class="account">
+                                        <p class="title">({{ $userData->name }})</p>
+                                        <p>{{ $userData->user_email }}</p>
+                                        <p>Member Since: {{ date('F Y', strtotime($userData->add_date)) }} </p>
+
+                                        @if (!empty($Membership))
+                                            <p>Membership Tier: {{ $Membership[0]->title }}</p>
+                                        @endif
+                                        @if ($membership_id != 3)
+                                            <!-- <p>Expire on: {{ $expire_on }}</p> -->
+                                            <p>Expire on: {{ date('d F Y', strtotime($expire_on)) }}</p>
+                                        @endif
+                                        <p><a href="{{ URL('/') }}/my-credits"
+                                                style="color:#fff; text-decoration:underline;">View My Credit</a></p>
+                                        <p>Last login: {{ $last_login->d }} @if ($last_login->d > 1)
+                                                days
+                                            @else
+                                                day
+                                            @endif ago</p>
+                                        <p>&nbsp;</p>
+                                        <?php if(count($Courseuser)>0){?>
+                                        <p><strong>Self Drive Qualification:</strong></p>
+                                        <!--  <p style='width:60%;float:left;padding:10px 0;text-decoration: underline;'>Course</p>
+                                             <p style='width:40%;float:right;padding:10px 0;text-decoration: underline;'>Date</p>-->
+                                        <ol style="padding:5px 0 0 12px;">
+                                            <?php foreach ($Courseuser as $course) {
+                                                echo ' <li>' . $course->course . ' - ' . date('d/M/Y', strtotime($course->course_date)) . '</li>';
+                                            } ?></ol>
+                                        <p>&nbsp;</p><?php } ?>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-12">
+                                <h1 class="account-page-title">My Account ({{ $userData->name }})</h1>
+                                <input class="hidden" id="avatar-file" type="file" name="avatar"
+                                    accept="image/*"><strong class="form-title">Edit Your Account Details</strong>
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <label class="form-label">Name<span class="required">*</span></label>
+                                        <div class="alert alert-danger hidden" role="alert" id="user_name_error"></div>
+                                        <input class="form-input form-item" name="user_name" value="{{ $userData->name }}">
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label class="form-label">Email Address<span class="required">*</span></label>
+                                        <div class="alert alert-danger hidden" role="alert" id="user_email_error"></div>
+                                        <input class="form-input form-item" name="user_email"
+                                            value="{{ $userData->user_email }}">
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label class="form-label">Password<span class="required">*</span></label>
+                                        <div class="alert alert-danger hidden" role="alert" id="user_password_error">
+                                        </div>
+                                        <input name="user_password_hidden" type="hidden" value="">
+                                        <input class="form-input form-item" type="password" name="user_password"
+                                            value="{{ base64_decode($userData->user_password) }}">
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label class="form-label">Address<span class="required">*</span></label>
+                                        <div class="alert alert-danger hidden" role="alert" id="user_address_error"></div>
+                                        <input class="form-input form-item" name="user_address"
+                                            value="{{ $userData->user_address }}">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label class="form-label">City<span class="required">*</span></label>
+                                        <div class="alert alert-danger hidden" role="alert" id="user_city_error"></div>
+                                        <input class="form-input form-item" name="user_city"
+                                            value="{{ $userData->user_city }}">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label class="form-label">Country (Residence)</label>
+                                        <div class="alert alert-danger hidden" role="alert" id="user_country_error"></div>
+                                        <input class="form-select form-item" name="user_country"
+                                            value="{{ $userData->user_country }}">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label class="form-label">State</label>
+                                        <div class="alert alert-danger hidden" role="alert" id="user_state_error">
+                                        </div>
+                                        <input class="form-select form-item" name="user_state"
+                                            value="{{ $userData->user_state }}">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label class="form-label">Zip Code</label>
+                                        <div class="alert alert-danger hidden" role="alert" id="user_zip_error"></div>
+                                        <input class="form-input form-item" name="user_zip"
+                                            value="{{ $userData->user_zip }}">
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <label class="form-label">Phone</label>
+                                        <div class="alert alert-danger hidden" role="alert" id="user_phone_error">
+                                        </div>
+                                        <input class="form-input form-item" name="user_phone"
+                                            value="{{ $userData->user_phone }}">
+                                    </div>
+                                    {{-- <div class="form-group col-lg-12">
+                                            <label class="form-label">Self-Driveable</label>
+                                            <div class="alert alert-danger hidden" role="alert" id="self_drive_error"></div>
+                                            <input class="form-input form-item" name="self_drive" value="{{$userData->self_drive}}">
+                                        </div> --}}
+                                    <div class="form-group col-lg-12">
+                                        <label class="form-label">Referer</label>
+                                        <input class="form-input form-item">
+                                    </div>
+                                    <div class="form-group col-lg-4">
+                                        <button class="button button-highlight button-full-width"
+                                            id="btn-update-account">UPDATE</button>
+                                    </div>
+                                    <div class="form-group col-lg-8">
+                                        <button class="button button-highlight button-full-width">SELF DRIVE
+                                            QUALIFICATION</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <?php if(count($incidentuser)>0){?>
+        <div class="container">
+            <div class="page-wrapper">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <h3>Charter History</h3>
+                        <div class="table-responsive-sm">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Date/Time</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">Boat</th>
+                                        <th scope="col">Incident</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach( $incidentuser as $incident){?>
+                                    <tr>
+                                        <th scope="row"><?php echo date('d/m/Y h:iA', strtotime($incident->incident_date . ' ' . $incident->incident_time)); ?></th>
+                                        <td><?php echo $incident->incident_location; ?></td>
+                                        <td><?php echo $incident->boat_name; ?></td>
+                                        <td><?php echo $incident->reference; ?></td>
+                                    </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div><?php } ?>
+        </div>
+    </div>
+@endsection

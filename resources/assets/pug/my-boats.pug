@@ -1,0 +1,251 @@
+extends partials/_layout
+
+block append content
+    .my-boat-page.bottom-background
+        .page-nav.account-page-nav
+            .container
+                .wrapper
+                    .breadcrumb-wrapper
+                        .page-breadcrumb
+                            ol.breadcrumb
+                                li.breadcrumb-item
+                                    a(href='#') Home
+                                li.breadcrumb-item
+                                    a(href='#') My Boats
+                                li.breadcrumb-item.active My Boat Listing
+        .page-content.account-page-content
+            .container
+                .page-wrapper
+                    h1.account-page-title My Boats
+                    .row
+                        .col-lg-8
+                            .boat-list-search
+                                h2 Search Booking
+                                form
+                                    .filter
+                                        .row
+                                            .col-md-8
+                                                .row.row-item
+                                                    .col-lg-12
+                                                        .row
+                                                            .col-lg-3
+                                                                span.filter-item Boat Name
+                                                            .col-lg-9
+                                                                input.full-width(type="text")
+                                                .row.row-item
+                                                    .col-lg-12
+                                                        .row
+                                                            .col-lg-3
+                                                                span.filter-item Marina
+                                                            .col-lg-9
+                                                                select.full-width
+                                                                    option(value="#") Select
+                                                .row.row-item
+                                                    .col-lg-12
+                                                        .row
+                                                            .col-lg-3
+                                                                span.filter-item Boat Type
+                                                            .col-lg-9
+                                                                select.full-width
+                                                                    option(value="#") Select
+                                            .col-md-4
+                                                p.font-700.no-margin Search by alphabet
+                                                .boat-list-filter
+                                                    .row
+                                                        .col-lg-12
+                                                            a(href="#") ALL
+                                                            span.separate |
+                                                            a(href="#") A
+                                                            span.separate |
+                                                            a(href="#") B
+                                                            span.separate |
+                                                            a(href="#") C
+                                                            span.separate |
+                                                            a(href="#") D
+                                                            span.separate |
+                                                            a(href="#") E
+                                                            span.separate |
+                                                            a(href="#") F
+                                                            span.separate |
+                                                            a(href="#") G
+                                                            span.separate |
+                                                            a(href="#") H
+                                                            span.separate |
+                                                            a(href="#") I
+                                                            span.separate |
+                                                            a(href="#") J
+                                                            span.separate |
+                                                            a(href="#") K
+                                                            span.separate |
+                                                            a(href="#") L
+                                                            span.separate |
+                                                            a(href="#") M
+                                                            span.separate |
+                                                            a(href="#") N
+                                                            span.separate |
+                                                            a(href="#") O
+                                                            span.separate |
+                                                            a(href="#") P
+                                                            span.separate |
+                                                            a(href="#") Q
+                                                            span.separate |
+                                                            a(href="#") R
+                                                            span.separate |
+                                                            a(href="#") S
+                                                            span.separate |
+                                                            a(href="#") T
+                                                            span.separate |
+                                                            a(href="#") U
+                                                            span.separate |
+                                                            a(href="#") V
+                                                            span.separate |
+                                                            a(href="#") W
+                                                            span.separate |
+                                                            a(href="#") X
+                                                            span.separate |
+                                                            a(href="#") Y
+                                                            span.separate |
+                                                            a(href="#") Z
+                                                            span.separate |
+                                    .submit
+                                        button.button.button-highlight SEARCH NOW
+                    .row
+                        .col-lg-12
+                            .boat-list-filter
+                                .row
+                                    .col-md-8
+                                        a(href="#") All (4)
+                                        span.separate |
+                                        a(href="#") Active (1)
+                                        span.separate |
+                                        a(href="#") Need Payment (3)
+                                        span.separate |
+                                        a(href="#") Inactive (0)
+                                        span.separate |
+                                        a(href="#") Add New
+                                        span.separate |
+                                        a(href="#") Check All
+                                        span.separate |
+                                        a(href="#") Uncheck All
+                                        span.separate |
+                                        a.red(href="#") Delete
+                                    .col-md-4.text-right
+                                        | Found #[span.color-highlight 3] records. Showing #[span.color-highlight 1] to #[span.color-highlight 3]
+                        .col-lg-12
+                            .table-responsive
+                                table.boat-list-table
+                                    thead
+                                        tr
+                                            th
+                                            th Book ID
+                                            th Boat Name
+                                            th Type
+                                            th Address
+                                            th Product Image
+                                            th Status
+                                            th Date Added
+                                            th Last Updated
+                                            th View Calendar
+                                            th Set Calendar
+                                            th Boat Details
+                                    tbody
+                                        tr
+                                            td
+                                                input(type="checkbox")
+                                            td 578
+                                            td
+                                                p Lagoon 450
+                                                p Luxe
+                                            td Catamaran
+                                            td
+                                                p The Republic of
+                                                p Singapore Yacth Club //
+                                                p Singapore
+                                            td N/A
+                                            td.text-center
+                                                p
+                                                    img(src="../images/new.png", alt="")
+                                                p Active
+                                            td 12/06/2017
+                                            td 12/06/2017
+                                            td.text-center
+                                                a.view-calendar-button(href="#")
+                                            td.text-center
+                                                a.set-calendar-button(href="#")
+                                            td.text-center
+                                                a.boat-detail-button(href="#")
+                                        tr
+                                            td
+                                                input(type="checkbox")
+                                            td 578
+                                            td
+                                                p Lagoon 450
+                                                p Luxe
+                                            td Catamaran
+                                            td
+                                                p The Republic of
+                                                p Singapore Yacth Club //
+                                                p Singapore
+                                            td N/A
+                                            td.text-center
+                                                p
+                                                    img(src="../images/new.png", alt="")
+                                                p Active
+                                            td 12/06/2017
+                                            td 12/06/2017
+                                            td.text-center
+                                                a.view-calendar-button(href="#")
+                                            td.text-center
+                                                a.set-calendar-button(href="#")
+                                            td.text-center
+                                                a.boat-detail-button(href="#")
+                                        tr
+                                            td
+                                                input(type="checkbox")
+                                            td 578
+                                            td
+                                                p Lagoon 450
+                                                p Luxe
+                                            td Catamaran
+                                            td
+                                                p The Republic of
+                                                p Singapore Yacth Club //
+                                                p Singapore
+                                            td N/A
+                                            td.text-center
+                                                p
+                                                    img(src="../images/new.png", alt="")
+                                                p Active
+                                            td 12/06/2017
+                                            td 12/06/2017
+                                            td.text-center
+                                                a.view-calendar-button(href="#")
+                                            td.text-center
+                                                a.set-calendar-button(href="#")
+                                            td.text-center
+                                                a.boat-detail-button(href="#")
+                                        tr
+                                            td
+                                                input(type="checkbox")
+                                            td 578
+                                            td
+                                                p Lagoon 450
+                                                p Luxe
+                                            td Catamaran
+                                            td
+                                                p The Republic of
+                                                p Singapore Yacth Club //
+                                                p Singapore
+                                            td N/A
+                                            td.text-center
+                                                p
+                                                    img(src="../images/new.png", alt="")
+                                                p Active
+                                            td 12/06/2017
+                                            td 12/06/2017
+                                            td.text-center
+                                                a.view-calendar-button(href="#")
+                                            td.text-center
+                                                a.set-calendar-button(href="#")
+                                            td.text-center
+                                                a.boat-detail-button(href="#")

@@ -1,0 +1,182 @@
+.trident-life-style-page {
+
+    .trident-life-style-header {
+        background: url(../images/trident-life-style/header-bg.jpg) no-repeat;
+        background-size: cover;
+    }
+
+    .breadcrumb-wrapper {
+        text-align: center;
+        padding-top: 4rem;
+        padding-bottom: 1rem;
+
+        .breadcrumb {
+            background-color: transparent;
+            padding: 0;
+            margin-bottom: 0;
+            display: inline-block;
+    
+            a {
+                color: $base-color2;
+            }
+    
+            .breadcrumb-item:before {
+                color: $base-color2;
+            }
+    
+            .active {
+                color: $base-color2;
+                font-family: $font-900;
+            }
+    
+            @include breakpoint(768px) {
+                font-size: 0.75rem;
+            }
+        }
+    }
+
+    .page-title {
+        text-align: center;
+        font-size: 3rem;
+        font-family: $font-100;
+        color: $base-color2;
+        position: relative;
+        margin-bottom: 2rem;
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 5rem;
+            height: 0.125rem;
+            transform: translateX(-50%);
+            background-color: $base-color2;
+        }
+
+        strong {
+            font-weight: normal;
+            font-family: $font-700;
+        }
+    }
+
+    .video-section {
+
+        .video-title {
+            color: $base-color2;
+            text-align: center;
+        }
+
+        .videos {
+            padding-top: 1rem;
+            padding-bottom: 4rem;
+        }
+
+        .video {
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            margin-bottom: 1rem;
+            position: relative;
+
+            &:before {
+                content: '\f04b';
+                pointer-events: none;
+                font-family: FontAwesome;
+                font-size: 1.5rem;
+                color: $base-color2;
+                display: block;
+                position: absolute;
+                text-align: center;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                line-height: 70px;
+                width: 70px;
+                height: 70px;
+                background: #00cccd;
+                border-radius: 35px;
+            }
+        }
+    }
+
+    .half-split {
+        @include half-split;
+    }
+
+    .section-content {
+        .title {
+            font-size: 2.375rem;
+            font-family: $font-700;
+            margin: 0;
+            line-height: 80%;
+        }
+
+        .sub-title {
+            font-size: 1.5rem;
+            font-family: $font-100;
+            margin: 0;
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+
+            &:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 3rem;
+                height: 0.125rem;
+                background-color: #005b77;
+            }
+        }
+
+        .sub-header {
+            color: #00cccd;
+            font-size: 	1.625rem;
+            font-family: $font-700;
+            margin-bottom: 2rem;
+        }
+
+        .content {
+            color: #898989;
+        }
+    }
+
+    .trident-2 {
+        background-image: url(../images/trident-life-style/trident-2-bg.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+        color: $base-color2;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+
+        .title {
+            font-size: 2.375rem;
+            font-family: $font-700;
+            margin: 0;
+            text-align: center;
+            position: relative;
+            margin-bottom: 1rem;
+
+            &:after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                bottom: 0;
+                transform: translateX(-50%);
+                width: 3rem;
+                height: 0.125rem;
+                background-color: $base-color2;
+            }
+        }
+
+        a {
+            margin-top: .5rem;
+        }
+
+    }
+}

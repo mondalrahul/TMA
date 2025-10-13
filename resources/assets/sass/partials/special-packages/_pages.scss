@@ -1,0 +1,191 @@
+.special-packages-page {
+
+    .weekend-gateway {
+        background: url(../images/special-packages/2.jpg) no-repeat center;
+        background-size: auto 100%;
+    }
+    .solemnization {
+        background: url(../images/special-packages/3.jpg) no-repeat center;
+        background-size: auto 100%;
+    }
+    .team-building {
+        background: url(../images/special-packages/4.jpg) no-repeat center;
+        background-size: auto 100%;
+    }
+
+    .custom-trip {
+        background: url(../images/special-packages/5.jpg) no-repeat center;
+        background-size: auto 100%;
+    }
+
+
+    .package {
+        position: relative;
+
+        .background {
+            min-height: 600px;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+
+                @include breakpoint(1199px) {
+                    height: 100%;
+                    width: auto;
+                }
+            }
+        }
+
+        .wrapper {
+            color: $base-color2;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+
+
+            .package-title {
+                position: relative;
+                font-family: $font-700;
+                font-size: 2.5rem;
+                padding-bottom: .5rem;
+
+                @include breakpoint(576px) {
+                    font-size: 2rem;
+                }
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 5rem;
+                    height: 0.125rem;
+                    background-color: $base-color2;
+                }
+            }
+
+            .text-1, .text-2 {
+                font-size: 1.25rem;
+                margin: 0;
+
+                @include breakpoint(576px) {
+                    font-size: 1rem;
+                }
+            }
+
+            .text-1 {
+                font-family: $font-500;
+            }
+
+            .text-2 {
+                font-family: $font-900;
+            }
+
+            .package-description {
+                padding-top: 2rem;
+            }
+
+            .buttons > * {
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            .buttons {
+                margin-top: 1rem;
+
+                a {
+                    margin-right: 2rem;
+                }
+
+                .price {
+                    font-size: 1.5rem;
+                    font-family: $font-300;
+                    height: 2.375rem;
+                    line-height: 2.375rem;
+                    margin: 0;
+
+                    strong {
+                        font-family: $font-700;
+                    }
+                }
+            }
+        }
+
+        @include breakpoint(576px) {
+            .background {
+                display: none;
+            }
+
+            .wrapper {
+                position: static;
+                transform: none;
+                padding: 3rem 0;
+            }
+        }
+    }
+
+    .custom-trip {
+        position: relative;
+
+        .background {
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .wrapper {
+            color: $base-color2;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            text-align: center;
+
+            .title {
+                font-family: $font-700;
+                font-size: 2.5rem;
+                position: relative;
+                padding-bottom: 0.5rem;
+                margin-bottom: 2rem;
+
+                @include breakpoint(576px) {
+                    font-size: 2rem;
+                }
+
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    bottom: 0;
+                    width: 5rem;
+                    height: 0.125rem;
+                    background-color: $base-color2;
+                }
+            }
+
+            .description {
+                margin-bottom: 2rem;
+            }
+        }
+
+        @include breakpoint(991px) {
+            .background {
+                display: none;
+            }
+
+            .wrapper {
+                position: static;
+                transform: none;
+                padding: 3rem 0;
+            }
+        }
+    }
+}

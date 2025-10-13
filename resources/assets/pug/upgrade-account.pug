@@ -1,0 +1,36 @@
+extends partials/_layout
+
+block append content
+    .upgrade-account-page.bottom-background
+        .page-nav.account-page-nav
+            .container
+                .wrapper
+                    .breadcrumb-wrapper
+                        .page-breadcrumb
+                            ol.breadcrumb
+                                li.breadcrumb-item
+                                    a(href='#') Home
+                                li.breadcrumb-item.active Upgrade Account
+        .page-content.account-page-content
+            .container
+                .page-wrapper
+                    h1.account-page-title Upgrade Account
+                    p.color-dark.membership-plan.font-500
+                        | CHOOSE YOUR #[span.color-base MEMBERSHIP PLAN]
+                    .row
+                        .col-lg-4
+                            .plan.current-plan
+                                img(src="../images/upgrade-account/1.png", alt="")
+                                .plan-detail
+                                    p.plan-title.font-700.color-base CHARTERER
+                                    p.plan-summary.color-highlight Account for Boat Buyers and Browsers
+                                    p.plan-description.color-dark This tier of membership allows you to access our fleet of charter yatchs, training materials and RSVP to our activities.
+                                    a.button.button-disabled.button-block.text-center(href="#") CURRENT PLAIN
+                        .col-lg-4
+                            .plan
+                                img(src="../images/upgrade-account/2.png", alt="")
+                                .plan-detail
+                                    p.plan-title.font-700.color-base BOAT OWNER
+                                    p.plan-summary.color-highlight Upgraded Account for Boat Owners
+                                    p.plan-description.color-dark Upgrade your account to a Boat Owner Account. Having this account allows you to post your boat online and set your own rates and calendar for chartering out your boat.
+                                    a.button.button-highlight.button-block.text-center(href="#") LIST YOUR BOAT

@@ -1,0 +1,46 @@
+.home-image-slider {
+
+    .image-slider {
+        position: relative;
+
+        .image-slider-item {
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .slick-arrow {
+            position: absolute;
+            display: inline-block;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background-color: transparent;
+            border: none;
+            overflow: hidden;
+            text-indent: -10000000px;
+            width: 37px;
+            height: 36px;
+            cursor: pointer;
+
+            &:focus, &:active {
+                outline: none;
+            }
+
+            &.slick-next {
+                right: .5rem;
+                background: url(../images/home-slider/arrow-next.png) no-repeat;
+            }
+
+            &.slick-prev {
+                left: .5rem;
+                background: url(../images/home-slider/arrow-previous.png) no-repeat;
+            }
+
+            &:hover {
+                background-position-y: bottom;
+            }
+        }
+    }
+}

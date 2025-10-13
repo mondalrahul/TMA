@@ -1,0 +1,81 @@
+extends partials/_layout
+
+block append content
+    .account-page.bottom-background
+        .page-nav.account-page-nav
+            .container
+                .wrapper
+                    .breadcrumb-wrapper
+                        .page-breadcrumb
+                            ol.breadcrumb
+                                li.breadcrumb-item
+                                    a(href='#') Home
+                                li.breadcrumb-item.active My Account (Administrator)
+        .page-content.account-page-content
+            .container
+                .page-wrapper
+                    .row
+                        .col-lg-4.col-md-12
+                            .wrapper.relative.upload-photos-wrapper
+                                .upload-photos(onclick="$('#photo-file').trigger('click');")
+                                    img#photo-preview(src="../images/photo-upload.png", alt="")
+                                    p.title UPLOAD PHOTO
+                                    p (Maximum file size is 4MB)
+                            .wrapper
+                                .account
+                                    p.title Administrator
+                                    p admin@tridentmarineasian.com
+                                    p Last login: 2 days ago
+                        .col-lg-8.col-md-12
+                            h1.account-page-title My Account (Administrator)
+                            form(action="")
+                                input#photo-file.hidden(type="file", name="photo", accept="image/*")
+                                strong.form-title Edit Your Account Details
+                                .row
+                                    .form-group.col-lg-12
+                                        label.form-label Name
+                                            span.required *
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Email Address
+                                            span.required *
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Password
+                                            span.required *
+                                        input(type="password").form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Address
+                                            span.required *
+                                        input.form-input.form-item
+                                        input.form-input.form-item
+                                    .form-group.col-lg-6
+                                        label.form-label City
+                                            span.required *
+                                        input.form-label.form-input.form-item
+                                    .form-group.col-lg-6
+                                        label.form-label Country (Residence)
+                                            span.required *
+                                        input.form-select.form-item
+                                    .form-group.col-lg-6
+                                        label.form-label State
+                                        input.form-select.form-item
+                                    .form-group.col-lg-6
+                                        label.form-label Zip Code
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Phone
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Referer
+                                        input.form-input.form-item
+                                    .form-group.col-lg-4
+                                        button.button.button-highlight.button-full-width UPDATE
+                                    .form-group.col-lg-8
+                                        button.button.button-highlight.button-full-width SELF DRIVE QUALIFICATION
+
+                                
+
+
+
+

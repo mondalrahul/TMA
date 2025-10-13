@@ -1,0 +1,166 @@
+.contact-page {
+    .contact-nav {
+        .wrapper {
+            background-color: #f7f7f7;
+            margin: 2rem -15px;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+    }
+
+    .breadcrumb {
+        background-color: transparent;
+        padding: 0;
+        margin-bottom: 0;
+
+        a {
+            color: #898989;
+        }
+
+        .breadcrumb-item:before {
+            color: #898989;
+        }
+
+        .active {
+            color: $highlight-color;
+            font-family: $font-900;
+        }
+
+        @include breakpoint(768px) {
+            font-size: 0.75rem;
+        }
+    }
+
+    .contact-share {
+
+        a {
+            margin: 0 0.5rem;
+            color: #898989;
+            font-family: $font-500;
+
+            &:before {
+                font-family: FontAwesome;
+                display: inline-block;
+                margin-right: 0.5rem;
+                color: $highlight-color;
+            }
+        }
+
+        .share:before {
+            content: "\f1e0";
+        }
+
+        .print:before {
+            content: "\f02f";
+        }
+    }
+
+    .contact-info {
+        background: #f7f7f7;
+        padding: 1rem;
+        margin-bottom: 2rem;
+
+        .title {
+            border-bottom: 1px solid #e1e1e1;
+            font-size: 1.75rem;
+            font-family: $font-900;
+            padding-bottom: 1rem;
+        }
+
+        .business-time {
+            font-family: $font-500;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+        .contact-number {
+            font-size: 1.75rem;
+            font-family: $font-700;
+
+            a {
+
+                color: $highlight-color;
+            }
+        }
+
+        .email {
+
+            a {
+                font-family: $font-700;
+
+                &:before {
+                    content: "\F0E0";
+                    display: inline-block;
+                    margin-right: 1rem;
+                    color: $highlight-color;
+                    font-family: FontAwesome;
+                }
+            }
+        }
+
+        p, .map {
+            padding: 0 1rem;
+        }
+
+        .map {
+            margin-bottom: 2rem;
+        }
+
+        .map img {
+            width: 100%;
+        }
+    }
+}
+
+
+.contact-form {
+
+    .title {
+        font-size: 2.375rem;
+        font-family: $font-700;
+        margin-bottom: 0;
+    }
+
+    .sub-title {
+        font-family: $font-100;
+        color: #898989;
+        margin-bottom: 2rem;
+    }
+
+    label {
+        display: block;
+        font-family: $font-500;
+    }
+
+    input, select {
+        display: block;
+        width: 100%;
+        border: 1px solid #e1e1e1;
+        height: 2.375rem;
+        padding: 0 1rem;
+    }
+
+    .form-group p {
+        margin-top: 0.25rem;
+        margin-bottom: 0;
+        color: #898989;
+    }
+
+    textarea {
+        width: 100%;
+        border: 1px solid #e1e1e1;
+        padding: 0 1rem;
+    }
+
+    button {
+        padding: 0 3rem;
+    }
+
+    .require {
+        color: $highlight-color;
+    }
+}

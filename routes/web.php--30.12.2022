@@ -1,0 +1,143 @@
+<?php
+use \App\Http\Controllers\Home\HomeController;
+use \Illuminate\Http\Request;
+
+Route::get('/', 'Home\\HomeController@index')->name('home')->middleware(['cors']) ; 
+Route::post('/register', function(Request $request) {
+    $controller = new HomeController();
+    return $controller->registerUser($request);
+});
+Route::post('/login', function(Request $request) {
+    $controller = new HomeController();
+    return $controller->login($request);
+});
+ 
+Route::get('/login-book/{user_id}', 'Account\AccountController@LoginWithId')->where('user_id', '[0-9]+');
+Route::post('/forgotpass', function(Request $request) {
+    $controller = new HomeController();
+    return $controller->forgotpass($request);
+})->name("forgot_pass");
+Route::get('/logout', function() {
+    $controller = new HomeController();
+    return $controller->logout();
+});
+Route::post('/send-mail/contact-us', function(Request $request) {
+    $controller = new HomeController();
+    return $controller->sendMailContact($request);
+});
+Route::post('/send-mail/enquiry-box', function(Request $request) {
+    $controller = new HomeController();
+    return $controller->sendMailEnquiry($request);
+});
+Route::post('/send-mail/wire-transfer', function(Request $request) {
+    $controller = new HomeController();
+    return $controller->sendMailWireTransfer($request);
+});
+Route::get('/boat-book/booking-confirm', function(Request $request) {
+    $controller = new HomeController();
+    return $controller->getConfirmBox($request);
+});
+// Search boat base on boat type
+Route::get('/trident-fleet/{boat_type}', function ($boatType, Request $request) {
+    $controller = new \App\Http\Controllers\Search\SearchController();
+    $dataSearchs = $request->all();
+    return $controller->search($boatType, $dataSearchs);
+});
+// Search boat from some conditions
+Route::get('/search/boat', function (Request $request) {
+    $controller = new \App\Http\Controllers\Search\SearchController();
+    $dataSearchs = $request->all();
+    return $controller->searchProductHome($dataSearchs);
+});
+// Get boat detail
+Route::get('/boat-detail/{boat_id}', function ($boatId, Request $request) {
+    $controller = new \App\Http\Controllers\Search\SearchController();
+    return $controller->boatDetail($boatId, $request);
+});
+// Get boat detail
+Route::get('/boat-detail-test/{boat_id}', function ($boatId, Request $request) {
+    $controller = new \App\Http\Controllers\Search\SearchController();
+    return $controller->boatDetailTest($boatId, $request);
+});
+Route::post('/submit-review', 'Account\AccountController@submitReview');
+// Validate date from boat detail
+Route::get('/boat-book/validDate', function (Request $request) {
+    $controller = new \App\Http\Controllers\Search\SearchController();
+    return $controller->validDateBoatDetail($request);
+});
+// Filter valid range date of specific boat
+Route::get('/boat-book/filterDate', function (Request $request) {
+    $controller = new \App\Http\Controllers\Search\SearchController();
+    return $controller->getValidRangeDate($request);
+});
+// Calculate price when book boat
+Route::get('/boat-book/getCalPrice', function (Request $request) {
+    $controller = new \App\Http\Controllers\Search\SearchController();
+    return $controller->calBoatPrice($request);
+});
+// Download file
+Route::get('/download/{file_name}', function ($fileName) {
+    $controller = new \App\Http\Controllers\DownloadController();
+    return $controller->download($fileName);
+});
+// Read file
+Route::get('/read/{file_name}', function ($fileName) {
+    $controller = new \App\Http\Controllers\DownloadController();
+    return $controller->download($fileName, true);
+});
+// Some static pages
+//Route::get('/trident-life-style', function () {
+//    return view('others/tridentlifestyle');
+//});
+Route::get('/trident-experiences', function () {
+    $controller = new \App\Http\Controllers\ExperienceController();
+    return $controller->trident_experience();
+});
+Route::get('/f&b', function () {
+    return view('others/f&b');
+});
+Route::get('/yacht-brokerage', function () {
+    return view('others/yachtbrokerage');
+});
+Route::get('/yacht-management', function () {
+    $controller = new \App\Http\Controllers\YachtManagementController();
+    return $controller->trident_experience();
+});
+Route::get('/contact-us', function () {
+    return view('others/contactus');
+});
+Route::get('/faq', function () {
+    $controller = new \App\Http\Controllers\FaqController();
+    return $controller->faq();
+});
+Route::get('/my-bookings', 'Account\AccountController@myCharterListing');
+Route::get('/my-credits', 'Account\AccountController@myCreditsListing')->name('credits.list');
+Route::get('/credits/{cid}', 'Account\AccountController@myCreditsDetails')->name('credit.details');
+Route::get('/my-boats', 'Account\AccountController@myBoats');
+Route::post('/my-boats/delete', 'Account\AccountController@deleteMyBoats');
+Route::get('/my-boats/add', 'Account\AccountController@addBoatPage');
+Route::post('/my-boats/add', 'Account\AccountController@addBoat');
+Route::get('/my-boats/update/{boat_id}', 'Account\AccountController@updateBoatPage');
+Route::post('/my-boats/update/{boat_id}', 'Account\AccountController@updateBoat');
+
+Route::get('/sendemail-to-admin', 'Account\AccountController@SendEmailToAdmin');
+
+Route::get('/upgrade-account', function () {
+    return view('others/upgrade-account');
+});
+Route::get('/boat-book-calendar', 'Account\AccountController@boatBookCalendarPage');
+Route::get('/boat-book-calendar/{boat_id}', 'Account\AccountController@boatBookCalendarPage');
+Route::post('/payment', function (Request $request) {
+    $params = $request->all();
+    if ($params['payment_method'] === 'paypal') {
+        $paypalSrv = new \App\Services\PayPalService();
+        $paypalController = new \App\Http\Controllers\PayPal\PaypalController($paypalSrv);
+        return $paypalController->process($request, $params);
+    }
+});
+Route::get('/paypal/status', 'PayPal\PaypalController@status');
+Route::get('/my-account', 'Controller@myAccount');
+Route::post('/update-account', 'Controller@updateMyAccount');
+Route::get('/admin', function () {
+    return Redirect::to('https://www.theboatshopasia.com/admin-22-tbsa/');
+});

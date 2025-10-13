@@ -1,0 +1,26 @@
+.self-drive-page {
+    .instructions {
+        padding: 1.5rem;
+        background-color: $block-background;
+
+        .instruction-title {
+            font-size: 1.125rem;
+        }
+
+        .step {
+            margin-bottom: 1.25rem;
+        }
+
+        .note {
+            font-size: 0.875rem;
+        }
+    }
+
+    form {
+        .button {
+            display: inline-block;
+            margin-right: 1.5rem;
+            padding: 0 4rem;
+        }
+    }
+}

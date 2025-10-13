@@ -1,0 +1,21 @@
+extends partials/_layout
+
+block append content
+    .add-boat-page.bottom-background
+        .page-nav.account-page-nav
+            .container
+                .wrapper
+                    .breadcrumb-wrapper
+                        .page-breadcrumb
+                            ol.breadcrumb
+                                li.breadcrumb-item
+                                    a(href='#') Home
+                                li.breadcrumb-item
+                                    a(href='#') My Boats
+                                li.breadcrumb-item.active My Boat Calendar
+        .page-content.account-page-content
+            .container
+                .page-wrapper
+                    h1.account-page-title Booking of all my boats
+                    .booking-calendar
+                        #boat-calendar

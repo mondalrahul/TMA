@@ -1,0 +1,171 @@
+extends partials/_layout
+
+block append content
+    .product-detail-wrapper
+        .product-detail-navigation
+            .container
+                .wrapper
+                    .page-navigation
+                        .breadcrumb-wrapper
+                            ol.breadcrumb
+                                li.breadcrumb-item
+                                    a(href='#') Home
+                                li.breadcrumb-item
+                                    a(href='#') Monohulls
+                                li.breadcrumb-item.active Golden Ocean
+                        .change-product
+                            a(href="#") < Previous Product
+                            a(href="#") Next Product >
+        .product-detail
+            .container
+                .row
+                    .col-md-12.col-lg-8
+                        .product-left
+                            .product-gallery-wrapper-outner
+                                .product-gallery-wrapper
+                                    .product-gallery-slider
+                                        .product-gallery-item
+                                            .content
+                                                img(src="../images/product-detail/product-image.png", data-thumb="../images/product-detail/product-image-thumb.png")
+                                        .product-gallery-item
+                                            .content
+                                                img(src="../images/product-detail/product-image.png", data-thumb="../images/product-detail/product-image-thumb.png")
+                                        .product-gallery-item
+                                            .content
+                                                img(src="http://52.220.121.191/images/product/1479401888_IMG-20140530-WA0007.jpg", data-thumb="../images/product-detail/product-image-thumb.png")
+                                    a.play-demo(href="")
+                                        i(class="fa fa-play-circle-o" aria-hidden="true")
+                                        | Play Demo
+                                .product-title #[span.font-100 GOLDEN] #[span.font-700 OCEAN]
+                            .rating-section
+                                span Ratings:
+                                .rating
+                                    img(src="../images/product-detail/anchor/1.png")
+                                    img(src="../images/product-detail/anchor/1.png")
+                                    img(src="../images/product-detail/anchor/1.png")
+                                    img(src="../images/product-detail/anchor/1.png")
+                                    img(src="../images/product-detail/anchor/0.png")
+                                span.number-of-ratings (22 ratings)
+                            .description-section The Jeanneau Prestige 46 Flybridge  combines a comfortable flybridge with a spacious saloon and large  cockpit and swim platform  to create a floating playpen for adults. With 3 cabins, there's plenty of space  to escape from the heat  when you need some AC or  shade, and a huge wide  open area on the foredeck for relaxing and enjoying your time at sea.
+                            .detail-section
+                                .more More About Golden Ocean:
+                                .detail-wrapper
+                                    .row
+                                        .rate.col-md-3
+                                            p.title Rate From:
+                                            p.price $1,580
+                                        .detail.col-md-9
+                                            p.title Yacht Details
+                                            .row
+                                                .col-lg-6.spec Boat Type: #[span.highlight Monohulls]
+                                                .col-lg-6.spec Berthed: #[span One 15 Marina Club, Sentosa Cave]
+                                                .col-lg-6.spec Length: #[span 51 ft]
+                                                .col-lg-6.spec Year Build: #[span 2010]
+                                                .col-lg-6.spec Cabins: #[span 3]
+                                                .col-lg-6.spec Beam: #[span 4.36]
+                                                .col-lg-6.spec Bathrooms: #[span 3]
+                                                .col-lg-6.spec GPS: #[span Yes]
+                                                .col-lg-6.spec Max. Guests: #[span 30]
+                                                .col-lg-6.spec Fishfinder: #[span No]
+                            .facilities-wrapper
+                                .facility-title Available Facilities in Yacht:
+                                .facilities
+                                    .row
+                                        .col-lg-4.facility
+                                            .air-condition Air conditioning
+                                        .col-lg-4.facility
+                                            .kayak Kayak
+                                        .col-lg-4.facility
+                                            .wifi Wi-fi
+                                        .col-lg-4.facility
+                                            .shower Shower
+                                        .col-lg-4.facility
+                                            .standup-paddle Standup Paddle
+                                        .col-lg-4.facility
+                                            .microwave Microwave / oven
+                                        .col-lg-4.facility
+                                            .toilet Toilet
+                                        .col-lg-4.facility
+                                            .bbq BBQ pit
+                                        .col-lg-4.facility
+                                            .jacuzzi Jacuzii
+                                        .col-lg-4.facility
+                                            .jet-skis Jet skis
+                                        .col-lg-4.facility
+                                            .tender Tender
+                                        .col-lg-4.facility
+                                            .water-donut Water donut (floats).
+                                        .col-lg-4.facility
+                                            .karaoke Karaoke
+                                        .col-lg-4.facility
+                                            .refrigerator Chiller / refridgerator
+                                        .col-lg-4.facility
+                                            .sound-system Sound system
+                                        .col-lg-4.facility
+                                            .cooler-boxes Cooler boxes
+                            .action-links
+                                a.share-link(href="")
+                                    i(class="fa fa-share-alt" aria-hidden="true")
+                                    | Share
+                                a.add-link(href="")
+                                    i(class="fa fa-plus" aria-hidden="true")
+                                    | ADD WATER SPORTS
+                            .action-btns
+                                a.back-btn(href="#") BACK TO PREVIOUS
+                    .col-md-12.col-lg-4
+                        .product-right
+                            form
+                                h3 Book or Get A Quote Now!
+                                hr
+                                p Member Name: #[span.highlight John Doe]
+                                p Charter Date: #[span.highlight 9 January 2018]
+                                .calendar-wrapper
+                                    .product-detail-calendar
+                                p Available Charter Time
+                                .time-filter
+                                    label
+                                        input(type="checkbox")
+                                        | 2.00pm to 6.00pm
+                                    label
+                                        input(type="checkbox")
+                                        | 9.00am to 1.00pm
+                                p Skipper Required?
+                                    label
+                                        input(type="radio")
+                                        | Yes
+                                .payment-detail
+                                    p.title Payment Details
+                                    div
+                                        span Excess Deposit <br /> (Refundable):
+                                        span $0.00
+                                    div
+                                        span Skipper Rate:
+                                        span $350
+                                    .promotion
+                                        span
+                                            p Promo Code:
+                                            input(type="text")
+                                            p
+                                                a(href="#") Apply
+                                                span |
+                                                a(href="#") Reset
+                                        span $0.00
+                                    div
+                                        span Charter Rate:
+                                        span $250
+                                    .total
+                                        span Total
+                                        span $600
+                                p Payment Through?
+                                select.payment-methods(name="payment_method")
+                                    option(value="paypal") Paypal
+                                label
+                                    input(type="checkbox")
+                                    | I have read and accepted fully the terms of charter stated in the charter agreement "Charter Agreement" including indemnities and refund policies.
+                                p.small Itinerary/More Information
+                                span Itinerary PDF 1:
+                                    a(href="#") 331_Southernislands-LazarusStJohn.pdf
+                                p.additional Additional Info/Requests (eg: your plans)
+                                textarea(name="additional_info")
+                                button LOG IN TO PROCEED
+                                button PROCEED TO CHECKOUT

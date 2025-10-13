@@ -1,0 +1,98 @@
+.trident-fleet-header {
+    .background {
+        overflow: hidden;
+
+        img {
+            width: 100%;
+
+            @include breakpoint(520px) {
+                height: 180px;
+                width: auto;
+            }
+        }
+    }
+
+    .container {
+        position: relative;
+
+        .wrapper {
+            position: absolute;
+            bottom: 0;
+        }
+    }
+
+    .breadcrumb-wrapper {
+
+        .breadcrumb {
+            background-color: transparent;
+            padding: 0;
+            margin-bottom: 0;
+
+            a {
+                color: $base-color2;
+            }
+
+            .breadcrumb-item:before {
+                color: $base-color2;
+            }
+
+            .active {
+                color: $base-color2;
+                font-family: $font-900;
+            }
+
+            @include breakpoint(768px) {
+                font-size: 0.75rem;
+            }
+        }
+    }
+
+    .fleet-type {
+        color: $base-color2;
+
+        .title {
+            font-size: 3rem;
+            font-family: $font-100;
+            position: relative;
+
+            strong {
+                font-weight: normal;
+                font-family: $font-700;
+            }
+
+            &:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 5rem;
+                height: 0.125rem;
+                background-color: $base-color2;
+            }
+        }
+
+        .description {
+            padding-top: 2rem;
+            padding-bottom: 3.5rem;
+            p {
+                margin: 0;
+            }
+            
+            strong {
+                font-family: $font-900;
+            }
+        }
+
+        @include breakpoint(768px) {
+            .title {
+                font-size: 2rem;
+            }
+
+            .description {
+                font-size: 0.75rem;
+                padding-top: 1rem;
+                padding-bottom: 2rem;
+            }
+        }
+    }
+}

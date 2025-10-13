@@ -1,0 +1,74 @@
+extends partials/_layout
+
+block append content
+    .self-drive-page.bottom-background
+        .page-nav.account-page-nav
+            .container
+                .wrapper
+                    .breadcrumb-wrapper
+                        .page-breadcrumb
+                            ol.breadcrumb
+                                li.breadcrumb-item
+                                    a(href='#') Home
+                                li.breadcrumb-item
+                                    a(href='#') My Account (Administrator)
+                                li.breadcrumb-item.active Self Drive Qualification
+        .page-content.account-page-content
+            .container
+                .page-wrapper
+                    h1.account-page-title Self Drive Qualification
+                    .row
+                        .col-lg-9
+                            h3.account-sub-title.color-dark.font-700 Add #[span.color-base Self Drive Qualification] for Owner and Charterer Membership
+                            form(action="")
+                                .row
+                                    .form-group.col-lg-12.has-file
+                                        label.form-label Charter Contract
+                                            span.required *
+                                        .file-wrapper
+                                            input.form-input.form-item(type="file")
+                                    .form-group
+                                        p.explain
+                                            a.color-highlight.font-700(href="")
+                                                i(class="fa fa-download" aria-hidden="true")
+                                                |&nbsp;Download conditions of charter
+                                    .form-group.col-lg-12.has-file
+                                        label.form-label PPCDL No
+                                        .file-wrapper
+                                            input.form-input.form-item(type="file")
+                                    .form-group.col-lg-12
+                                        label.form-label Next of Kin
+                                            span.required *
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label Next of Kin Contact
+                                            span.required *
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.form-label
+                                            | Selfi Drive:&nbsp;
+                                            span.color-highlight 1
+                                    .form-group.col-lg-12
+                                        label.form-label Activity Preference 
+                                        input.form-input.form-item
+                                    .form-group.col-lg-12
+                                        label.color-dark
+                                            input(type="checkbox")
+                                            | &nbsp;&nbsp; I have agreed Terms & Conditions of Owner and Charterer
+                                    .form-group.col-lg-12
+                                        button.button.button-highlight SUBMIT
+                                        a.button.button-dark(href="#") BACK
+                        .col-lg-3
+                            .instructions
+                                p.instruction-title.font-700 Instructions:
+                                .step
+                                    | #[span.font-700 Step 1:] To charter a boat, please download the “Conditions of Charter”, sign it, scan it, and upload it back into the system.
+                                .step
+                                    | #[span.font-700 Step 2:] For PPCDL holders who want to self drive, please upload a photocopy of your PPCDL. Note that this field is not mandatory and is only required for PPCDL holders who want to self drive.
+                                .step
+                                    | #[span.font-700 Step 3:] Please enter your next kin details.
+                                .step
+                                    | #[span.font-700 Step 4:] If you have been referred to our site by someone, please include the referrer ID in there.
+                                .step
+                                    | #[span.font-700 Step 5:] DONE! Just submit the record and we weill process within 24 hours.
+                                .note.font-700 Note: Please note that this is a one time exercise when you upgrade your account.

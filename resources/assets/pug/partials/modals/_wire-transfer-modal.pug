@@ -1,0 +1,12 @@
+#wireTransferModal.wire-transfer-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='', aria-hidden='true')
+    .modal-dialog(role='document')
+        .modal-content
+            .modal-body
+                button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                    span(aria-hidden="true") &times;
+                .wire-transfer-box
+                    form(action="")
+                        p.title Wire Transfer
+                        form#wire-transfer-form
+                          input(placeholder="Please enter your email address", name="email")
+                          button.button.button-highlight(data-dismiss="modal" aria-label="Close") OKAY

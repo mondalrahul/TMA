@@ -1,0 +1,370 @@
+<?php
+namespace App\Http\Models\Logics;
+
+use App\Http\Models\Entities\BoatCharterBook;
+use App\Http\Models\Entities\BoatTblBookTiming;
+use App\Http\Traits\LogicDbTrait;
+use Carbon\Carbon;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
+class BoatCharterLogic
+{
+    use LogicDbTrait;
+    const PAYMENT_TYPE_PAYPAL = 'Paypal';
+    const PAYMENT_TYPE_BANK_TRANSFER = 'Bank Account Transfer';
+
+    /**
+     * Get list of charter based on condition
+     * @param integer $boatId
+     * @param string $fromDate
+     * @param string $toDate
+     * @param string $status
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     */
+    public function getCharterList($boatId = null, $fromDate = null, $toDate = null, $status = null)
+    {
+        $query = DB::table('boat_charter_book')
+            ->select(
+                DB::raw('distinct(boat_charter_book.book_id)'),
+                'boat_charter_book.boat_id',
+                'boat_charter_book.total_price',
+                'boat_charter_book.add_date',
+                'boat_charter_book.status',
+                'boat_tbl_book_timing.time_from',
+                'boat_tbl_book_timing.time_to',
+                'boat_tbl_book_timing.date_book',
+                'boat_tbl_book_timing.add_date',
+                'user_address',
+                'user_country',
+                'rate',
+                'boat_name',
+                'boat_comment.comment',
+                'boat_comment.rate'
+            )
+            ->join('boat_tbl_book_timing', 'boat_charter_book.book_id', '=', 'boat_tbl_book_timing.booked_id')
+            ->leftJoin('boat_user', 'boat_user.user_id', '=', 'boat_charter_book.user_id')
+            ->leftJoin('boat_comment', function($join) {
+                $join->on('boat_comment.comment_from', '=', DB::raw(Auth::id()));
+                $join->on('boat_comment.invoice', '=', 'boat_charter_book.book_id');
+                $join->on('boat_comment.boat_id', '=', 'boat_charter_book.boat_id');
+            })
+            ->leftJoin('boat_tbl_boat', 'boat_tbl_boat.boat_id', '=', 'boat_charter_book.boat_id')
+            ->groupBy('book_id');
+
+        if (!empty($boatId)) {
+            $query = $query->where('boat_charter_book.boat_id', '=', $boatId);
+        }
+
+        if (!empty($fromDate) && !empty($toDate)) {
+            try {
+                $fromDate = Carbon::createFromFormat('m/d/Y', $fromDate);
+                $toDate = Carbon::createFromFormat('m/d/Y', $toDate);
+                $query = $query->whereBetween('date_book', [$fromDate, $toDate]);
+            } catch (\Exception $e) {};
+        }
+
+        if (!empty($status)) {
+            $query = $query->where('boat_charter_book.status', '=', $status);
+        }
+
+        $query = $query->where('boat_charter_book.user_id', Auth::id())
+            ->orderBy('boat_charter_book.book_id', 'desc');
+        return $query->paginate(25);
+    }
+
+    /**
+     * Get pending/completed status
+     * @return \Illuminate\Support\Collection
+     */
+    public function getCharterListStatus()
+    {
+        $query = DB::table('boat_charter_book')
+            ->select(
+                'boat_charter_book.status'
+            )
+            ->join('boat_tbl_book_timing', 'boat_charter_book.book_id', '=', 'boat_tbl_book_timing.booked_id')
+            ->leftJoin('boat_user', 'boat_user.user_id', '=', 'boat_charter_book.user_id')
+            ->leftJoin('boat_comment', function($join) {
+                $join->on('comment_from', '=', DB::raw(Auth::id()));
+                $join->on('invoice', '=', 'boat_charter_book.book_id');
+                $join->on('boat_comment.boat_id', '=', 'boat_charter_book.boat_id');
+            })
+            ->leftJoin('boat_tbl_boat', 'boat_tbl_boat.boat_id', '=', 'boat_charter_book.boat_id')
+            ->groupBy('book_id');
+
+        $query = $query->where('boat_charter_book.user_id', Auth::id())
+            ->orderBy('boat_charter_book.book_id', 'desc');
+        $result = $query->get();
+        $status = [
+            0 => $result->sum(function ($row) {
+                if ($row->status === 0) return 1;
+                return 0;
+            }),
+            1 => $result->sum(function ($row) {
+                if ($row->status === 1) return 1;
+                return 0;
+            }),
+            2 => $result->sum(function ($row) {
+                if ($row->status !== 0 && $row->status !== 1) return 1;
+                return 0;
+            }),
+        ];
+
+        return $status;
+    }
+
+    /**
+     * Insert/update booking boat
+     *
+     * @param array $values
+     * @return
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function updateCharterBoat($values)
+    {
+        return $this->writeDb(function($manager, $conn) use ($values) {
+            $defaultData = [
+                'total_price'       => 0,
+                'boat_id'           => 0,
+                'last_booked'       => 0,
+                'user_id'           => 0,
+                'add_date'          => null,
+                'status'            => 1,
+                'is_skiper'         => 0,
+                'is_coupon'         => 0,
+                'timing_price'      => 0,
+                'comment'           => '',
+                'excess_deposit'    => 0.0,
+                'contract'          => '',
+                'referrer_discount' => 0,
+                'user_manager'      => '',
+                'payment_type'      => '',
+                'ifskipper'         => 1,
+                'user_extrainfo'    => '',
+                'ratingyes'         => 0
+            ];
+            $defaultData = array_merge($defaultData, $values);
+            return $this->insertOnDuplicate(BoatCharterBook::class, $defaultData);
+        });
+    }
+
+    /**
+     * Insert/update booking boat
+     *
+     * @param array $values
+     * @return
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function updateBookTiming($values)
+    {
+        $defaultData = [
+            'time_id'   => 0,
+            'boat_id'   => 0,
+            'time_from' => 0,
+            'time_to'   => 0,
+            'date_book' => date('Y-m-d'),
+            'add_date'  => date('Y-m-d'),
+            'user_id'   => 0,
+            'price'     => 0,
+            'type'      => 0,
+            'booktime'  => '',
+            'booked_id' => 0
+        ];
+        $defaultData = array_merge($defaultData, $values);
+        if (is_object($defaultData['date_book'])) {
+            $defaultData['date_book'] = $defaultData['date_book']->format('Y-m-d');
+            $defaultData['add_date'] = $defaultData['add_date']->format('Y-m-d');
+        }
+        return $this->writeDb(function($manager, $conn) use ($defaultData) {
+            return $this->insertOnDuplicate(BoatTblBookTiming::class, $defaultData);
+        });
+    }
+
+    /**
+     * Insert data to book timing
+     *
+     * @param array $values
+     * @return int
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function insertBookTiming($values)
+    {
+        return $this->writeDb(function($manager, $conn) use ($values) {
+            $defaultData = [
+                'time_id'   => 0,
+                'boat_id'   => 0,
+                'time_from' => 0,
+                'time_to'   => 0,
+                'date_book' => new \DateTime(date('Y-m-d')),
+                'add_date'  => new \DateTime(date('Y-m-d')),
+                'user_id'   => 0,
+                'price'     => 0,
+                'type'      => 0,
+                'booktime'  => '',
+                'booked_id' => 0
+            ];
+            $defaultData = array_merge($defaultData, $values);
+            $boatBookTiming = new BoatTblBookTiming();
+            $boatBookTiming->setTimeId($defaultData['time_id']);
+            $boatBookTiming->setBoatId($defaultData['boat_id']);
+            $boatBookTiming->setTimeFrom($defaultData['time_from']);
+            $boatBookTiming->setTimeTo($defaultData['time_to']);
+            $boatBookTiming->setDateBook($defaultData['date_book']);
+            $boatBookTiming->setAddDate($defaultData['add_date']);
+            $boatBookTiming->setUserId($defaultData['user_id']);
+            $boatBookTiming->setPrice($defaultData['price']);
+            $boatBookTiming->setType($defaultData['type']);
+            $boatBookTiming->setBookTime($defaultData['booktime']);
+            $boatBookTiming->setBookedId($defaultData['booked_id']);
+            $manager->persist($boatBookTiming);
+            $manager->flush();
+
+            return $boatBookTiming->getId();
+        });
+    }
+
+    /**
+     * Get boat for calendar
+     * @param array $boatIds list of boat id
+     * @return \Illuminate\Support\Collection
+     */
+    public function getCalendarCharter(array $boatIds)
+    {
+        // SELECT * FROM boat_charter_book JOIN boat_tbl_book_timing ON boat_tbl_book_timing.booked_id = boat_charter_book.book_id;
+        $sql = DB::table('boat_charter_book')
+            ->select(
+                'boat_tbl_book_timing.booked_id',
+                'boat_tbl_boat.boat_name',
+                'boat_tbl_book_timing.date_book',
+                'boat_tbl_book_timing.time_from',
+                'boat_tbl_book_timing.time_to'
+            )
+            ->join('boat_tbl_book_timing', 'boat_tbl_book_timing.booked_id', '=', 'boat_charter_book.book_id')
+            ->leftJoin('boat_tbl_boat', 'boat_tbl_boat.boat_id', '=', 'boat_charter_book.boat_id')
+            ->whereIn('boat_charter_book.boat_id', $boatIds);
+
+        return $sql->get();
+    }
+
+    /**
+     * Insert data to boat charter
+     *
+     * @param array $values
+     * @return int
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function insertBoatCharter($values)
+    {
+        return $this->writeDb(function($manager, $conn) use ($values) {
+            $defaultData = [
+                'total_price'       => 0,
+                'boat_id'           => 0,
+                'last_booked'       => 0,
+                'user_id'           => 0,
+                'add_date'          => date('Y-m-d'),
+                'status'            => 1,
+                'is_skiper'         => 0,
+                'is_coupon'         => 0.00,
+                'timing_price'      => 0.00,
+                'comment'           => '',
+                'excess_deposit'    => 0.00,
+                'contract'          => '',
+                'referrer_discount' => 0.00,
+                'user_manager'      => '',
+                'payment_type'      => self::PAYMENT_TYPE_PAYPAL,
+                'ifskipper'         => 0,
+                'user_extrainfo'    => '',
+                'ratingyes'         => 0,
+                'seasport_brochure' => '',
+            ];
+            $defaultData = array_merge($defaultData, $values);
+            $boatCharter = new BoatCharterBook();
+            $boatCharter->setTotalPrice($defaultData['total_price']);
+            $boatCharter->setBoatId($defaultData['boat_id']);
+            $boatCharter->setLastBooked($defaultData['last_booked']);
+            $boatCharter->setUserId($defaultData['user_id']);
+            $boatCharter->setAddDate($defaultData['add_date']);
+            $boatCharter->setStatus($defaultData['status']);
+            $boatCharter->setIsSkiper($defaultData['is_skiper']);
+            $boatCharter->setIsCoupon($defaultData['is_coupon']);
+            $boatCharter->setTimingPrice($defaultData['timing_price']);
+            $boatCharter->setComment($defaultData['comment']);
+            $boatCharter->setExcessDeposit($defaultData['excess_deposit']);
+            $boatCharter->setContract($defaultData['contract']);
+            $boatCharter->setReferrerDiscount($defaultData['referrer_discount']);
+            $boatCharter->setUserManager($defaultData['user_manager']);
+            $boatCharter->setPaymentType($defaultData['payment_type']);
+            $boatCharter->setIfskipper($defaultData['ifskipper']);
+            $boatCharter->setUserExtrainfo($defaultData['user_extrainfo']);
+            $boatCharter->setRatingyes($defaultData['ratingyes']);
+            $boatCharter->setSeasportBrochure($defaultData['seasport_brochure']);
+            $manager->persist($boatCharter);
+            $manager->flush();
+
+            return $boatCharter->getBookId();
+        });
+    }
+
+    /**
+     * Get charter booked time_id for current logging user
+     *
+     * @param int $userId
+     * @param int $boatId
+     * @param date $addDate
+     * @return array
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function getCharterBookedForUser($userId, $boatId, $addDate)
+    {
+        return $this->readDb(function($manager, $conn) use($userId, $boatId, $addDate){
+            $query = $manager->createQueryBuilder();
+            $query->select('btt')
+                ->from('App\Http\Models\Entities\BoatTblBookTiming', 'btt', 'btt.timeId')
+                ->where($query->expr()->eq('btt.boatId', ':boatId'))
+                ->andWhere($query->expr()->eq('btt.userId', ':userId'))
+                ->andWhere($query->expr()->eq('btt.dateBook', ':addDate'))
+                ->setParameters(['boatId' => $boatId, 'userId' => $userId, 'addDate' => $addDate]);
+            return $query->getQuery()->getArrayResult();
+        });
+    }
+	/**
+     * Get charter booked time_id for current logging user
+     *
+     * @param int $userId
+     * @param int $boatId
+     * @param date $addDate
+     * @return array
+     * @author vduong daiduongptit090@gmail.com
+     */
+    public function getCharterBookedForBoat(  $boatId, $addDate)
+    {
+        return $this->readDb(function($manager, $conn) use(  $boatId, $addDate){
+            $query = $manager->createQueryBuilder();
+            $query->select('btt')
+                ->from('App\Http\Models\Entities\BoatTblBookTiming', 'btt', 'btt.timeId')
+                ->where($query->expr()->eq('btt.boatId', ':boatId')) 
+                ->andWhere($query->expr()->eq('btt.dateBook', ':addDate'))
+                ->setParameters(['boatId' => $boatId,   'addDate' => $addDate]);
+            return $query->getQuery()->getArrayResult();
+        });
+    }
+	 /**
+     * Get charter booked  id for current logging user
+     *
+     * @param int $userId
+     * @param int $boatId 
+     * @return array 
+     */
+	public function getCharterBookedByUser($userId, $boatId )
+    {
+       $sql =  DB::table('boat_charter_book')->where([['user_id',$userId],['boat_id', $boatId]])->orderBy('book_id', 'desc')->first();
+	   if(count($sql) > 0){
+	   return $sql ->book_id;
+	   }else{
+	   	return '';
+	   }
+     
+    }
+}

@@ -1,0 +1,118 @@
+.hidden {
+    display: none;
+}
+
+.trident-fleet-nav .wrapper .trident-fleet-filters>div:not(:last-child) {
+    margin-right: 1rem;
+}
+
+.font-museo {
+    font-family: "Museo Sans 700";
+}
+
+.font-size-08-rem {
+    font-size: 0.8rem;
+}
+
+.font-title-modal {
+    font-size: 1.125rem;
+    font-family: "Museo Sans 700";
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.small-thumbnail {
+    max-width: 100px;
+    height: auto;
+}
+
+.product-thumbnail {
+    max-width: 100px;
+    height: auto;
+}
+
+.img-responsive {
+    max-width: 100%;
+}
+
+.sea-sports-blue {
+    color: #00cccd;
+}
+
+.fc-day-grid-event .fc-content {
+    white-space: normal;
+}
+
+.paypal-confirm-modal {
+    overflow-y: scroll;
+}
+
+.comments .comments-header {
+    color: #fff;
+    background-color: #00cccd;
+    padding: 0.25rem 1rem;
+    font-family: "Museo Sans 700";
+    font-size: 1.25rem;
+    border-bottom: 2px solid #eaeaea;
+}
+
+.comments .comment {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.comments .comment-form {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+.demo-table ul {
+    margin: 0;
+    padding: 0;
+}
+
+.demo-table li {
+    cursor: pointer;
+    list-style-type: none;
+    display: inline-block;
+    background-image: url(../images/product-detail/anchor/0.png);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    font-size: 0;
+}
+
+.demo-table .highlight,
+.demo-table .selected {
+    background-image: url(../images/product-detail/anchor/1.png);
+}
+.desktop_hide{display: none;}
+.responsive_hide{display: inline-block;}
+@media only screen and (max-width: 990px) {
+    main#page {
+        padding-top: 88px;
+    }
+    .desktop_hide{display: inline-block;}
+    .responsive_hide{display: none;}
+}
+@media only screen and (min-width: 770px) and (max-width: 992px) {
+  header:not(.mini) .header-wrapper .control-buttons-wrapper .control-buttons{height:4rem;}
+}
+
+@media only screen and (max-width: 578px) {
+    main#page {
+        padding-top: 122px;
+    }
+    .welocmetext{display: none;}
+    .trident-fleet-filters{overflow-x: auto;}
+   
+}
+
+.footer-copyright .payment-methods li {
+    margin-right: 6px;
+}
+#register_btn{cursor: pointer;}
+.dropdown{z-index: 999;} 
+.login-region{min-height: 28px;z-index: 99;}

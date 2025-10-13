@@ -1,0 +1,1037 @@
+{{-- {{dd($data['curBoatDetail']->boat_details)}} --}}
+@extends('index')
+@section('content')
+{{-- {{dd($data)}} --}}
+@php
+$membership_id = 0;
+$membership_price = 0;
+Session::put('testProducts', 'yes');
+@endphp
+<?php $incident_count = $canbook = 0;
+$incidenthapp = $bookingcount = []; ?>
+<div class="product-detail-wrapper">
+    @if (\Illuminate\Support\Facades\Session::has('message_checkout'))
+    <input type="hidden" name="message_checkout" value="{{ \Illuminate\Support\Facades\Session::get('message_checkout') }}">
+    @endif
+    <div class="product-detail-navigation">
+        <div class="container">
+            <div class="wrapper">
+                <div class="page-navigation">
+                    <div class="breadcrumb-wrapper">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/trident-fleet/{{ $data['curBoatDetail']->categoryName }}">{{ $data['curBoatDetail']->categoryName }}</a>
+                            </li>
+                            <li class="breadcrumb-item active">{{ strtoupper($data['curBoatDetail']->boat_name) }}</li>
+                        </ol>
+                    </div>
+                    <div class="change-product">
+                        @if ($data['beforeBoatId'])
+                        <a href="/boat-detail/{{ $data['beforeBoatId'] }}">
+                            < Previous Product</a>
+                                @else
+                                @endif @if ($data['afterBoatId'])
+                                <a href="/boat-detail/{{ $data['afterBoatId'] }}"> Next Product ></a>
+                                @else
+                                @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (\Illuminate\Support\Facades\Auth::check())
+    <?php
+
+    $user = \Illuminate\Support\Facades\Auth::user();
+    $bookingcount = DB::table('boat_charter_book')
+        ->where([['user_id', '=', $user->user_id], ['status', '=', '1']])
+        ->orderBy('book_id', 'desc')
+        ->limit($data['curBoatDetail']->prev_charter)
+        ->get();
+
+    /*echo '<pre>'.  print_r($bookingcount, true).'</pre>';*/
+    foreach ($bookingcount as $booking_details) {
+        $book_id = $booking_details->book_id;
+
+        $incidenthapp = DB::table('boat_incident')
+            ->where([['user_id', '=', $user->user_id], ['order_id', '=', $book_id], ['charter_fault', '=', 'Yes']])
+            ->get();
+
+        $incident_count += count($incidenthapp);
+    }
+
+    $canbook = count($bookingcount) - $incident_count;
+    ?>
+    @endif
+
+    @if (Session::get('request-sent'))
+    <div class="container">
+        <p class="p-3 alert alert-success">Your request to top-up your credit has been forwarded to the
+            administrator.</p>
+
+    </div>
+    @php Session::forget('request-sent'); @endphp
+    @endif
+    <div class="product-detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <div class="product-left">
+                        <div class="product-gallery-wrapper-outner">
+                            <div class="product-gallery-wrapper">
+                                <div class="product-gallery-slider">
+                                    @if (!empty($data['curBoatDetail']->main_photo))
+                                    <div class="product-gallery-item">
+                                        <div class="content">
+                                            <img src="{{ 'https://staging.theboatshopasia.com/product/' . $data['curBoatDetail']->main_photo }}" data-thumb="{{ 'https://www.theboatshopasia.com/product/'  . $data['curBoatDetail']->main_photo }}">
+                                        </div>
+                                    </div>
+                                    @endif
+                                    @if (!empty($data['curBoatDetail']->photo1))
+                                    <div class="product-gallery-item">
+                                        <div class="content">
+                                            <img src="{{ 'https://staging.theboatshopasia.com/product/' . $data['curBoatDetail']->photo1 }}" data-thumb="{{ 'https://www.theboatshopasia.com/product/'  . $data['curBoatDetail']->photo1 }}">
+                                        </div>
+                                    </div>
+                                    @endif
+                                    @if (!empty($data['curBoatDetail']->photo2))
+                                    <div class="product-gallery-item">
+                                        <div class="content">
+                                            <img src="{{ 'https://staging.theboatshopasia.com/product/' . $data['curBoatDetail']->photo2 }}" data-thumb="{{ 'https://www.theboatshopasia.com/product/' . $data['curBoatDetail']->photo2 }}">
+                                        </div>
+                                    </div>
+                                    @endif
+                                    @if (!empty($data['curBoatDetail']->photo3))
+                                    <div class="product-gallery-item">
+                                        <div class="content">
+                                            <img src="{{ 'https://staging.theboatshopasia.com/product/' . $data['curBoatDetail']->photo3 }}
+" data-thumb="{{ 'https://staging.theboatshopasia.com/product/' . $data['curBoatDetail']->photo3 }}">
+                                        </div>
+                                    </div>
+                                    @endif
+                                    @if (!empty($data['curBoatDetail']->photo4))
+                                    <div class="product-gallery-item">
+                                        <div class="content">
+                                            <img src="{{ 'https://staging.theboatshopasia.com/product/' . $data['curBoatDetail']->photo4 }}" data-thumb="{{ 'https://www.theboatshopasia.com/product/' . $data['curBoatDetail']->photo4 }}">
+                                        </div>
+                                    </div>
+                                    @endif
+                                    @if (!empty($data['curBoatDetail']->photo5))
+                                    <div class="product-gallery-item">
+                                        <div class="content">
+                                            <img src="{{ 'https://staging.theboatshopasia.com/product/' . $data['curBoatDetail']->photo5 }}" data-thumb="{{ 'https://www.theboatshopasia.com/product/' . $data['curBoatDetail']->photo5 }}">
+                                        </div>
+                                    </div>
+                                    @endif
+                                    @if (empty($data['curBoatDetail']->photo1) &&
+                                    empty($data['curBoatDetail']->photo2) &&
+                                    empty($data['curBoatDetail']->photo3) &&
+                                    empty($data['curBoatDetail']->photo4) &&
+                                    empty($data['curBoatDetail']->photo5))
+                                    <div class="product-gallery-item">
+                                        <div class="content">
+                                        </div>
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="product-title"><span class="font-700">{{ strtoupper($data['curBoatDetail']->boat_name) }}</span></div>
+                        </div>
+
+                        @if (!empty($data['avgRating']))
+                        <div class="rating-section"><span>Ratings:</span>
+                            <div class="rating">
+                                {!! \App\Http\Utils\RatingHelper::generateRatingStar($data['avgRating']) !!}
+                            </div>
+                            <!-- <span class="number-of-ratings">(22 ratings)</span> -->
+                        </div>
+                        @endif
+
+                        <div class="description-section">
+                            {{-- {{ strip_tags(\App\Http\Utils\StringDatabase::executeStringToHtml($data['curBoatDetail']->boat_details)) }} --}}
+                            {!! preg_replace('/\\\\"/', '"', html_entity_decode($data['curBoatDetail']->boat_details)) !!}
+                        </div>
+                        <div class="detail-section">
+                            <div class="more">More About {{ strtoupper($data['curBoatDetail']->boat_name) }}:</div>
+
+                            <div class="detail-wrapper">
+                                <div class="row">
+                                    <div class="rate col-md-4">
+                                        <p class="title">Rate From:</p>
+                                        <input type="hidden" name="boat-rate-from" value="{{ $data['curBoatDetail']->boatPrice }}">
+                                        <p class="price">
+                                            {{ $data['curBoatDetail']->currency }}
+                                            {{ \App\Http\Utils\StringDatabase::executeNiceNumber($data['curBoatDetail']->boatPrice) }}
+                                        </p>
+                                        @if ($data['curBoatDetail']->boat_pax > 0)
+                                        <p><strong>
+                                                For up to {{ $data['curBoatDetail']->boat_pax }} Pax <br>
+                                                Additional Pax: {{ $data['curBoatDetail']->currency }}
+                                                {{ $data['curBoatDetail']->price_per_pax }}</strong></p>
+                                        @endif
+                                    </div>
+                                    <div class="detail col-md-8">
+                                        <p class="title">Yacht Details</p>
+                                        <div class="row">
+                                            <div class="col-lg-6 spec">Boat Type: <span class="highlight">{{ $data['curBoatDetail']->categoryName }}</span>
+                                            </div>
+                                            <div class="col-lg-6 spec">Berthed:
+                                                <span>{{ $data['curBoatDetail']->marinas_name }}</span>
+                                            </div>
+                                            <div class="col-lg-6 spec">Length:
+                                                <span>{{ $data['curBoatDetail']->length }} ft</span>
+                                            </div>
+                                            <div class="col-lg-6 spec">Year Build:
+                                                <span>{{ $data['curBoatDetail']->year_create }}</span>
+                                            </div>
+
+                                            <div class="col-lg-6 spec">Beam: <span>{{ $data['curBoatDetail']->beam }}
+                                                    ft</span></div>
+                                            <div class="col-lg-6 spec">Self Drive Available: <span>
+                                                    @if ($data['curBoatDetail']->self_drive == '1')
+                                                    Yes
+                                                    @else
+                                                    No
+                                                    @endif
+                                                </span></div>
+                                            <div class="col-lg-6 spec">GPS: <span>
+                                                    @if ($data['curBoatDetail']->gps)
+                                                    Yes
+                                                    @else
+                                                    No
+                                                    @endif
+                                                </span></div>
+                                            <div class="col-lg-6 spec">Max. Guests:
+                                                <span>{{ $data['curBoatDetail']->pax }}</span>
+                                            </div>
+                                            <div class="col-lg-6 spec">Fishfinder: <span>
+                                                    @if ($data['curBoatDetail']->fishfinder)
+                                                    Yes
+                                                    @else
+                                                    No
+                                                    @endif
+                                                </span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="facilities-wrapper">
+                            <div class="facility-title">Available Facilities in Yacht:</div>
+                            <div class="facilities">
+                                <div class="row">
+                                    @if ($data['curBoatDetail']->air_conditioning)
+                                    <div class="col-lg-4 facility">
+                                        <div class="air-condition">Air conditioning</div>
+                                    </div>
+                                    @endif
+                                    @if ($data['curBoatDetail']->kayak)
+                                    <div class="col-lg-4 facility">
+                                        <div class="kayak">Kayak</div>
+                                    </div>
+                                    @endif
+                                    @if ($data['curBoatDetail']->wifi)
+                                    <div class="col-lg-4 facility">
+                                        <div class="wifi">Wi-fi</div>
+                                    </div>
+                                    @endif
+                                    @if ($data['curBoatDetail']->shower)
+                                    <div class="col-lg-4 facility">
+                                        <div class="shower">Shower</div>
+                                    </div>
+                                    @endif
+                                    @if ($data['curBoatDetail']->standup_paddle)
+                                    <div class="col-lg-4 facility">
+                                        <div class="standup-paddle">Standup Paddle</div>
+                                    </div>
+                                    @endif
+                                    @if ($data['curBoatDetail']->microwave)
+                                    <div class="col-lg-4 facility">
+                                        <div class="microwave">Microwave / oven</div>
+                                    </div>
+                                    @endif
+                                    @if ($data['curBoatDetail']->toilet)
+                                    <div class="col-lg-4 facility">
+                                        <div class="toilet">Toilet</div>
+                                    </div>
+                                    @endif
+                                    @if ($data['curBoatDetail']->bbq_pit)
+                                    <div class="col-lg-4 facility">
+                                        <div class="bbq">BBQ pit</div>
+                                    </div>
+                                    @endif
+                                    @if ($data['curBoatDetail']->jacuzzi)
+                                    <div class="col-lg-4 facility">
+                                        <div class="jacuzzi">Jacuzzi</div>
+                                    </div>
+                                    @endif
+                                    @if ($data['curBoatDetail']->jet_skis)
+                                    <div class="col-lg-4 facility">
+                                        <div class="jet-skis">Jet skis</div>
+                                    </div>
+                                    @endif
+                                    @if ($data['curBoatDetail']->tender)
+                                    <div class="col-lg-4 facility">
+                                        <div class="tender">Tender</div>
+                                    </div>
+                                    @endif
+                                    @if ($data['curBoatDetail']->water_donut)
+                                    <div class="col-lg-4 facility">
+                                        <div class="water-donut">Water donut (floats)</div>
+                                    </div>
+                                    @endif
+                                    @if ($data['curBoatDetail']->karaoke)
+                                    <div class="col-lg-4 facility">
+                                        <div class="karaoke">Karaoke</div>
+                                    </div>
+                                    @endif
+                                    @if ($data['curBoatDetail']->chiller)
+                                    <div class="col-lg-4 facility">
+                                        <div class="refrigerator">Chiller / refridgerator</div>
+                                    </div>
+                                    @endif
+                                    @if ($data['curBoatDetail']->sound_system)
+                                    <div class="col-lg-4 facility">
+                                        <div class="sound-system">Sound system</div>
+                                    </div>
+                                    @endif
+                                    @if ($data['curBoatDetail']->cooler_boxes)
+                                    <div class="col-lg-4 facility">
+                                        <div class="cooler-boxes">Cooler boxes</div>
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="action-links"><a class="share-link" href=""><i class="fa fa-share-alt" aria-hidden="true"></i>Share</a><!-- <a class="add-link" href=""><i class="fa fa-plus" aria-hidden="true"></i>ADD WATER SPORTS</a>--></div> --}}
+                        <!-- <div class="action-btns"><a class="book-btn" href="#">BOOK NOW</a><a class="back-btn" href="#">BACK TO PREVIOUS</a></div>-->
+                        <div class="comments">
+
+                            <div class="comment-form">
+                                @if (Auth::check())
+
+                                @if ($data['invoice'])
+                                @if (!$data['alreadyComment'])
+                                <form name="commentform" action="/submit-review" method="post" id="request">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="country" id="country" value="{{ $data['curBoatDetail']->country }}">
+                                    <input type="hidden" name="boat_id" value="{{ $data['curBoatDetail']->boat_id }}">
+                                    <input type="hidden" name="comment_from" value="{{ Auth::id() }}">
+                                    <input type="hidden" name="parent" id="parentcommentid" value="0">
+                                    <div class="form-group">
+                                        <label>Booking ID:</label>
+                                        <input type="text" class="form-control validate[required]" value="{{ $data['invoice'] }}" name="invoice" placeholder="BOOKING ID" readonly />
+                                    </div>
+                                    <input type="hidden" value="Rate For {{ $data['curBoatDetail']->boat_name }}" name="comment_title" placeholder="TITLE" />
+                                    <div class="form-group demo-table">
+                                        <div id="tutorial-1">
+                                            <input type="hidden" name="rate" id="rating" value="5" />
+                                            <ul onMouseOut="resetRating(1);">
+                                                <li class='selected' onmouseover="highlightStar(this,1);" onmouseout="removeHighlight(1);" onClick="addRating(this,1);">&#9733;</li>
+                                                <li class='selected' onmouseover="highlightStar(this,1);" onmouseout="removeHighlight(1);" onClick="addRating(this,1);">&#9733;</li>
+                                                <li class='selected' onmouseover="highlightStar(this,1);" onmouseout="removeHighlight(1);" onClick="addRating(this,1);">&#9733;</li>
+                                                <li class='selected' onmouseover="highlightStar(this,1);" onmouseout="removeHighlight(1);" onClick="addRating(this,1);">&#9733;</li>
+                                                <li class='selected' onmouseover="highlightStar(this,1);" onmouseout="removeHighlight(1);" onClick="addRating(this,1);">&#9733;</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Comment</label>
+                                        <textarea style="height:200px;" class=" form-control  validate[required]" placeholder="COMMENT" name="comment" required></textarea>
+                                    </div>
+                                    <button type="submit" name="submit_butt" class="btn button-highlight btn-block btn-lg">SUBMIT</button>
+                                </form>
+                                @endif
+                                @else
+                                <button class="button button-highlight">BOOK THIS BOAT TO SUBMIT YOUR
+                                    REVIEWS.</button>
+                                @endif
+                                @else
+                                <button class="button button-highlight">LOG IN AND BOOK THIS BOAT TO SUBMIT YOUR
+                                    REVIEWS.</button>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="comments">
+                            @if (!empty($data['comments']))
+                            <div class="comments-header">
+                                @if (count($data['comments']) < 2) {{ count($data['comments']) }} COMMENT @else {{ count($data['comments']) }} COMMENTS @endif </div>
+                                    @foreach ($data['comments'] as $comment)
+                                    <div class="comment">
+                                        <div class="row">
+                                            <div class="col-lg-8">
+                                                <span class="comment-author"><strong>{{ $comment->name }}</strong>
+                                                </span>
+                                                <span class="comment-time"> on
+                                                    <strong>{{ \Carbon\Carbon::parse($comment->add_date)->format('d, M Y') }}</strong></span>
+                                            </div>
+                                            <div class="col-lg-4 text-right">
+                                                <span class="comment-rating">{!! \App\Http\Utils\RatingHelper::generateRatingStar($comment->rate) !!}</span>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <span class="comment-content">{{ $comment->comment }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                    @else
+                                    <div class="comments-header">
+                                        0 COMMENT
+                                    </div>
+                                    @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <?php
+                        /*  $currencyUnit = 'S$';
+                        if ($data['curBoatDetail']['currency'] !== 'SGD') {
+                            $currencyUnit = '$';
+                        }*/
+                        $currencyUnit = $data['curBoatDetail']->currency;
+                        ?>
+                        <div class="product-right">
+                            <form id="form-process-checkout" action="/payment" method="post">
+                                {{ csrf_field() }}
+                                <h3>Book or Get A Quote Now!</h3>
+                                <hr>
+                                @if (\Illuminate\Support\Facades\Auth::check())
+                                <?php
+                                $user = \Illuminate\Support\Facades\Auth::user();
+                                ?>
+                                <p>Member Name: <span class="highlight">{{ $user->name }}</span></p>
+                                @endif
+                                <div id="book-charter-date" class="font-museo"></div>
+                                <input type="hidden" name="boat_id" value="{{ $data['curBoatDetail']->boat_id }}">
+                                <div class="calendar-wrapper">
+                                    <div class="product-detail-calendar"></div>
+                                </div>
+                                <p>Available Charter Time</p>
+                                <input type="hidden" name="book-time-date" id="book-time-date">
+                                <input type="hidden" name="book-time-list" id="book-time-list">
+                                <input type="hidden" name="js-seas-sports-lists" id="js-seas-sports-lists">
+                                <input type="hidden" name="book-boat-name" id="book-boat-name" value="{{ $data['curBoatDetail']->boat_name }}">
+                                <input type="hidden" name="country" id="country" value="{{ $data['curBoatDetail']->country }}">
+
+
+                                <input type="hidden" name="credit_id" id="credit_id">
+                                <input type="hidden" name="discount_price" id="discount_price" value="0">
+                                <input type="hidden" name="membership_id" id="membership_id">
+
+                                <div class="time-filter collection-book-time hidden">
+                                </div>
+                                <p>Skipper Required?
+                                    @if ($data['assignSkipper'])
+                                    <label>
+                                        <input type="radio" name="book-skipper" id="book-skipperyes" value="1" checked>Yes
+                                    </label>
+                                    @else
+                                    <label>
+                                        <input type="radio" onclick="checkadditional()" name="book-skipper" id="book-skipperyes" value="1" checked>Yes
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="book-skipper" onclick="checkadditional()" id="book-skipperno" value="0">No
+                                    </label>
+                                    @endif
+                                </p>
+                                @if (!empty($data['seaSportsFee']))
+                                <p>Charter Add-ons
+                                    <input type="checkbox" name="book-sea-sports-list" class="m-1"><br>
+                                    <a href="{{ asset('read/' . $data['curBoatDetail']->boat_id . 'Seasports_Packages.pdf') }}" target="_blank">View Seasports Brochure</a>
+                                </p>
+                                @if (\Illuminate\Support\Facades\Auth::check())
+                                <?php
+                                if ($data['curBoatDetail']->prev_charter > 0) {
+                                    if ($data['curBoatDetail']->canbook == 1 && $canbook < $data['curBoatDetail']->prev_charter) {
+                                        echo '<p class="text-danger charterexp">*This boat requires ' . $data['curBoatDetail']->prev_charter . ' most recent charter experience (with zero incident) for booking. </p>';
+                                    }
+                                } ?>
+                                @endif
+                                <div id="div-sea-sports-list" class="hidden">
+                                    <p>
+                                        @foreach ($data['seaSportsFee'] as $item)
+                                        <label class="sea-sports-blue font-weight-bold">
+                                            <input type="hidden" name="hidden-lists-sea-sports-{{ $item['id'] }}" value="{{ $item['name'] }}">
+                                            <input type="hidden" name="hidden-lists-sea-sports-ids[]" value="{{ $item['id'] }}">
+                                            <input class="add-ons-checkboxes" type="checkbox" onchange="addRemoveAddOnInput($(this))" data-id="{{ $item['id'] }}" name="lists-sea-sports-{{ $item['id'] }}" value="{{ $item['price'] }}"> {{ $item['name'] }}<span class="m-1">S${{ $item['price'] }}</span>
+                                        </label><br>
+                                        @endforeach
+
+
+                                        {{-- <label class="sea-sports-blue font-weight-bold">
+                                            <input type="checkbox" name="book-sea-sports-thrill"> Thrill Pack (Banana Boat + Tube) <span class="m-1">{{$currencyUnit . $data['seaSportsFee']['book_thrill']}}</span>
+                                        </label><br>
+                                        <label class="sea-sports-blue font-weight-bold">
+                                            <input type="checkbox" name="book-sea-sports-chill"> Chill Pack ( Watermat + Lounger + Floats) <span class="m-1">{{$currencyUnit . $data['seaSportsFee']['book_chill']}}</span>
+                                        </label><br>
+                                        <label class="sea-sports-blue font-weight-bold">
+                                            <input type="checkbox" name="book-sea-sports-fun"> Fun Pack (Tower + Blob + Watermat + Lounger + Floats) <span class="m-1">{{$currencyUnit . $data['seaSportsFee']['book_fun']}}</span>
+                                        </label><br>
+                                        <label class="sea-sports-blue font-weight-bold">
+                                            <input type="checkbox" name="book-sea-sports-jetsurf"> Jetsurf <span class="m-1">{{$currencyUnit . $data['seaSportsFee']['book_jetsurf']}}</span>
+                                        </label><br>
+                                        <label class="sea-sports-blue font-weight-bold">
+                                            <input type="checkbox" name="book-sea-sports-jetski"> Jetski <span class="m-1">{{$currencyUnit . $data['seaSportsFee']['book_jetski']}}</span>
+                                        </label> --}}
+                                    </p>
+                                </div>
+                                @endif
+                                @if (\Illuminate\Support\Facades\Auth::check())
+                                <div class="payment-detail  @if (!($data['book_type'] == 'Bareboat' && ($data['show_credit'] || $data['show_member']))) d-none @endif pb-4">
+                                    <p class="title">Charter Rate Payment Via</p>
+                                    <select class="form-control " id="discount_type" name="discount_type" onchange="applydiscount(this.value);calBookTimePrice();">
+                                        <option value="0">Select Payment</option>
+                                        <option value="1" class="@if (!$data['show_member']) d-none @endif">Membership Tier
+                                            Discount</option>
+                                        <option value="2" class="@if (!$data['show_credit']) d-none @endif">Credit ID</option>
+                                    </select>
+
+                                </div>
+
+
+                                @if (count($data['ifmember']) > 0)
+                                <div class="payment-detail   pb-4 d-none" id="ifmember">
+                                    @foreach ($data['ifmember'] as $ifmember)
+                                    @php
+                                    $membership_id = $ifmember->membership_id;
+                                    $membership_price = $ifmember->price;
+                                    @endphp
+                                    <p class="title">Membership Details</p>
+                                    <div>
+                                        <span>Plan:</span>
+                                        <span>
+
+                                            <strong>{{ $ifmember->title }}</strong>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span>Discount:</span>
+                                        <span>
+                                            <strong>{{ $ifmember->price }}%</strong>
+                                        </span>
+                                    </div>
+                                    <p><i class="fa fa-info-circle" aria-hidden="true"></i><small>
+                                            {!! htmlspecialchars_decode($ifmember->remarks) !!}</small> </p>
+                                    @endforeach
+                                </div>
+                                @else
+                                <div class="payment-detail d-none" id="ifmember">
+                                    <p class="title">Membership Details</p>
+                                    <p class="text-danger">You do not have any membership plan for this boat.</p>
+                                </div>
+                                @endif
+
+                                @if (count($data['myCredits']) > 0)
+                                <div class="payment-detail d-none pb-3" id="myCredits" style="font-size:14px;">
+                                    <p class="title">Credit Details</p>
+                                    <select name="creditinfo" class="form-control " onchange="checkcreditavailable(this.value); calBookTimePrice();">
+                                        <option value=''>Select Credit ID</option>
+                                        @php $cin=0 ; @endphp
+                                        @foreach ($data['myCredits'] as $credit_info)
+                                        @php
+                                        $balance = DB::table('boat_user_credits_history')
+                                        ->where('credit_id', $credit_info->credit_id)
+                                        ->sum('balance');
+                                        @endphp
+
+                                        <option value="{{ $credit_info->credit_id }}|{{ $balance }}">
+                                            {{ $credit_info->credit_id }} ( Balance : <?php echo $currencyUnit; ?>
+                                            {{ $balance }})
+                                        </option>
+                                        @php $cin++; @endphp
+                                        @endforeach
+                                    </select>
+                                    <!--    <p style="font-size:11px; color:red;">If you want to update or change the date you chose, please reselect the credit option. </p>-->
+                                </div>
+                                @else
+                                <div class="payment-detail d-none" id="myCredits">
+                                    <p class="title">Credit Details</p>
+                                    <p class="text-danger">The credit amount is insufficient. Kindly top up your
+                                        credit.</p>
+                                    <p><a href="{{ url('/') }}/sendemail-to-admin" class="btn btn-sm btn-danger">Email Us to Topup</a>
+                                </div>
+                                @endif
+
+                                @endif
+                                <div class="payment-detail updatepricerefresh">
+                                    <p class="title">Payment Details</p>
+                                    <div>
+                                        <span>Charter Rate:</span>
+                                        <span>
+                                            <strong class="currency">
+                                                <?php echo $currencyUnit; ?>
+                                            </strong>
+                                            <strong class="price-time-slot">0</strong>
+                                        </span>
+                                    </div>
+
+                                    <div>
+                                        <span>Excess Deposit <br /> (Refundable):</span>
+                                        <span>
+                                            <strong class="currency">
+                                                <?php echo $currencyUnit; ?>
+                                            </strong>
+                                            <strong class="excess-deposit">0</strong>
+                                            @if (\Illuminate\Support\Facades\Auth::check())
+                                            <?php
+                                            $user = \Illuminate\Support\Facades\Auth::user();
+                                            $user_extend = DB::table('boat_user_extend')
+                                                ->where('user_id', $user->user_id)
+                                                ->first();
+
+                                            ?>
+                                            <input type="hidden" id="additional_deposite" name="additional_deposite" value="<?php echo @$user_extend->additional_deposite; ?>">
+                                            @else
+                                            <input type="hidden" id="additional_deposite" name="additional_deposite" value="0">
+                                            @endif
+
+                                        </span>
+                                    </div>
+                                    <div id="div-skipper-rate">
+                                        <span>Skipper Rate:</span>
+                                        <span>
+                                            <strong class="currency">
+                                                <?php echo $currencyUnit; ?>
+                                            </strong>
+                                            <strong class="skipper-rate">0</strong>
+                                        </span>
+                                    </div>
+                                    <div id="div-credit-id" class="d-none">
+                                        <span>Credit Applied:</span>
+                                        <span> -
+                                            <strong class="currency" style="color:red;">
+                                                <?php echo $currencyUnit; ?>
+                                            </strong>
+                                            <strong class="credit-id-rate" style="color:red;">0</strong>
+                                        </span>
+                                    </div>
+                                    <div id="div-membership-plan" class="d-none">
+                                        <span>Membership Discount:</span>
+                                        <span> -
+                                            <strong class="currency" style="color:red;">
+                                                <?php echo $currencyUnit; ?>
+                                            </strong>
+                                            <strong class="membership-plan-rate" style="color:red;">0</strong>
+                                        </span>
+                                    </div>
+                                    <div class="promotion"><span>
+                                            <p>Promo Code:</p>
+                                            <input type="text">
+                                            <p><a href="#">Apply</a><span>|</span><a href="#">Reset</a></p>
+                                        </span><span><?php echo $currencyUnit; ?>0.00</span></div>
+                                    <!-- <div><span>Charter Rate:</span><span>$250</span></div> -->
+                                    <!-- Sea Sports Fee -->
+                                    @foreach ($data['seaSportsFee'] as $item)
+                                    <div id="div-lists-sea-sports-{{ $item['id'] }}" class="hidden row">
+                                        <span class="col-md-8">{{ $item['name'] }}:</span>
+                                        <span class="col-md-4 text-right">
+                                            <strong class="currency">
+                                                <?php echo $currencyUnit; ?>
+                                            </strong>
+                                            <strong class="price-lists-sea-sports-{{ $item['id'] }}">0</strong>
+                                        </span>
+                                    </div>
+                                    @endforeach
+                                    <div id="paxinfo" class="row d-none">
+                                        <div class="col-md-7">
+                                            <p>Number of Pax:</p>
+                                            <div class="row ">
+                                                <div class="col-md-3 pr-0"><input onclick="setpax('dec');" type="button" value="-" class="minus   btn btn-sm btn-secondary p-2"></div>
+                                                <div class="col-md-6 pr-0 pl-0"><input type="number" name="maxpax" step="1" class="form-control maxpax" min="5" value="5">
+                                                    <p class="mt-2"><a href="#" style="font-size: 0.875rem;color: #00cccd;">Apply</a></p>
+                                                </div>
+                                                <div class="col-md-3 pl-0"><input type="button" onclick="setpax('inc');" value="+" class="plus   btn btn-sm btn-secondary p-2"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 text-right pt-4"><small><strong><?php echo $currencyUnit; ?>
+                                                    320</strong> Price/Person</small></div>
+                                    </div>
+                                    <div id="div-paypal-fee" class="d-none">
+                                        <span>Stripe Fee ({{ $data['paypalFee'] }}%):</span>
+                                        <span>
+                                            <strong class="currency">
+                                                <?php echo $currencyUnit; ?>
+                                            </strong>
+                                            <strong class="paypal-fee">0</strong>
+                                        </span>
+                                    </div>
+                                    <div class="total">
+                                        <span>Total</span>
+                                        <span>
+                                            <strong class="currency">
+                                                <?php echo $currencyUnit; ?>
+                                            </strong>
+                                            <strong class="total-price">0</strong>
+                                        </span>
+                                    </div>
+                                </div>
+                                <p>Payment Through?</p>
+                                <select class="payment-methods" id="paymentmethods" name="payment_method">
+                                    {{-- <option value="wire-transfer" selected>Bank Transfer</option> --}}
+                                    {{-- <option value="paypal">Paypal</option> --}}
+                                    <option value="stripe" selected>Stripe</option>
+                                </select>
+
+                                <label>
+                                    @if ($data['curBoatDetail']->charterer_contract_checkbox == 'on')
+                                    @php
+                                    $filename = DB::select("select charter_agreement from boat_sample_file where id='1'");
+                                    @endphp
+                                    <input type="checkbox" id="charteragreement" name="charter-agreement">I have read
+                                    and accepted fully the terms of charter stated in the charter agreement "<a target="_blank" id="download_link_charter_agreement" href="https://www.theboatshopasia.com/sample_pdf/{{ $filename[0]->charter_agreement }}" download>Charter Agreement</a>" including indemnities and refund policies.
+                                    @else
+                                    <input type="checkbox" id="charteragreement" name="charter-agreement">I have read
+                                    and accepted the terms & conditions including indemnities and refund policies.
+                                    @endif
+                                </label>
+                                <p><span style="color:red;">*</span> {{ $data['paypalFee'] }}% fee will be added to your total for Stripe payment
+                                    processing.</p>
+                                <p class="small">Itinerary/More Information</p>
+                                @if ($data['curBoatDetail']->contractpdf1)
+                                <span>Itinerary PDF 1:<a target="_blank" href="/download/{{ $data['curBoatDetail']->contractpdf1 }}">{{ $data['curBoatDetail']->contractpdf1 }}</a></span><br>
+                                @endif
+                                @if ($data['curBoatDetail']->contractpdf2)
+                                <span>Itinerary PDF 2:<a target="_blank" href="/download/{{ $data['curBoatDetail']->contractpdf2 }}">{{ $data['curBoatDetail']->contractpdf2 }}</a></span><br>
+                                @endif
+                                @if ($data['curBoatDetail']->contractpdf3)
+                                <span>Itinerary PDF 3:<a target="_blank" href="/download/{{ $data['curBoatDetail']->contractpdf3 }}">{{ $data['curBoatDetail']->contractpdf3 }}</a></span>
+                                @endif
+                                <p class="additional">Additional Info/Requests (eg: your plans)</p>
+                                <textarea name="additional_info"></textarea>
+
+                                @if (\Illuminate\Support\Facades\Auth::check())
+                                <?php
+
+
+                                if ($data['curBoatDetail']->canbook == 1 && $canbook  <  $data['curBoatDetail']->prev_charter && $data['curBoatDetail']->prev_charter > 0) {
+                                    echo '<button type="button" style="background-color:red;" id="proceed-to-not-checkout">BOAT IS NOT AVAILABLE </button>';
+                                } else {
+                                    $user = \Illuminate\Support\Facades\Auth::user();
+                                ?>
+                                    <input type="hidden" name="login-user-name" value="{{ $user->name }}">
+                                    <button type="button" id="proceed-to-checkout" class="checkoutbttn">PROCEED TO CHECKOUT</button>
+                                <?php } ?>
+                                @else
+                                <input type="hidden" name="login-user-name" value="">
+                                <button type="button" data-toggle="modal" data-target="#loginModal">LOG IN TO
+                                    PROCEED</button>
+                                <button type="button" id="enquiry-now">ENQUIRE NOW</button>
+                                @endif
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <div class="payment-popup">
+                        <h3>Payment<i class="fa fa-lock" aria-hidden="true"></i></h3>
+                        <div class="visa-card">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Card number</label>
+                                    <input type="text" name="card_number">
+                                </div>
+                                <div class="col-3">
+                                    <label>Expiry</label>
+                                    <input type="text" name="expiry" placeholder="MM/YYYY">
+                                </div>
+                                <div class="col-3">
+                                    <label>CVV</label>
+                                    <input type="text" name="cvv" placeholder="***">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="price">
+                            <p><span>Subtotal</span><span>600$</span></p>
+                            <p class="tax"><span>Tax</span><span>0$</span></p>
+                            <hr>
+                            <p class="total"><span>Total</span><span>600$</span></p>
+                        </div>
+                        <button class="order">PLACE ORDER</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="paypal-confirm-modal modal fade" id="paypalConfirmModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        @include('elements.booking-confirm')
+    </div>
+    @include('elements.wire-transfer')
+
+    <div class="loading-overlay">
+        <span class="fas fa-spinner fa-3x fa-spin"></span>
+    </div>
+
+    <style type="text/css">
+    .loading-overlay {
+        display: none;
+        background: rgba(255, 255, 255, 0.7);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 9998;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .loading-overlay.is-active {
+        display: flex;
+        }
+    </style>
+
+
+    <script>
+        // console.log("27/12/23");
+        function addRemoveAddOnInput(checkbox) {
+            
+
+            // setTimeout(() => {
+            //     array.forEach(allCheckBoxes => {
+            //         allCheckBoxes.attr('disabled', 'disabled');
+            //     });
+            // }, 1000);
+
+            var checkboxValue = checkbox.data('id');
+            var hiddenInputId = 'add-ons-' + checkboxValue;
+            var hiddenInput = $('[id="' + hiddenInputId + '"]');
+
+            if (checkbox.is(':checked')) {
+
+                if (hiddenInput.length === 0) {
+                    var checkboxId = checkbox.data('id');
+                    $('<input>').attr({
+                        type: 'hidden',
+                        name: 'all-checked-add-ons[]',
+                        value: checkboxValue,
+                        id: hiddenInputId,
+                        'data-id': checkboxId
+                    }).appendTo('#form-process-checkout');
+                }
+            } else {
+                if (hiddenInput.length > 0) {
+                    hiddenInput.remove();
+                }
+            }
+            console.log('Done');
+        }
+
+        /*  setInterval(function(){ 
+             var ajax_values = {
+                        datePicked:  $('input[type="hidden"][name="book-time-date"]').val(),
+                        boatId: $('input[name="boat_id"]').val() ,
+                        currency: getParam('currencyCountry')
+                    };
+                    ajaxSetup();
+                    ajaxSend('/boat-book/validDate', ajax_values, 'valid_date', 'GET');
+                    $('input[type="hidden"][name="book-time-list"]').val('');
+             }, 180000);
+        */
+
+        setTimeout(function() {
+            checkadditional();
+            <?php
+            if (\Illuminate\Support\Facades\Auth::check()) {
+                if ($data['curBoatDetail']->book_type == "Skippered") {
+            ?>
+                    $(".checkoutbttn").html('REQUEST FOR BOAT BOOKING');
+                    $('#paymentmethods').append(`<option selected value="wire-transfer">Request</option>`);
+                    $("#paymentmethods").trigger("change");
+                    $('#paymentmethods').attr('disabled', 'disabled');
+            <?php }
+            } ?>
+        }, 3000);
+
+
+        function checkadditional() {
+            if (document.getElementById('book-skipperyes').checked == true) {
+                document.getElementById('additional_deposite').value = '0.00';
+                $(".charterexp").hide();
+                createProcessCheckoutButton();
+                if ($('#proceed-to-not-checkout').length > 0) {
+                    $('#proceed-to-not-checkout').hide();
+                }
+            } else {
+                <?php if (\Illuminate\Support\Facades\Auth::check()) {
+                    if (@$user_extend->additional_deposite > 0) {
+                        $user_extend_additional_deposite = $user_extend->additional_deposite;
+                    } else {
+                        $user_extend_additional_deposite = '0';
+                    }
+                ?>
+                    document.getElementById('additional_deposite').value = '<?php echo $user_extend_additional_deposite; ?>';
+                <?php } else { ?>
+                    document.getElementById('additional_deposite').value = '0.00';
+                <?php } ?>
+                $(".charterexp").show();
+                if ($('#proceed-to-not-checkout').length > 0) {
+                    $('#proceed-to-not-checkout').show();
+                    removeProcessCheckoutButton();
+                }
+            }
+        }
+        // disable right click
+        // document.addEventListener('contextmenu', event => event.preventDefault());
+
+        document.onkeydown = function(e) {
+
+            // disable F12 key
+            if (e.keyCode == 123) {
+                return false;
+            }
+
+            // disable I key
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                return false;
+            }
+
+            // disable J key
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+                return false;
+            }
+
+            // disable U key
+            if (e.ctrlKey && e.keyCode == 85) {
+                return false;
+            }
+        }
+
+        function setpax(inc_dec) {
+            var max_pax = $('.maxpax').val();
+            if (max_pax == '' || max_pax < 1) {
+                $('.maxpax').val(5);
+            }
+
+            if (inc_dec == 'inc') {
+                $('.maxpax').val(parseInt(max_pax) + 1);
+            } else {
+                if (max_pax > 5) {
+                    $('.maxpax').val(parseInt(max_pax) - 1);
+                }
+            }
+        }
+
+        function applydiscount(v) {
+            var booktimelist = $("#book-time-list").val();
+            if (booktimelist != "") {
+
+                if (v == 1) {
+                    $("select[name=creditinfo]").prop("selectedIndex", 0).val();
+                    $("input[type=radio][name=creditinfo]").prop('checked', false);
+                    $("#ifmember").removeClass('d-none');
+                    $("#myCredits").addClass('d-none');
+                    $("#credit_id").val(0);
+                    $("#membership_id").val(<?php echo $membership_id; ?>);
+                    var percentage = <?php echo $membership_price; ?>;
+                    var charter_price = $("span .price-time-slot").html();
+                    var discountprice = parseFloat(parseFloat(parseFloat(charter_price) * parseFloat(percentage)) / 100);
+                    $("#discount_price").val(discountprice);
+                } else if (v == 2) {
+                    $("#myCredits").removeClass('d-none');
+                    $("#ifmember").addClass('d-none');
+                    $("#membership_id").val(0);
+                    $("#discount_price").val(0);
+                } else {
+                    $("#myCredits,#ifmember").addClass('d-none');
+                }
+            } else {
+                // alert("Please choose valid date before Proceed for Discount.");
+                document.getElementById("discount_type").selectedIndex = "0";
+                $("#membership_id").val(0);
+                $("#discount_price").val(0);
+                $("select[name=creditinfo]").val('');
+                // $("select[name=discount_type]").prop('selected', false);
+            }
+            //calBookTimePrice();
+        }
+
+        function checkcreditavailable(cval) {
+            //    alert(cval);
+            if (typeof cval != "undefined") {
+                var balance = cval.split('|');
+                var cid = balance[0];
+                var discount = balance[1];
+                var charter_price = $("span .price-time-slot").html();
+                var discountprice = parseFloat(parseFloat(discount) - parseFloat(charter_price));
+                var book_time_list = $("#book-time-list").val();
+
+
+                if (book_time_list == "") {
+                    alert("Please Choose Date First");
+                    $("select[name=creditinfo]").prop("selectedIndex", 0).val();
+
+                } else {
+                    console.log(parseFloat(discount));
+                    console.log("Charter: "+ parseFloat(charter_price));
+
+                    // if (parseFloat(discount) < parseFloat(charter_price)) {
+                    if (parseFloat(discount) <= 0) {
+                        $("#credit_insufficient").modal('show');
+                        $("#div-credit-id").addClass('d-none');
+                        $("#discount_price").val(0);
+                        $("#credit_id").val('0');
+                        $("select[name=creditinfo]").prop("selectedIndex", 0).val();
+                    } else {
+
+                        if (parseFloat(discount) >= parseFloat(charter_price)) {
+                            var needpay = 0;
+                            $("#discount_price").val(charter_price);
+                        }else{
+                            $("#discount_price").val(parseFloat(discount));
+                        }
+                        $("#credit_id").val(cid);
+                        $("#membership_id").val(0);
+                    }
+                }
+            }
+            //calBookTimePrice();
+        }
+
+        setInterval(function() {
+            var discount_type = $('#discount_type').val();
+            var discount_price = $('#discount_price').val();
+            if (discount_type == "1") {
+                //  applydiscount(discount_type);
+                $("#div-membership-plan").removeClass('d-none');
+                $("#div-credit-id").addClass('d-none');
+            } else if (discount_type == "2") {
+                var selected_credit = $('select[name=creditinfo]').val();
+
+                if (typeof selected_credit !== "undefined") {
+                    $("#div-membership-plan").addClass('d-none');
+                    $("#div-credit-id").removeClass('d-none');
+                    //    checkcreditavailable(selected_credit);
+                } else {
+
+                }
+            }
+            $(".membership-plan-rate").html(discount_price);
+            $(".credit-id-rate").html(discount_price);
+
+        }, 4000);
+    </script>
+    <div class="enquiry-modal modal fade" id="credit_insufficient" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" wfd-invisible="true">
+        <div class="modal-dialog" role="credit_amount">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+
+                    <div class="enquiry-box">
+                        <p class="text-danger">The credit amount is insufficient. Kindly top up your credit.</p>
+                        <p><a href="{{ url('/') }}/sendemail-to-admin" class="btn btn-sm btn-danger">Email Us to
+                                Topup</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endsection

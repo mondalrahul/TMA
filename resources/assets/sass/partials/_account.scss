@@ -1,0 +1,61 @@
+.account-page {
+    .upload-photos-wrapper {
+        background-color: $block-background;
+        min-height: 300px;
+        position: relative;
+
+        .upload-photos {
+            padding: 3rem 1.5rem;
+            width: 100%;
+            text-align: center;
+            
+            img {
+                display: inline-block;
+                max-width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                margin: 0;
+
+                &.title {
+                    font-family: $font-500;
+                    color: $highlight-color;
+                }
+            }
+        }
+    }
+
+    .account {
+        color: #fff;
+        background: $highlight-color;
+        text-align: center;
+        padding: 1rem 0;
+        margin-bottom: 2rem;
+
+        p {
+            margin: 0;
+            font-family: $font-500;
+            
+            &.title {
+                font-family: $font-700;
+                font-size: 1.125rem;
+            }
+        }
+    }
+
+    form {
+        background: $block-background;
+        padding: 2rem;
+
+        .form-title {
+            color: #898989;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            display: block;
+            font-family: $font-500;
+        }
+
+    }
+
+}
